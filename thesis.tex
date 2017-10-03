@@ -1,0 +1,56 @@
+
+\documentclass[hyperpdf,bindnopdf]{hepthesis}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\title{Title goes here}
+\author{Jack Charles Wright}
+
+\begin{document}
+
+\begin{frontmatter}
+
+    \input{frontmatter.tex}
+
+\end{frontmatter}
+
+
+\begin{mainmatter}
+
+    \cleardoublepage
+
+    \input{chapters/introduction.tex}
+
+    \input{chapters/theory.tex}
+
+    \input{chapters/apparatus.tex}
+
+    \input{chapters/object_reconstruction.tex}
+
+    \input{chapters/machine_learning.tex}
+
+    \input{chapters/event_selection_categorisation.tex}
+
+    \input{chapters/stats_analysis_results.tex}
+
+    \input{chapters/conclusion.tex}
+
+\end{mainmatter}
+
+
+\appendix
+\begin{appendices}
+    \input{appendices/appendix_placeholder.tex}
+\end{appendices}
+
+
+
+\begin{backmatter}
+
+    \input{backmatter}
+
+\end{backmatter}
+
+
+\end{document}
