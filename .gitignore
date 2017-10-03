@@ -4,4 +4,7 @@
 *.lot
 *.out
 *.toc
+*.cut
+
+.texpadtmp/
 
