@@ -1,5 +1,5 @@
 
-\documentclass[hyperpdf,bindnopdf]{hepthesis}
+\documentclass[hyperpdf,bindnopdf,10pt]{hepthesis}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -8,24 +8,23 @@
 \usetikzlibrary{shapes,arrows,positioning,automata,backgrounds,calc,er,patterns}
 \usepackage{tikz-feynman}
 \tikzfeynmanset{compat=1.0.0}
+\usepackage{breqn}
+\usepackage{enumitem}
 
 
 
 \graphicspath{{images/}}
 
 \newcommand{\SUN}{{\mathrm{SU}(N)}}
-%\newcommand{\SU2}{{\mathrm{SU}(2)}}
-%\newcommand{\SU3}{{\mathrm{SU}(3)}}
 
-\title{Measurements of the Higgs boson at $\sqrt{s}=13$\,TeV with $36.5\,fb^{-1}$}
+
+\title{Study of Higgs boson production through vector boson fusion at the CMS experiment using a dense convolutional neural network}
 \author{Jack Charles Wright}
 
 \begin{document}
 
 \begin{frontmatter}
-
     \input{frontmatter.tex}
-
 \end{frontmatter}
 
 
@@ -39,9 +38,9 @@
 
     \input{chapters/apparatus.tex}
 
-    \input{chapters/object_reconstruction.tex}
-
     \input{chapters/machine_learning.tex}
+
+    \input{chapters/object_reconstruction.tex}
 
     \input{chapters/event_selection_categorisation.tex}
 
@@ -58,11 +57,8 @@
 \end{appendices}
 
 
-
 \begin{backmatter}
-
     \input{backmatter}
-
 \end{backmatter}
 
 
