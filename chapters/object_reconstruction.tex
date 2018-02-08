@@ -1,22 +1,100 @@
 \chapter{Event Reconstruction and Selection}
 \label{chap:object_reco}
 
-
 \newpage
 
 \section{Introduction}
 
+%High-level overview
+The CMS $H\rightarrow{\gamma\gamma}$ analysis works by searching for excess production in the distribution of diphoton invariant masses. A Higgs boson signal will manifest as a small bump on top of a continuous distribution from irreducible background processes.
+
+The invariant mass of a diphoton system is calculated with the expression
+\begin{equation}
+    m_{\gamma\gamma} = \sqrt{2E_{\gamma_1}E_{\gamma_2}(1-\cos{\alpha})},
+\end{equation}
+where $E_{\gamma_1}$ and $E_{\gamma_2}$ are the energies of the leading energy photon and subleading energy photon respectively, and $\alpha$ is the opening angle between them. 
+To determine the value of $\alpha$ we require the locations of the photons in the ECAL and the correct originating vertex. 
+The CMS ECAL gives a good determination of the photon location in $z$ and $\phi$, but it does not provide any pointing information: to determine $\alpha$ precisely we need to determine the correct vertex by other means.
+If the selected vertex is within $1$\,cm of the correct vertex the contribution of spatial uncertainty to the mass resolution is negligible and is dominated by the energy resolution of the ECAL. 
+%Talk about phton and vertex reco being crucial, but also that other objects are needed. 
+
+
+Physics objects are reconstructed with the CMS global event description known as particle flow (PF). 
+PF uses information from all the subdetectors to identify and reconstruct individual particles produced within CMS, and to achieve good energy resolution.
+The sorts of nformation used as inputs are tracks from the tracker, tracks from the muon systems, and energy clusters from the ECAL and HCAL. Depending on which of these are present, PF will output `PF candidates' which correspond to different types of semi-stable particles 
+\begin{itemize}[leftmargin=.5in,noitemsep]
+    \item Photons: ECAL deposition is present with no associated track in tracker. The energy of photons is obtained from the ECAL. 
+    \item Electrons: ECAL supercluster is present with associated track in tracker. Energy is determined with electron momentum at the primary vertex, the ECAL deposition, and the energy of associated Bremsstrahlung photons. 
+    \item Muons: compatible tracks in tracker and muon system. Energy is determined from the curvature or the tracks. 
+    \item Charged Hadrons: track in tracker, ECAL deposition and associated HCAL deposition. Energy is determined from the track curvature, and the matching ECAL/HCAL deposits corrected for effects from zero-supression and for th response of the calorimeters to hadronic showers.
+    \item Neutral Hadrons: measured with the corrected energies from the ECAL and HCAL. 
+\end{itemize}
+These PF candidates are then used to construct jets, and to determine missing transverse momentum $E_{T}^{miss}$.
+This process is applied in the same way to data collected with the CMS detector and data from simulation.
+
+
+\section{Samples}
+
+\subsection{Trigger}
+The analysis uses events selected with the two-step CMS triggering system (L1T and HLT). The objective of this system is to keep the event rate below and acceptable level due to limited bandwidth resources whilst keeping signal efficiency a high as possible. Requirements at L1T are looser because it uses fast coarse measurement, HLT uses more stringent requirements to compensate for any inefficiencies from this. 
+
+At L1T we require one or two energy deposits in the ECAL with energy thresholds that varied over the 2016 running period. For the single deposit, energy requirements are more stringent at 25\,GeV during low luminosity up to 40\,GeV at high-luminosity periods to keep the trigger rate to an acceptable level. For two deposits at high-luminosity 22\,Gev and 15\,GeV were required. 
+
+At HLT events were selected with $E_{T}$ thresholds of 30\,GeV and 18\,GeV for the leading and subleading photon respectively. Furthermote, the selection has loose requirements on the shape of the electromagnetic showers, isolation variables, and the ratio of deposition in the ECAL compared to the HCAL. 
+
+These selections have their efficiencies measured with the `tag-and-probe' technique. 
+This uses the resonant production and decay to pairs of well-understood particles near their mass peak to ensure a pure and well-understood sample. 
+In the $H\rightarrow{\gamma\gamma}$ $Z\rightarrow{}e^{+}e^{-}$ is used as both electrons and photons are reconstructed with the ECAL clustering, so one can use dielectron decays as a proxy for diphotons. 
+A strict ID requirement is placed on one of the decay products (the tag) and a looser requirement is placed on the other (the probe). 
+The requirement on the probe should be loose enough that it does not affect the selection being measured. The selection efficiency may then be measured as the proportion of the probes which satisfy the selection.
+%Ref for tag and probe from the PAS
+
+
+\subsection{Data}
+The data used in the analysis corresponds to the 35.9\,fb$^{-1}$ of proton-proton collision data recorded by the CMS experiment in the 2016 run period with a centre of mass energy of $s=\sqrt{13}$\,TeV and selected with the trigger requirements described above. 
+
+
+
+\subsection{Simulation}
+
+Signal events are simulated for a range of mass points from 120\,GeV to 130\,GeV using cross-sections and branching ratios recommended by the LHC cross-section working group. 
+The signal events are generated at next-to-leading order in perturbative QCD with \texttt{MadGraph5_{}aMC@NLO}, with  parton showers and hadronization modelled with \texttt{pythia8}. The \texttt{pythia} tune parameter set \texttt{CUETP8M1} is used.
+
+The background simulations are generated in different ways. For the main irreducible background from prompt diphotons \texttt{Sherpa} is used which includes Born processes with up to three jets as well as box diagram processes at leading order. 
+For the $\gamma$-jet and jet-jet reducible backgrounds where jets are mistakenly reconstructed as photons we use \texttt{pythia8} with a filter applied to enhance the electromagnetic energy content of the jets. 
+Finally, samples for validation $W\gamma$ and $Z\gamma$ are simulated with \texttt{Madgraph} and Drell-Yan (DY) is simulated with \texttt{Madgraph_{}aMC@NLO}
+
+
 
 \section{Photons}
+
+\subsection{Photon Energy}
+
+\subsection{Photon Preselection}
+
+\subsection{Photon Identification}
+
+
+
+\section{Vertices}
+
+\subsection{Vertex Selection}
+
+\subsection{Vertex Probability}
+
 
 
 \section{Diphotons}
 
+\subsection{Diphoton Preselection}
 
-\section{Jets}
+\subsection{Diphoton BDT}
 
 
-\section{Simulation}
-\subsection{Physics Simulation}
-\subsection{Detector Simulation}
-\subsection{Samples for $H\rightarrow\gamma\gamma$}
+\section{Other Objects}
+
+\subsection{Electrons}
+
+\subsection{Muons}
+
+\subsection{Jets}
