@@ -460,8 +460,8 @@ These layers are the basic unit which make up the dense blocks. They consist of 
 Dense blocks consist of $d$-many composite layers where there is direct connection from each layer to all those after it (Figure \ref{fig:machine_learning:dense_block}). 
 In other word each layer receives all of the feature maps produced before it concatenated along the depth axis. 
 \begin{figure}[h!]
-    \includegraphics[width=0.75\textwidth]{figures/machine_learning/dense_block.pdf}
-    \caption{A dense block with depth 5 and growth rate 4. Each composite layer is shown as a grey square and the output featuremap of the layer is shown by the coloured layered stack. Coloured arrows show the which layers each featuremap is input to.}
+    \includegraphics[width=0.90\textwidth]{figures/machine_learning/dense_block.pdf}
+    \caption{A dense block with depth 5 and growth rate 4. Input feature map is shown by the stack of white squares, each composite layer is shown as a grey square and the output featuremap of the layer is shown by the coloured layered stack. Coloured arrows show the which layers each featuremap is input to. The final concatenated output of the dense layer is shown by the white and coloured stack on the right.}
         \label{fig:machine_learning:dense_block}
 \end{figure}
 Each dense block has a number of hyperparameters. In the formulation used here they are the following: depth is the number of composite layers in the dense block, filter size is the width and height of the filter of the ordinary convolution in the composite layer, and the growth rate is the depth of the feature map from each composite layer.
