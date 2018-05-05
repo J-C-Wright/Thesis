@@ -385,25 +385,49 @@ During inference, the population statistics of the layer inputs are used, this m
 Finally, even with the above measures in place the accuracy of a deep network can saturate as depth increases and then drop. This is not caused by overfitting but is actually caused by the network's failure to reproduce identity transformations leading to the degradation of information as it passes to deeper layers \cite{ResNet}. This has been solved by using different sorts of bypass connections where outputs from earlier layers are directly connected to later ones to facilitate the flow of information. This was the key insight that drove the development of the ResNet architecture \cite{ResNet}, and the dense convolutional network architecture used in this thesis.  
 
 
-\subsection{Convolutional Neural Networks}
-Convolutional Neural Networks (CNNs) are aimed at image processing tasks and have achieved remarkable levels of performance. 
-These networks make certain assumptions about their inputs avoiding the problems of an ordinary MLP if it were to be applied to an image processing problem. 
-MLPs will struggle with these tasks as they are high-dimensional in their input, and the fully-connected layers of MLPs do not scale well with larger input spaces. 
-For example, if the input image is a $100\times{}100\times{}3$ RGB image, each neuron in the next fully-connected layer would receive $30000$ inputs, leading to a very large number of parameters even in a shallow network. 
-A network with such a large number of parameters will be difficult to train and will suffer from overfitting.
+\subsection{Images and Convolutional Neural Networks}
 
-CNNs are feedforward-type ANNs constructed from successive 3D volumes of neurons which use local connectivity and weight sharing to avoid the issues with MLPs in this area \cite{CS231n}. Specifically, CNNs introduce two new layer types: convolution layers and pooling layers.
+\subsubsection{Introduction}
+%Intro
+This thesis is concerned with treating jets within CMS as images, and then using these images to enhance the classification of VBF Higgs events with their characteristic dijets. 
+A particular class of ANN architectures, convolutional neural networks (CNNs), are used to solve such image-based machine learning problems.
+This section will describe how images are formulated, classic CNNs with their constituent parts, and finally the more advanced architecture used in this thesis. 
+
+
+%Images
+Images are formulated as three-dimensional volumes of values with height, width, and then a depth usually corresponding to the RGB channels. 
+Each of these values is an individual feature which measures a particular type of information at a transverse location (such as `redness' in a non-transformed image). 
+These features can be more complex, such as an image after a local edge-detection transform where each feature now corresponds to whether an edge is present at that location. 
+Therefore the features located at a particular depth are said to form 2D feature maps, and the depthwise stack of feature maps are said to form a feature volume. 
+Image processing problems are concerned with manipulating and extracting information from these feature volumes.
+
+Images often have certain properties which allow two assumptions to be made, these inform the design of CNNs. 
+Firstly, the statistical properties of an image dataset is uniform in the transverse directions and therefore local feature detectors will be useful over the whole image extent. 
+Secondly, that features near to each other in the transverse directions are highly correlated and we can downsample the image without losing much information. 
+
+
+%CNNs intro
+If we try to apply an ordinary MLP to an image processing problem the large number of input features will give rise to a very large number of model parameters (proportional to the square of the inputs). 
+For example, if the input is a $100\times{}100\times{}3$ RGB image, each neuron in the next fully-connected layer would receive $30000$ inputs, leading to a very large number of parameters even in a shallow network. A network with such a large number of parameters will be difficult to train and suffer from severe overfitting.
+
+CNNs are feedforward-type ANNs constructed from successive 3D volumes of neurons using local connectivity and parameter sharing to avoid the issues with MLPs in this area \cite{CS231n}. Specifically, CNNs introduce two new layer types: convolution layers and pooling layers corresponding to the two image assumptions described above.
+
+
 
 \subsubsection{Convolution Layers}
-Convolution layers learn to find local features in the image which are then transformed into ever-more abstract and complex features in deeper layers. 
-These features are not engineered but learnt and allow the CNN to construct collections of useful features with minimal human involvement.
+%General function (intro)
+Convolution layers (Figure \ref{fig:machine_learning:convolution}) learn to find local feature transformations that pick out features in the image which are then transformed into ever-more abstract and complex features by later convolution layers. 
+They receive a feature volume as input, and consist of a convolution operation that produces a tranformed (convolved) feature volume and then a volume of activation functions. 
+Each activation function recieves one feature in the convolved feature volume.  
 
 
-A convolutional layer receives a 3D volume of input values and will map this to another 3D volume of output values which will not necessarily have the same size. 
-The layer itself consists of a 3D volume of neurons, each of which views a small portion of the input width and height (its field of view) and usually the full extent of the depth. 
-Each of these neurons will share the same weight values as its neighbours at the same depth and each will look for the same feature in a different place. 
-These can be considered to be like learned filters that scan across the image and map a patch of input to a scalar value. The way they are spaced (or alternatively how the filter moves) is referred to as the stride. 
-The output volume of neuron activations can be considered to be $n$-many transformed versions of the input where $n$ is the number of filters. This output is referred to as a feature map. 
+%More detail on the transformation, how this is related to the image assumptions
+This convolution operation consists of a collection of local transformations that multiply the values of a local patch of the input by learned weights and then sums them. These weights are shared over the transverse extent of the image: each patch will be multiplied by the same set of weights, and all the patches together will produce a feature map. This parameter sharing design is inspired by the feature translation assumption. Each convolution layer will have multiple filters that will each make a different feature map consituting the transormed feature volume given to the activations.
+
+
+%Neuron FOV interpretation
+This can be interpreted as a volume of neurons each of whom only see a small portion of the input feature volume (its field of view, FOV). All of the neurons at the same depth in the volume will share the same weights and can be considered to be looking for the same feature at different locations. The volume of activation values constitutes the convolution layer output volume and each value will correspond to the possible presence of some higher-level feature constructed from the lower-level input features. 
+
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_neuron.pdf}
@@ -414,21 +438,24 @@ The output volume of neuron activations can be considered to be $n$-many transfo
         \label{fig:machine_learning:convolution}
 \end{figure}
 
-This assumes that the filter is useful over the whole translational extent and leads to a much smaller quantity of parameters. As one has successive convolutions feed into each other, low-level features are assembled into evermore sophisticated ones. Early layers will learn to detect edges, later ones combine these into shapes, and then later ones still into classes of objects such as cats or dogs. 
+%Variations on typical conv layer
+Sometimes the individual convolutions only see a single feature ($1\times{}1$ patch), but still the full extent of the input depth. These transformations operate only on differences between the feature maps and are used to reduce the depth of the input feature volume. 
+This corresponds to feature reduction, where we combine or remove features to produce a small set of performant features. 
+
 
 
 \subsubsection{Pooling Layers}
-Pooling layers reduce the size of their input by mapping sections of neuron outputs to a single value, for example: a $2\times{}2$ patch, whilst keeping the depth the same.
-This has the dual function of reducing model complexity and increasing the local field of view of later neurons. 
-The two main types used are max pooling and average pooling (Figure \ref{fig:machine_learning:pooling}). 
+Pooling layers are inspired by the local corellation assumption and reduce the size of their input by mapping sections of neuron outputs to a single value. For example: a $2\times{}2$ patch of each feature map is mapped to a single value whilst keeping the depth of the feature volume the same.
+This has the dual function of reducing model complexity and increasing the local field of view of later neurons as each later neuron input corresponds to multiple neuron outputs from prior layers. 
+The two main types of mapping are the maximum value of the patch and average the average value, referred to as max pooling and average pooling respectively (Figure \ref{fig:machine_learning:pooling}). 
 \begin{figure}[h!]
     \includegraphics[width=0.45\textwidth]{figures/machine_learning/pooling.pdf}
     \caption{An example input to a pooling layer is shown on the left with two outputs on the right from max pooling (above) and average pooling (below).}
         \label{fig:machine_learning:pooling}
 \end{figure}
 
-Max pooling takes the maximal value in the region of interest and outputs this as the downsampled value. Max pooling leads faster trainings and to translation invariance of feature detection, but loses information and will cause the network to be less aware of the spatial arrangement of the features. 
-Average pooling takes the average in the region of interest and does not throw away information, however it can be slower and does not have the same translation invariance properties. 
+Max pooling leads faster trainings and to translation invariance of feature detection, but loses information from the non-maximal values and will cause the network to be less aware spatial arangement.  
+Average pooling takes the average in the region of interest and does not lose as much information, however it can be slower and does not have the same translation invariance properties. 
 
 
 \subsubsection{Classic Architecture}
@@ -441,14 +468,14 @@ The classic example of a CNN \cite{CS231n} consists of interleaved convolutional
 
 
 \subsection{Dense Convolutional Neural Networks}
-Dense convolutional neural networks \cite{DenseNet} are inspired by the bypass layers in models such as  ResNet, but here every layer is connected to the layers coming after it. 
-This gives superior information flow, encourages feature reuse, and allows the network to achieve high performance with fewer parameters. 
+Dense convolutional neural networks \cite{DenseNet} are inspired by the bypass layers in models such as  ResNet, but here every layer is connected to the layers situated after it. 
+This dense connectivity gives superior gradient flow during backpropagation and allows for increased depth (due to the mitigation of depth degredation) and therefore much more sophisticated features. It also encourages feature reuse, and allows the network to achieve high performance with fewer parameters. 
 
 Dense CNNs have a similar general structure to ordinary CNNs: they are feedforward and make use of convolution and pooling, but their structure is much more complicated. 
-Instead of interleaved convolution and pooling layers dense CNNs have dense blocks made of multiple composite layers of convolutions, these are interleaved with transition layers which play the role of pooling. After this the feature map is flattened and input to a MLP classifier structure as normal. 
+Instead of interleaved convolution and pooling layers dense CNNs have dense blocks made of multiple composite layers of convolutions, these are interleaved with transition layers which play the role of pooling but can also perform feature reduction. After this the feature volume is flattened and input to a MLP classifier structure as normal. 
 
 \subsubsection{Composite Layers}
-These layers are the basic unit which make up the dense blocks. They consist of (Figure \ref{fig:machine_learning:composite_layer}) a batch normalisation, a ReLU activation function, a $1\times{}1$ convolution for compressing the depth of the input volume, a second batch normalisation, a second ReLU activation and then an ordinary convolution which outputs a feature map of a set length $k$ called the growth rate. The $1\times{}1$ convolution is called a bottleneck and serves to reduce model complexity.
+These layers are the basic unit constituting the dense blocks. They consist of (Figure \ref{fig:machine_learning:composite_layer}) a batch normalisation, a ReLU activation function, a $1\times{}1$ convolution for compressing the depth of the input volume, a second batch normalisation, a second ReLU activation and then an ordinary convolution which outputs a feature volume of a set length $k$ called the growth rate. The $1\times{}1$ convolution is called a bottleneck and serves to reduce model complexity and perform feature reduction. These layers, as formulated in this thesis, have two hyperparameters: the depth of the output feature volume, the `growth rate' and the size (width and height) of the filter in the second convolution. 
 \begin{figure}[h!]
     \includegraphics[width=0.75\textwidth]{figures/machine_learning/composite_layer.pdf}
     \caption{A composite layer}
@@ -458,18 +485,18 @@ These layers are the basic unit which make up the dense blocks. They consist of 
 
 \subsubsection{Dense Blocks}
 Dense blocks consist of $d$-many composite layers where there is direct connection from each layer to all those after it (Figure \ref{fig:machine_learning:dense_block}). 
-In other words each layer receives all of the feature maps produced before it, concatenated along the depth axis. 
+In other words each layer receives all of the feature volumes produced before it, concatenated along the depth axis. 
 \begin{figure}[h!]
     \includegraphics[width=0.90\textwidth]{figures/machine_learning/dense_block.pdf}
-    \caption{A dense block with depth 5 and growth rate 4. Input feature map is shown by the stack of white squares, each composite layer is shown as a grey square and the output feature map of the layer is shown by the coloured layered stack. Coloured arrows show the which layers each feature map is input to. The final concatenated output of the dense layer is shown by the white and coloured stack on the right.}
+    \caption{A dense block with depth 5 and growth rate 4. Input feature volume is shown by the stack of white squares, each composite layer is shown as a grey square and the output feature volume of the layer is shown by the coloured layered stack. Coloured arrows show the which layers each feature volume is input to. The final concatenated output of the dense layer is shown by the white and coloured stack on the right.}
         \label{fig:machine_learning:dense_block}
 \end{figure}
-Each dense block has a number of hyperparameters. In the formulation used in this thesis they are the following: depth is the number of composite layers in the dense block, filter size is the width and height of the filter of the ordinary convolution in the composite layer, and the growth rate is the depth of the feature map from each composite layer.
+Each dense block has a number of hyperparameters. In the formulation used in this thesis they are the following: depth is the number of composite layers in the dense block, filter size is the size of the filter of the second convolution in the composite layers, and the growth rate of the composite layers.
 
 
 \subsubsection{Transition Layers}
-Transition layers are pooling layers with average pooling, but with batch normalisation applied to the input and a $1\times{}1$ convolution for compressing the input feature map before the pooling operation (Figure \ref{fig:machine_learning:transition_layer}). 
-This compression of the feature map performs feature reduction where less useful features are removed. It will also reduce model complexity and overfitting. This reduction is controlled by another hyperparameter: the reduction factor. 
+Transition layers are pooling layers with average pooling, but with batch normalisation applied to the input and a $1\times{}1$ convolution for compressing the input feature volume before the pooling operation (Figure \ref{fig:machine_learning:transition_layer}). 
+This compression of the feature volume performs feature reduction where less useful features are removed. It will also reduce model complexity and overfitting. This reduction is controlled by another hyperparameter: the reduction factor. 
 \begin{figure}[h!]
     \includegraphics[width=0.75\textwidth]{figures/machine_learning/transition_layer.pdf}
     \caption{A transition layer with a reduction factor of 0.5.}
