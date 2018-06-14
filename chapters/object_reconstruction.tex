@@ -6,7 +6,7 @@
 \section{Introduction}
 
 %High-level overview
-The CMS $H\rightarrow{\gamma\gamma}$ analysis works by searching for excess production in the distribution of diphoton invariant masses. A Higgs boson signal will manifest as a small bump on top of a continuous distribution due to background processes from Standard Model diphoton production.
+The CMS \Hgg analysis works by searching for excess production in the distribution of diphoton invariant masses. A Higgs boson signal will manifest as a small bump on top of a continuous distribution due to background processes from Standard Model diphoton production.
 
 The invariant mass of a diphoton system is calculated with the expression
 \begin{equation}
@@ -51,7 +51,7 @@ At HLT events were selected with $E_{T}$ thresholds of 30\,GeV and 18\,GeV for t
 
 These selections have their efficiencies measured with the `tag-and-probe' technique \cite{TagAndProbe}. 
 This uses the resonant production and decay to pairs of well-understood particles near their mass peak to ensure a pure and well-understood sample. 
-In the $H\rightarrow{\gamma\gamma}$ analysis $Z\rightarrow{}e^{+}e^{-}$ is used as both electrons and photons are reconstructed with the ECAL clustering, so one can use di-electron decays as a proxy for diphotons. 
+In the \Hgg analysis \Zee is used as both electrons and photons are reconstructed with the ECAL clustering, so one can use di-electron decays as a proxy for diphotons. 
 A strict ID requirement is placed on one of the decay products (the tag) and a looser requirement is placed on the other (the probe). 
 The requirement on the probe should be loose enough that it does not affect the selection being measured. The selection efficiency may then be measured as the proportion of the probes which satisfy the selection.
 %Ref for tag and probe from the PAS
@@ -116,7 +116,7 @@ This is also trained on simulated Higgs diphoton events and is given the followi
 
 
 \subsection{Performance}
-Performance of the vertex selection BDT is validated with both simulated and real $Z\rightarrow{}\mu^{+}\mu^{-}$ events where the muon tracks have been removed and the event re-reconstructed to imitate a diphoton system. 
+Performance of the vertex selection BDT is validated with both simulated and real \Zmumu events where the muon tracks have been removed and the event re-reconstructed to imitate a diphoton system. 
 In the converted-photon case a similar procedure uses $\gamma + $jet events where the vertex is found using the tracks of the jet. 
 The tracks of the jet are then removed and the event is re-reconstructed as a diphoton systems. Validation of unconverted photons is shown in Figure \ref{fig:object_reco:vertex_id_valid}. 
 \begin{figure}[h!]
@@ -191,12 +191,12 @@ The BDT is then trained on simulated photons with two separately trained BDTs in
 Once we have the corrected energies, the overall energy scale needs to be corrected to account for detector effects. 
 During operation the CMS ECAL receives large doses of radiation that can degrade its performance over time. 
 This will lead to drifts and jumps in the detector response as conditions change, and as a result the measured energy will also drift and jump. 
-Scale factors to account for this effect in data are calculated using the $Z\rightarrow{}e^{+}e^{-}$ decay as a standard candle where the electrons are reconstructed as photons. 
+Scale factors to account for this effect in data are calculated using the \Zee decay as a standard candle where the electrons are reconstructed as photons. 
 Using comparison to simulation, and the well-known value of the $Z$ boson mass, scales are derived for different times and detector locations to bring the measured value of real $Z$ bosons back to the true value. 
 
 
 \subsubsection{Resolution Smearing}
-Simulation also needs to be corrected by comparison to data to make it more realistic. The photon energy resolution in simulated events has a Gaussian smearing added to it which is derived from comparing the width of the $Z\rightarrow{}e^{+}e^{-}$ mass distribution in different categories depending on $|\eta|$-location within the detector (two in the barrel either side of $|\eta|=1$ and two in the endcaps either side of $|\eta|=2$), and the $R_{9}$ variable which measures photon quality (above or below $R_{9}=0.94$).
+Simulation also needs to be corrected by comparison to data to make it more realistic. The photon energy resolution in simulated events has a Gaussian smearing added to it which is derived from comparing the width of the \Zee mass distribution in different categories depending on $|\eta|$-location within the detector (two in the barrel either side of $|\eta|=1$ and two in the endcaps either side of $|\eta|=2$), and the $R_{9}$ variable which measures photon quality (above or below $R_{9}=0.94$).
 The mass peak in two of these bins is shown in Figure \ref{fig:object_reco:invariant_mass_validation}.
 \begin{figure}[h!]
     \includegraphics[width=0.95\textwidth]{figures/object_reco/CMS-PAS-HIG-16-040_Figure_001.pdf}
@@ -227,7 +227,7 @@ Both photons must also satisfy either of two additional requirements:
 \end{itemize}
 
 %Schema table of thesholds
-The efficiency of these criteria are measured using $Z\rightarrow{}e^{+}e^{-}$ and the tag-and-probe method, 
+The efficiency of these criteria are measured using \Zee and the tag-and-probe method, 
 with the exception of the electron veto which uses $Z\rightarrow{}\mu^{+}\mu^{-}\gamma$. The preselection efficiencies are summarised in Table \ref{tab:object_reco:presel_eff}
 %Table of efficiencies
 \begin{table}[h!]
@@ -263,10 +263,10 @@ The classifier receives the following input features:
 
 %validation 
 The performance of this classifier is shown in Figure \ref{fig:object_reco:photon_id_bdt}. 
-The systematic uncertainty on the BDT output is shown by the shaded region of the right hand plot. This is estimated so that it covers the largest disagreement between data and simulation of $Z\rightarrow{e^{+}e^{-}}$ reconstructed as photons in the endcap regions where agreement is worst.
+The systematic uncertainty on the BDT output is shown by the shaded region of the right hand plot. This is estimated so that it covers the largest disagreement between data and simulation of \Zee reconstructed as photons in the endcap regions where agreement is worst.
 \begin{figure}[h!]
     \includegraphics[width=0.95\textwidth]{figures/object_reco/CMS-PAS-HIG-16-040_Figure_002.pdf}
-    \caption{Photon ID BDT performance and validation. (Left) Photon ID BDT output score of the lower-scoring photon of each diphoton passing the photon preselection. Signal photons from simulated Higgs events are shown in red and simulated background events are shown in blue, data is shown by the back dots. (Right) validation on $Z\rightarrow{e^{+}e^{-}}$ events.}
+    \caption{Photon ID BDT performance and validation. (Left) Photon ID BDT output score of the lower-scoring photon of each diphoton passing the photon preselection. Signal photons from simulated Higgs events are shown in red and simulated background events are shown in blue, data is shown by the back dots. (Right) validation on \Zee events.}
         \label{fig:object_reco:photon_id_bdt}
 \end{figure}
 
@@ -276,7 +276,7 @@ A loose selection this BDT score is imposed as part of the photon preselection: 
 \section{Other Objects}
 
 \subsection{Leptons}
-Leptons are used for validation purposes throughout the analysis, and also event categorisation where there are leptons in the final state such as production with the ttH or VH modes. 
+Leptons are used for validation purposes throughout the analysis, and also event categorisation where there are leptons in the final state such as production with the \ttH or VH modes. 
 \subsubsection{Electrons}
 Electrons are reconstructed in a similar way to photons, but with the extra requirement of an associated track. This association can be achieved in two ways depending on the properties of the candidate:
 \begin{itemize}
