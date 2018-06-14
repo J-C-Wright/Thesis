@@ -43,7 +43,7 @@ We recognise this as having the familiar form of the gauge covariant derivative 
 Now we have the connection we can begin to construct invariants of the geometry of the internal space. In particular we can construct the curvature tensor as follows
 \begin{equation}
     \label{eq:theory:g_curvature}
-    \frac{i}{g}[D_{\mu},D_{\nu}] = F_{\mu\nu} = \partial_{\mu} A^{b}_{\nu} T^{b} - \partial_{\nu} A^{a}_{\mu} T^{a} - ig[A^{a}_{\mu}, A^{b}_{\nu}].
+    \frac{i}{g}[D_{\mu},D_{\nu}] = F_{\mu\nu} = \partial_{\mu} A^{b}_{\nu} T^{b} - \partial_{\nu} A^{a}_{\mu} T^{a} - ig[A^{a}_{\mu}T^{a}, A^{b}_{\nu}T^{b}].
 \end{equation}
 We recognise this form as the field strength tensor.
 
@@ -63,7 +63,7 @@ and replace $\partial_{\mu} \rightarrow D_{\mu}$ in the free Lagrangian
     \mathcal{L} = \sum_{\alpha} \bar{\Psi}^{\alpha}[i\gamma^{\mu}(D_{\mu}\Psi)^{\alpha} - m\Psi^{\alpha}].
 \end{equation}
 We must also introduce a kinematic term for the gauge fields, but the contraction of the general non-Abelian field strength tensor with itself is not gauge invariant, only its trace over the generator indices is. 
-We us this as the gauge-invariant kinetic for our final Yang-Mills Lagranian,
+We use this as the gauge-invariant kinetic term for our final Yang-Mills Lagranian,
 \begin{equation}
     \label{eq:theory:int_dirac_gauge_dynamics}
     \mathcal{L}_{YM} = \sum_{\alpha} \bar{\Psi}^{\alpha}[i\gamma^{\mu}(D_{\mu}\Psi)^{\alpha} - m\Psi^{\alpha}] - \frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu}.
@@ -402,9 +402,9 @@ where we recognise the left hand part of the expression as a fermionic mass term
     \mathcal{L} =& -\frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu} - \frac{1}{4}G_{\mu\nu}G^{\mu\nu} \\
                  &+ (D_{\mu}\phi)^{\dag}(D_{\mu}\phi) + \mu^{2}(\phi^{\dag}\phi) - \lambda(\phi^{\dag}\phi)^{2} \\
                  &+ i\sum_{f=e,\nu,\tau}(\bar{\ell}_{f}\gamma^{\mu}D_{\mu}\ell_{f} + g_{f}(\bar{f}_{R}\phi^{\dag}\ell_{f} + \bar{\ell}_{f}\phi{f}_{R})) \\
-                 &+ i\sum_{f=e,\nu,\tau}(\bar{f}_{R}\gamma^{\mu}D^{Y}_{\mu}f_{R}) \\
+                 &+ i\sum_{f=e,\nu,\tau}(\bar{f}_{R}\gamma^{\mu}D^{Y}_{\mu}f_{R}), \\
     \end{split}
-\end{equation},
+\end{equation}
 where $D^{Y}_{\mu}$ denotes the part of the covariant derivative that corresponds to the hypercharge, and $f$ labels lepton generation. 
 
 \subsubsection{Quarks}
@@ -517,7 +517,7 @@ We now have the full fundamental particle content of the SM and the couplings be
 The Higgs boson couples directly to every massive particle in the SM: either through the gauge-covariant derivative which gives interactions with the weak gauge bosons, or the Yukawa couplings which cause interaction with the non-neutrino fermions. In this section we will look at how Higgs bosons are created in proton-proton collisions at the Large Hadron Collider, and then how they decay.
 
 \subsubsection{Higgs boson production in proton collisions}
-There are four main ways that a Higgs boson can be produced in proton collisions: gluon fusion (ggH), vector boson fusion (VBF), associated production (VH), and top fusion (ttH) (Figure \ref{fig:theory:higgs_production}). 
+There are four main ways that a Higgs boson can be produced in proton collisions: gluon fusion (ggH), vector boson fusion (VBF), associated production (VH), and top fusion (\ttH) (Figure \ref{fig:theory:higgs_production}). 
 \begin{figure}[h!]
     \begin{center}
         \begin{tikzpicture}[baseline=(current bounding box.center)]
@@ -601,10 +601,10 @@ There are four main ways that a Higgs boson can be produced in proton collisions
         \end{feynman}
         \end{tikzpicture}
     \end{center}
-    \caption{The four main production modes of the Higgs boson at the LHC. Left to right: ggH, VBF, VH and ttH}
+    \caption{The four main production modes of the Higgs boson at the LHC. Left to right: ggH, VBF, VH and \ttH}
     \label{fig:theory:higgs_production}
 \end{figure}
-Gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV and proton collisions at $\sqrt{s} = 13$\,TeV with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and ttH is last with $0.5$\,pb. Although ggH has by far the largest cross-section, the other production modes contain extra objects in their final state which aid the separation of Higgs bosons from events which resemble them. In particular VBF which gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
+Gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV and proton collisions at $\sqrt{s} = 13$\,TeV with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and \ttH is last with $0.5$\,pb. Although ggH has by far the largest cross-section, the other production modes contain extra objects in their final state which aid the separation of Higgs bosons from events which resemble them. In particular VBF which gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
 
 \subsubsection{Higgs boson decays}
 Once produced the Higgs boson is predicted to decay very quickly to pairs of particles. At tree-level it will decay into massive particles in proportion to their masses in two different ways: in the case of particles granted mass through the Yukawa couplings (fermions) the branching ratio will be proportional to the square of the mass, in the case of particles granted mass through the gauge-covariant derivative the branching ratio will be proportional to the fourth power of the mass (weak gauge bosons). 
@@ -619,7 +619,7 @@ The Higgs boson can also decay via loop diagrams which have a reduced branching 
  \label{tab:theory:higgs_branching_ratios}
 \end{table}
 
-The $H\rightarrow{\gamma\gamma}$ decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum, which can cause difficulty in a high-multiplicity hadronic environment such as at the LHC. This decay mode's clean signal lead to it being one of the two channels in which the Higgs boson was discovered in 2012.
+The \Hgg decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum, which can cause difficulty in a high-multiplicity hadronic environment such as at the LHC. This decay mode's clean signal lead to it being one of the two channels in which the Higgs boson was discovered in 2012.
 \begin{figure}[h!]
     \begin{center}
         \begin{tikzpicture}[baseline=(current bounding box.center)]
