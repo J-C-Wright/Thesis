@@ -216,7 +216,7 @@ where $\eta$ is a learning rate parameter and controls steps size just like in n
 
 
 
-\subsection{Algorithm Design and Optimisation}
+\subsection{Algorithm Design, Evaluation and Optimisation}
 
 % No free lunch theorem
 The No Free Lunch theorem of machine learning \cite{NoFreeLunch} states that, averaged over all possible data-generating distributions, every classification algorithm has the same error rate when classifying previously unobserved points.
@@ -232,7 +232,7 @@ This can also be formulated in terms of coverage of a hypervolume (Figure \ref{f
 This issue is a primary motivator for the development of deep learning, and is also something that needs to be considered during hyperparameter optimisation. 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{figures/machine_learning/curse_of_dimensionality.pdf}
+        \includegraphics[width=0.45\textwidth]{figures/machine_learning/curse_of_dimensionality.pdf}
     \end{center}
     \caption{Range of the side length to cover a fraction of the volume of a unit cube in up to nine dimensions. The grey lines show the fraction required to cover 25\% of the volume.}
         \label{fig:machine_learning:curse_of_dimensionality}
@@ -246,7 +246,18 @@ Furthermore one must use assumptions from prior knowledge of dataset size, dimen
 
 
 % Hyperparameters
-Once the model is chosen, hyperparameters can be selected with a variety of optimisation approaches. However, because the underlying function mapping from hyperparameters to performance values is unknown we cannot use gradient-based methods. Here we use derivative-free optimisation methods, two of which will be presented here and used later in this thesis: grid search and Bayesian optimisation.
+Once the model is chosen, hyperparameters can be selected with a variety of optimisation approaches. However, because the underlying function mapping from hyperparameters to performance values is unknown we cannot use gradient-based methods. Here we use derivative-free optimisation methods, two of which will be presented here and used later in this thesis: grid search and Bayesian optimisation. 
+
+Before we can optimise we need to define a performance measure to optimiser with respect to. A common measure for binary classifiers, and the one used in this thesis, is the area under the `Reciever Operating Characteristic' curve (AUROC) demonstrated in Figure \ref{fig:machine_learning:ROC_curve}. 
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=0.99\textwidth]{figures/machine_learning/ROC_figure.pdf}
+    \end{center}
+    \caption{ROC curve construction. On the left is the definition of the True Positive Rate (TPR) and the False Positive Rate (FPR) where TP is true positive, FP is false positive, TN is true negative and FN is false negative. In the centre and right are the distributions which are thresholded with the coloured lines in the central plot being cuts that correspond to the same coloured point on the right plot, a ROC curve. }
+        \label{fig:machine_learning:ROC_curve}
+\end{figure}
+ROC curves are constructed by cutting on the output score of a machine learning model and plotting the false positive rate versus the true positive rate. The area under this curve will be between 1 and 0.5 where 1 indicates a perfect classifier and 0.5 is equivalent to random guessing. 
+
 
 % Optimisation with grid search
 Grid search is a simple method that samples a set of evenly-spaced values over a given region of the hyperparameter space. 

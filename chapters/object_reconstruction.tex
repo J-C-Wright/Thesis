@@ -308,23 +308,6 @@ In this analysis a collection of pileup mitigation techniques are employed. Firs
     \sigma_{RMS} = \frac{\sum_{i}p_{T}^{i^2}\Delta{R}^{i}}{\sum_{j}p_{T}^{j^2}}
 \end{equation}
 where $\Delta{R}^{i}$ is the distance between the constituent and the jet axis. The requirement is that $\sigma_{RMS} > 0.03$. 
-Finally another technique uses a BDT classifier that takes a collection of jet shape variables and produces a score for each jet. A collection of selections on this score are then applied for bins in $p_{T}$ and $\eta$ (Table \ref{tab:object_reco:tight_pujid}).
-Finally, in addition to the above, all jets are required to be within $|\eta| < 4.7$.
-
-\begin{table}[h!]
-    \begin{tabular}{ l || c | c | c | c }
-         & $|\eta| < 2.5$ & $2.5 \leq |\eta| < 2.75$ & $2.75 \leq |\eta| < 3.0$ & $3.0 \leq |\eta| < 5.0$ \\
-        \hline
-        \hline
-        $20 < p_{T} \leq 30$  & $0.69$ & $-0.35$ & $-0.26$ & $-0.21$ \\
-        $30 < p_{T} \leq 50$  & $0.86$ & $-0.1$  & $-0.05$ & $-0.01$ \\
-        $50 < p_{T} \leq 100$ & $0.95$ & $0.28$  & $0.31$  & $0.28$  \\
-\end{tabular}
-    \caption{Pileup jet ID cuts of the tight working point}
-    \label{tab:object_reco:tight_pujid}
-\end{table}
-
-
 
 
 
