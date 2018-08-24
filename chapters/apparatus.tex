@@ -9,7 +9,7 @@
 This chapter describes the experimental apparatus used to produce the 2016 proton-proton collision dataset used in this thesis. A description of the means of collision production, the Large Hadron Collider (LHC), will be given and their measurement with the Compact Muon Solenoid (CMS) will be described in particular detail. The CMS design and operation described here will correspond to the 2016 running period.
 
 \section{The Large Hadron Collider}
-The LHC \cite{LHC_design_report} is a large synchrotron-type particle accelerator whose purpose is to provide collisions to survey electroweak-scale physics, particularly the mechanism of electroweak symmetry breaking, in addition to a broad physics program which ranges from dark matter searches to flavour physics to studies of quark-gluon plasma.
+The LHC \cite{LHC_design_report} is a large synchrotron-type particle accelerator whose purpose is to provide collisions to survey electroweak-scale physics, particularly the mechanism of electroweak symmetry breaking, in addition to a broad physics program ranging from dark matter searches to flavour physics to studies of quark-gluon plasma.
 These studies are afforded by the production of high-energy and high-luminosity proton and lead ion collisions in counter-circulating beams. These achieve a long reach for the production of heavy particles and superior statistical power for the study of rare processes. 
 The remainder of this section will be solely concerned with the LHC's proton-proton operation.  
 
@@ -21,7 +21,7 @@ Before collisions occur at the LHC interaction points the beams must be produced
     \caption{A schematic view of the LHC accelerator chain for proton-proton operation.}
     \label{fig:apparatus:lhc_chain}
 \end{figure}
-This process begins with the acquisition of protons from a small quantity of hydrogen gas: hydrogen is injected into a chamber and the atomic electrons are stripped off using a strong electric field. The resulting bare protons are then injected into a linear accelerator (LINAC 2) and accelerated by radiofrequency (RF) cavities to an energy of 50\,MeV. The protons then enter the Proton Synchrotron Booster (PSB), which consists of four synchrotron rings stacked on top of each other with a radius of 25\,m, the protons are further accelerated up to an energy of 1.4\,GeV allowing for more protons to be injected into the next part of the accelerator chain and therefore higher-intensity beams.
+This process begins with the acquisition of protons from a small quantity of hydrogen gas: hydrogen is injected into a chamber and the atomic electrons are stripped off using a strong electric field. The resulting bare protons are then injected into a linear accelerator (LINAC 2) and accelerated by radiofrequency (RF) cavities to an energy of 50\,MeV. The protons then enter the Proton Synchrotron Booster (PSB), consisting of four synchrotron rings stacked on top of each other with a radius of 25\,m, the protons are further accelerated up to an energy of 1.4\,GeV allowing for more protons to be injected into the next part of the accelerator chain and therefore higher-intensity beams.
 The protons from each ring of the PSB enter the Proton Synchrotron (PS) in sequence with 25\,ns spacing to form the bunch structure. The PS is another synchrotron with a radius of 72\,m where they are accelerated to 25\,GeV. 
 When they have reached this energy the protons are then injected into the Super Proton Synchrotron (SPS) which has a circumference of nearly 7\,km and accelerates protons to 450\,GeV before their injection into the LHC in two opposing directions. 
 
@@ -65,7 +65,7 @@ The LHC produces proton-proton bunch crossings at a high rate (40\,MHz) and this
 
 The physics goals of CMS include the discovery and measurement of the Higgs boson and searches for supersymmetry amongst other topics like extra gauge bosons, extra dimensions and heavy ion collisions. 
 The CMS Higgs physics programme has prioritised searches for the Higgs boson in the leptonic final states as well as the diphoton final state as these have superior signal separation potential and mass resolution in the LHC collision environment when compared to hadronic searches. For supersymmetry searches one expects events with a significant degree of missing-transverse energy ($E_{T}^{\mathrm{miss}}$) and this, along with maximising the acceptance of other analyses, motivates the hermetic design of CMS. Therefore, the main CMS performance goals were decided to be \cite{CMSatLHC}:
-\begin{itemize}[leftmargin=.5in,noitemsep]
+\begin{itemize}%[leftmargin=.5in,noitemsep]
     \item Good identification of muons and good muon momentum resolution,
     \item Good charged particle momentum resolution and reconstruction efficiency,
     \item Efficient triggering and offline tagging for $\tau$ leptons and $b$ quark jets, 
@@ -85,7 +85,7 @@ The design of CMS, shown in Figure \ref{fig:apparatus:CMS}, achieves these goals
 
 
 
-The general structure of CMS is a classic hermetic design with a main cylindrical section centred around the interaction point called the `barrel' which is then sealed by two `endcaps' this gives a detector with a pseudorapidity range from $-5$ to $5$ that almost covers the entire $4\pi$ solid angle. Both barrel and endcaps consist of multiple concentric detector subsystems with different functionality, all of this is based around the main feature of the CMS detector: its large superconducting solenoid. 
+The general structure of CMS is a classic hermetic design with a main cylindrical section centred around the interaction point called the `barrel' that is then sealed by two `endcaps' this gives a detector with a pseudorapidity range from $-5$ to $5$ that almost covers the entire $4\pi$ solid angle. Both barrel and endcaps consist of multiple concentric detector subsystems with different functionality, all of this is based around the main feature of the CMS detector: its large superconducting solenoid. 
 The CMS solenoid, along with the steel return yoke it is supported by, achieves a high-strength and homogenous magnetic field over a large volume. This field bends the trajectories of charged particles into a helix, and when this bend is measured precisely one can achieve a precise momentum measurement. This meets the performance requirements for momentum resolution of charged particles and especially muons. Within the bore of the solenoid there are three subsystems: the tracker, the electromagnetic calorimeter (ECAL) and the hadron calorimeter (HCAL). The tracker consists entirely of silicon based sensors and performs precise measurements of charged particle trajectories, at the centre are pixel detectors which allow CMS to meet its $\tau$ lepton and $b$-quark jet tagging goals by reconstructing tracks and secondary vertices with great precision. 
 After this, the ECAL measures the energy of electromagnetically-interacting particles with good resolution. This energy resolution allows for excellent mass resolution for dilepton and diphoton objects and is crucial to the measurement of Higgs boson decays to $\gamma\gamma$ and $ZZ^{(*)}$.
 Situated around the ECAL, the HCAL measures the energies of neutral hadrons and covers a large area with fine granularity to achieve hermeticity and to meet the objective of good $E_{T}^{\mathrm{miss}}$ measurement.
@@ -97,13 +97,13 @@ Each of these systems will be described in detail in the following subsections. 
 \subsection{Solenoid and Return Yoke}
 
 The CMS magnet is a liquid helium cooled superconducting solenoid 12.5\,m in length with a bore of diameter 6\,m and a mass of 220\,t (including all systems operating at cryogenic temperature) \cite{CMSPhysics}. 
-This is situated within a steel return yoke \cite{Yoke} which weighs 12000\,T extends outwards to a diameter of 14\,m and is made of five barrel `wheels' with three layers, and then completed by three disks in each endcap (Figure \ref{fig:apparatus:solenoid_yoke}).
+This is situated within a steel return yoke \cite{Yoke} that weighs 12000\,T extends outwards to a diameter of 14\,m and is made of five barrel `wheels' with three layers, and then completed by three disks in each endcap (Figure \ref{fig:apparatus:solenoid_yoke}).
 \begin{figure}[h!]
     \includegraphics[width=0.5\textwidth]{figures/apparatus/solenoid_yoke.pdf}
     \caption{The CMS solenoid (white) within the steel return yoke (red). Rendering uses \cite{SketchupCMS}.}
     \label{fig:apparatus:solenoid_yoke}
 \end{figure}
-The niobium-titanium coils of the solenoid carry 18160\,A of current which produces a magnetic field strength within the bore of 3.8\,T and a stored energy of 2.3\,GJ. 
+The niobium-titanium coils of the solenoid carry 18160\,A of current that produces a magnetic field strength within the bore of 3.8\,T and a stored energy of 2.3\,GJ. 
 This field strength is below the design capability of 4\,T to maximise the operating lifetime of the solenoid.
 The return yoke then conditions this field, increasing the strength in the bore by a small amount (8\%) \cite{Yoke} and improving the field homogeneity in the barrel and the muons systems. 
 
@@ -113,7 +113,7 @@ The return yoke then conditions this field, increasing the strength in the bore 
 The CMS tracker \cite{CMSTrackerTDR} is the innermost detector layer and is designed to measure the trajectories and the secondary vertices of charged particles with high precision. 
 To meet the requirements of the LHC operating environment the tracker must have fine granularity to handle the high-multiplicity environment, precise timing to match the particle tracks to the correct bunch crossing, and it must be robust to large doses of radiation.
 It must also introduce minimal material in front of the other detector subsystems to avoid photon conversion, bremsstrahlung and other interactions. This would particularly degrade the quality of reconstructed photons and electrons. 
-These requirements motivated the choice of silicon sensor technology for the tracker which uses two different types: pixel detectors and microstrip detectors. Pixel detectors are made up of many small pixels and measure a position on a trajectory in two dimensions, microstrips consist of small parallel strips separated by a distance called the `pitch' which detect the ionisation from an incident charged particle in one dimension. 
+These requirements motivated the choice of silicon sensor technology for the tracker that uses two different types: pixel detectors and microstrip detectors. Pixel detectors are made up of many small pixels and measure a position on a trajectory in two dimensions, microstrips consist of small parallel strips separated by a distance called the `pitch' that detects the ionisation from an incident charged particle in one dimension. 
 
 
 The general structure of the tracker (Figure \ref{fig:apparatus:tracker}) has a length of 5.8\,m, a diameter of 2.5\,m and covers a pseudorapidity range of $|\eta|<2.5$. Its active surface consists of 1440 pixel sensors, 15148 microstrip detectors and covers an area of approximately 200\,m$^{2}$. 
@@ -130,9 +130,9 @@ These are assembled into several subsystems: the pixel, the tracker inner barrel
 The innermost subsystem of the tracker is the pixel detector which provides precise measurements in $\phi$, $r$ and $z$ of particle trajectories and achieves a high transverse and longitudinal position resolution. The pixel consists of pixel sensors arranged in cylinders of 4.4\,cm, 7.3\,cm, and 10.2\,cm with two disks of pixels sensors at either end to give a total of 66 million pixels and an active area of 1\,m$^{2}$. This gives a pseudorapidity coverage of $|\eta|<2.5$ and at least three position determinations along each track with a transverse resolution of 10\,$\mu$m and longitudinal resolution of 20-40\,$\mu$m. Further out from the pixel detector all of the tracker subsystems use silicon microstrip sensors. 
 
 
-Situated around the pixel detector are the TIB and TID subsystems which extend in radius out to 55\,cm and consist of four cylinders of sensors in the TIB and three disks of sensors in the TID. These deliver up to four $r$-$\phi$ measurements using sensors oriented parallel to the beam axis in the barrel and radially on the disks. These sensors have a pitch of 80\,$\mu$m in layers one and two of the TIB and 120\,$\mu$m further out giving a position resolution of 23\,$\mu$m and 35\,$\mu$m respectively. 
-Surrounding the TIB and TID is the TOB subsystem which has an outer radius of 116\,cm, $z$ between $\pm$118\,cm and consists of six cylindrical layers with pitches of 183\,$\mu$m in the first four layers and 122\,$\mu$m in the fifth and sixth. This gives six $r$-$\phi$ measurements with single point resolutions of 53\,$\mu$m and 35\,$\mu$m respectively. 
-Finally, at either end, are the TEC tracker subsystems which extend in radius from 22.5\,cm to 113.5\,cm and extend in $|z|$ between 124\,cm and 282\,cm. Each of the two TECs consist of nine disks of up to seven rings of radially-oriented microstrip sensors. This gives up to nine measurements of $\phi$ for each trajectory.  
+Situated around the pixel detector are the TIB and TID subsystems that extend in radius out to 55\,cm and consist of four cylinders of sensors in the TIB and three disks of sensors in the TID. These deliver up to four $r$-$\phi$ measurements using sensors oriented parallel to the beam axis in the barrel and radially on the disks. These sensors have a pitch of 80\,$\mu$m in layers one and two of the TIB and 120\,$\mu$m further out giving a position resolution of 23\,$\mu$m and 35\,$\mu$m respectively. 
+Surrounding the TIB and TID is the TOB subsystem with an outer radius of 116\,cm, $z$ between $\pm$118\,cm and consists of six cylindrical layers with pitches of 183\,$\mu$m in the first four layers and 122\,$\mu$m in the fifth and sixth. This gives six $r$-$\phi$ measurements with single point resolutions of 53\,$\mu$m and 35\,$\mu$m respectively. 
+Finally, at either end, are the TEC tracker subsystems that extend in radius from 22.5\,cm to 113.5\,cm and extend in $|z|$ between 124\,cm and 282\,cm. Each of the two TECs consist of nine disks of up to seven rings of radially-oriented microstrip sensors. This gives up to nine measurements of $\phi$ for each trajectory.  
 Some of the microstrip modules are in pairs to provide a second coordinate measurement: $z$ in the cylindrical layers, $r$ in the discs. They are mounted back to back and rotated by 100\,mrad with respect to each other. These modules make up the first two layers of the TIB and TOB, the first two rings of the TID and the first, second and fifth rings of the TECs.  
 All of this ensures $\approx$9 precision measurements of trajectories in the silicon microstrip part of the tracker in the range $|\eta|<2.4$ with $\approx$4 of them being two-dimensional.
 
@@ -147,7 +147,7 @@ The CMS ECAL \cite{CMSEcalTDR} is a calorimeter designed to reconstruct the ener
 %\subsubsection{Geometry}
 %Overall geometry
 The ECAL as a whole has the following geometry (Figure \ref{fig:apparatus:ecal}): the barrel region (EB) covers a pseudorapidity range of $|\eta|<1.442$, there is then a gap between $1.4442<|\eta|<1.566$, and finally the endcaps (EE) cover the range $1.566<|\eta|<3$. Due to prohibitive radiation and pileup conditions electrons and photons are only measured with precision up to $|\eta|<2.5$. 
-In addition to these subsystems there is the preshower detector (ES) mounted in front of the endcaps which occupy the range $1.54<|\eta|<2.61$. The ES consist of two disks of lead absorber followed by two planes of silicon strip detectors with pitch $1.9$\,mm. This is used for $\pi_{0}$ rejection. 
+In addition to these subsystems there is the preshower detector (ES) mounted in front of the endcaps that occupies the range $1.54<|\eta|<2.61$. The ES consist of two disks of lead absorber followed by two planes of silicon strip detectors with pitch $1.9$\,mm. This is used for $\pi_{0}$ rejection. 
 \begin{figure}[h!]
     \includegraphics[width=0.9\textwidth]{figures/apparatus/ECAL_alt.pdf}
     \caption{The CMS ECAL with a section removed to show structure \cite{CMSatLHC}.}
@@ -158,17 +158,17 @@ In addition to these subsystems there is the preshower detector (ES) mounted in 
 The EB and the EE regions are constructed out of lead tungstate (PbWO$_{4}$) crystals, 61200 in the former and 7324 in the latter. The choice of PbWO$_{4}$ was made due to its short radiation length (0.89\,cm), and small Moli\`{e}re radius. The short radiation length ensures that particle showers are shorter in extent and can be contained in as small a depth as possible. The short Moli\`{e}re radius (a measure of showers spread transverse to their direction in a material) ensures that the showers are more contained in the $\eta$,$\phi$ directions. 
 
 %Barrel
-In the EB each crystal has a front face of 22x22\,mm$^{2}$ which corresponds to the Moli\`{e}re radius of 21.9\,mm and a segmentation of $(\Delta\eta,\Delta\phi) = (0.0174,0.0174)$. 
+In the EB each crystal has a front face of 22x22\,mm$^{2}$ corresponding to the Moli\`{e}re radius of 21.9\,mm and a segmentation of $(\Delta\eta,\Delta\phi) = (0.0174,0.0174)$. 
 The crystals are also tapered in $\eta$ with 25.8\,$X_{0}$ length (230\,mm) and are oriented at a $3^{\circ}$ offset from the average primary vertex position in $\eta$ and $\phi$. This improves the hermeticity.
 %Endcap
 In the EE the crystals have a front face of $28.6\times{}28.6$\,mm, are 24.7\,$X_{0}$ (220\,mm) in length. 
 
 %Crystal groupings
-The individual crystals are grouped together in both the EB and EE. In the EB they are grouped into 36 `supermodules' which cover a $\Delta\phi = 20^{\circ}$ and extend half the barrel length in $z$.
+The individual crystals are grouped together in both the EB and EE. In the EB they are grouped into 36 `supermodules' that cover a $\Delta\phi = 20^{\circ}$ and extend half the barrel length in $z$.
 In each EE identically-shaped crystals are grouped into $5\times5$ `supercrystals' arranged in a rectangular $x$-$y$ grid with angular offsets of $2$-$8^{\circ}$.
 
 %\subsubsection{Electronics and trigger}
-When a particle enters one of the crystals and then showers scintillation light will be produced and collected by a sensor at the opposite end. This sensor will produce a pulse which is amplified and then converted into a digital signal. The height of this digitised pulse is then used to determine the energy deposition within the crystal. 
+When a particle enters one of the crystals and then showers scintillation light will be produced and collected by a sensor at the opposite end. This sensor will produce a pulse that is amplified and then converted into a digital signal. The height of this digitised pulse is then used to determine the energy deposition within the crystal. 
 Two different types of sensor are used: in the barrel region avalanche photodiodes are used, the endcaps vacuum phototriodes are used due to the different magnetic field properties and higher radiation levels.
 Crystals are read out as $5\times{5}$ trigger towers whose digital signal sum constitutes the fast, coarse information provided to the trigger system with every bunch crossing.
 
@@ -192,13 +192,13 @@ Clustering algorithms \cite{ecalShower} are used to reconstruct energy from thes
 \end{equation}
 where $N_{c}$ is the number of crystals in the SC, $A_{i}$ is the amplitude of the pulse of crystal $i$, $S_{i}(t)$ corrects crystal transparency loss due to radiation, $C_{i}$ is a factor that adjusts the response of the crystal, $G$ is a conversion factor from the digital signal to GeV (global energy scale) and $F_{SC}$ is a correction to the SC energy sum due to second order effects.
 
-To calibrate the ECAL \cite{cmsEcalCalibration} one must use a variety of measurements to determine the factors $G$, $C_{i}$, and $S_{i}(t)$ which correspond to calibration of the overall energy scale, uniformity of measurement in space and uniformity over time respectively. 
+To calibrate the ECAL \cite{cmsEcalCalibration} one must use a variety of measurements to determine the factors $G$, $C_{i}$, and $S_{i}(t)$ corresponding to calibration of the overall energy scale, uniformity of measurement in space and uniformity over time respectively. 
 Corrections over time due to radiation-induced transparency change in the crystals ($S_{i}(t)$) are derived by injecting laser light at 440\,nm every 40 minutes. 
 
-Several methods are used to derive the factors for an even crystal response over the ECAL spatial extent which use the symmetries of CMS. Firstly one uses $\phi$ symmetry to find factors in rings of $\eta$ which should all have the same response. 
+Several methods are used to derive the factors for an even crystal response over the ECAL spatial extent using the symmetries of CMS. Firstly one uses $\phi$ symmetry to find factors in rings of $\eta$ that should all have the same response. 
 Other methods reconstruct particles of known mass decaying to diphotons and use this as a standard candle. The mass should be the same in each part of the detector which allows for the determination of regional differences in response. These different methods are combined to give a collection of per-crystal corrections. 
 
-The final factor, the global energy scale, is derived by reconstructing Z bosons which have decayed to an $e^{+}e^{-}$ pair and comparing the measured mass to the known value
+The final factor, the global energy scale, is derived by reconstructing Z bosons decaying to an $e^{+}e^{-}$ pair and comparing the measured dielectron mass to the known Z boson value.
 
 
 
@@ -215,18 +215,18 @@ The final factor, the global energy scale, is derived by reconstructing Z bosons
 
 \subsection{Hadron Calorimetry}
 The CMS HCAL \cite{cmsHcal} is situated around the ECAL and its function is to identify neutral hadrons, measure their energies and positions, and to determine $E_{T}^{\mathrm{miss}}$ at good resolution over a large acceptance.
-It is a sampling calorimeter which uses material to produce particle showers (absorber) which is distinct from the active material measuring deposited energy, unlike the ECAL which is a homogeneous calorimeter where one material (lead tungstate) performs both functions. 
+It is a sampling calorimeter that uses material to produce particle showers (absorber) distinct from the active material measuring deposited energy, unlike the ECAL which is a homogeneous calorimeter where one material (lead tungstate) performs both functions. 
 
-The structure of the HCAL is shown in Figure \ref{fig:apparatus:hcal}. It consists of a barrel region (HB), two endcaps (HE), a region outside the solenoid (HO), and two forward calorimeters (HF) which take the HCAL acceptance up to $|\eta|<5$. 
+The structure of the HCAL is shown in Figure \ref{fig:apparatus:hcal}. It consists of a barrel region (HB), two endcaps (HE), a region outside the solenoid (HO), and two forward calorimeters (HF) that take the HCAL acceptance up to $|\eta|<5$. 
 \begin{figure}[h!]
     \includegraphics[width=0.9\textwidth]{figures/apparatus/HCAL_HF.pdf}
     \caption{The CMS HCAL with the barrel and endcap sections (left) with part removed to show structure and the forward hadronic calorimeter (right) \cite{SketchupCMS}.}
     \label{fig:apparatus:hcal}
 \end{figure}
-The HB region covers a pseudorapidity range of $|\eta|<1.3$ and consists of two half-barrel sections that slot in to either end of the solenoid bore each of which consist of 36 identical wedges in the azimuthal angle $\phi$. These wedges are constructed from 2 steel and 14 brass absorber plates with a plastic scintillator active material in alternating layers. Brass is used because it is non-magnetic, steel absorber is only used in the innermost and outermost plates to provide structural support. Each wedge is segmented into four azimuthal regions and the plastic scintillator is divided into 16 pseudorapididty regions giving a granularity of $(\Delta\eta,\Delta\phi) = (0.087,0.087)$.
+The HB region covers a pseudorapidity range of $|\eta|<1.3$ and consists of two half-barrel sections that slot in to either end of the solenoid bore that each consist of 36 identical wedges in the azimuthal angle $\phi$. These wedges are constructed from 2 steel and 14 brass absorber plates with a plastic scintillator active material in alternating layers. Brass is used because it is non-magnetic, steel absorber is only used in the innermost and outermost plates to provide structural support. Each wedge is segmented into four azimuthal regions and the plastic scintillator is divided into 16 pseudorapididty regions giving a granularity of $(\Delta\eta,\Delta\phi) = (0.087,0.087)$.
 The HE regions cover a pseudorapidity range $1.3<|\eta|<3$ and is divided into 36 azimuthal wedges. It uses brass absorber plates and achieves a granularity between $(\Delta\eta,\Delta\phi) = (0.087,0.087)$ and $(0.017,0.017)$
 The HF region covers a pseudorapidity range from $3<|\eta|<5$ and must deal with extremely high levels of radiation. This motivates a different construction with quartz fibres chosen for the active material and steel for the absorber. It is cylindrical in structure with 5\,mm thick grooved plates where the fibres fit into the grooves and operate by detecting Cherenkov light produced by incident particles. The fibres are bundled to form $(\Delta\eta,\Delta\phi) = (0.175,0.175)$ towers.
-Finally, the HO covers the barrel region around the solenoid and consists of plastic scintillator tiles which follow the granularity of the HB. It uses the solenoid itself as the absorber and is designed to operate as a shower `tail catcher' which compensates for hadron showers that begin later in the HCAL and may not be properly measured. This leakage has a direct effect on the measurement of $E_{T}^{\mathrm{miss}}$.
+Finally, the HO covers the barrel region around the solenoid and consists of plastic scintillator tiles matching the granularity of the HB. It uses the solenoid itself as the absorber and is designed to operate as a shower `tail catcher' that compensates for hadron showers that begin later in the HCAL and may not be properly measured. This leakage has a direct effect on the measurement of $E_{T}^{\mathrm{miss}}$.
 
 
 
@@ -252,7 +252,7 @@ These detectors cover a pseudorapidity region of $0.9<|\eta|<2.4$ and are arrang
 
 
 Finally, in addition to the DTs and CSCs, the muon system uses RPCs placed in the barrel and the endcaps (up to $|\eta|<1.6$) as an independent and complimentary way of triggering. 
-RPCs are double gap chambers which operate in avalanche mode to give a fast response time and good timing resolution. In the barrel region there are six layers of RPCs: two layers in each of the first two layers of drift tubes and one each in the last two. This redundancy helps with triggering on muons with low-$p_{T}$. In the endcaps there are planes of RPCs in each of the layers which, in addition to triggering, help to resolve ambiguities in the CSCs when there are multiple tracks in a chamber. 
+RPCs are double gap chambers operating in avalanche mode to give a fast response time and good timing resolution. In the barrel region there are six layers of RPCs: two layers in each of the first two layers of drift tubes and one each in the last two. This redundancy helps with triggering on muons with low-$p_{T}$. In the endcaps there are planes of RPCs in each of the layers that, in addition to triggering, help to resolve ambiguities in the CSCs when there are multiple tracks in a chamber. 
 
 
 \subsection{Trigger system and Storage}
@@ -263,8 +263,8 @@ To filter these events a fast measurement and decision must be made whether to s
 
 
 The L1T achieves a rate reduction of 40\,MHz to 100\,kHz by performing fast calculations using custom, reprogrammable hardware called field-programmable gate arrays (FPGAs).
-To achieve this the L1T must make an accept decision within 3.2\,$\mu$s which includes time of transmission from the detector and decision return. 
-Coarse information is received from the ECAL, HCAL, and the muon system due to speed and bandwidth limitations and stored in a buffer which contains information from multiple bunch crossings. 
+To achieve this the L1T must make an accept decision within 3.2\,$\mu$s including time of transmission from the detector and decision return. 
+Coarse information is received from the ECAL, HCAL, and the muon system due to speed and bandwidth limitations and stored in a buffer that contains information from multiple bunch crossings. 
 Furthermore there is insufficient time for using correlations between subdetectors and also insufficient time and other resources to use information from the tracker. 
 Once information is received, a collection of algorithms are used to pick out relevant events and if the event is accepted the entire detector readout is passed on to the HLT.
 

@@ -7,7 +7,7 @@
 
 \section{Introduction}
 Modern particle theory is built upon the twin pillars of Yang-Mills theories and spontaneous symmetry breaking. 
-Our best current model, the Standard Model (SM), is built from two such theories: electroweak theory and quantum chromodynamics, of which the former has its gauge symmetry spontaneously broken. 
+Our best current model, the Standard Model (SM), is built from two such theories: electroweak theory and quantum chromodynamics. The former of these has its gauge symmetry spontaneously broken. 
 In this chapter we will explore these two ideas before moving on to how they are used to construct the SM with particular emphasis on the mechanism of symmetry breaking and one of its phenomenological consequences: the Higgs boson. 
 
 \section{Yang-Mills Theories}
@@ -37,7 +37,7 @@ We can do this by constructing a differential operator $D_{\mu}$, and in our cas
 \label{eq:theory:g_connection}
 D_{\mu} = \partial_{\mu} - igA_{\mu}^{a} T^{a},
 \end{equation}
-where $A_{\mu}^{a}$ are generally complex-valued functions which depend on $x_{\mu}$ and operate by multiplying the input, and $T^{a}$ are the generators of the Lie group $\SUN$ which provide a basis in the fibre space with $a = 0,\ldots,N^{2}-1$.
+where $A_{\mu}^{a}$ are generally complex-valued functions that depend on $x_{\mu}$ and operate by multiplying the input, and $T^{a}$ are the generators of the Lie group $\SUN$ which provide a basis in the fibre space with $a = 0,\ldots,N^{2}-1$.
 We recognise this as having the familiar form of the gauge covariant derivative and the $A_{\mu}^{a}$ as the gauge potential. 
 
 Now we have the connection we can begin to construct invariants of the geometry of the internal space. In particular we can construct the curvature tensor as follows
@@ -47,10 +47,10 @@ Now we have the connection we can begin to construct invariants of the geometry 
 \end{equation}
 We recognise this form as the field strength tensor.
 
-One can now see what occurs when a global symmetry is promoted to a gauge symmetry: we have induced some non-trivial warping of the field's internal space which gives rise to the $A^{a}_{\mu}$ gauge fields and their kinematics through the curvature $F_{\mu\nu}$.
+One can now see what occurs when a global symmetry is promoted to a gauge symmetry: we have induced some non-trivial warping of the field's internal space that gives rise to the $A^{a}_{\mu}$ gauge fields and their kinematics through the curvature $F_{\mu\nu}$.
 
 \subsection{Constructing a Lagrangian}
-With these ingredients we can construct a generic Yang-Mills Lagrangian with a straightforward procedure: we begin with a global symmetry of the fields which we promote to a gauge symmetry, we construct the gauge covariant derivative, replace $\partial_{\mu} \rightarrow D_{\mu}$ in the free theory, and add an interaction term based on the field strength tensor. 
+With these ingredients we can construct a generic Yang-Mills Lagrangian with a straightforward procedure: we begin with a global symmetry of the fields that we promote to a gauge symmetry, we construct the gauge covariant derivative, replace $\partial_{\mu} \rightarrow D_{\mu}$ in the free theory, and add an interaction term based on the field strength tensor. 
 As a concrete example, consider the collection of massive free Dirac fermions which we will turn into an interacting gauge theory with $\mathcal{G} = \SUN$.
 We first construct the gauge covariant derivative, 
 \begin{equation}
@@ -73,7 +73,7 @@ We use this as the gauge-invariant kinetic term for our final Yang-Mills Lagrani
 
 \subsection{Phenomenology}
 To analyse what sort of particle interactions occur in this theory we `unpack' equation \ref{eq:theory:int_dirac_gauge_dynamics} and isolate the fields and interaction terms. 
-Firstly, in the spectrum of this theory we have $N^{2}-1$ gauge fields (one for each of the generators of $\SUN$) which are all massless. 
+Firstly, in the spectrum of this theory we have $N^{2}-1$ gauge fields (one for each of the generators of $\SUN$) that are all massless. 
 These fields couple to the massive fermionic fields via a trilinear interaction term proportional to $g$ introduced by the gauge covariant derivative.
 \begin{equation}
     \mathcal{L}_{{A}\Psi} = gA_{\mu}^{a}\bar{\Psi}^{\alpha}\gamma^{\mu}(T^{a})_{\alpha\beta}\Psi^{\beta}
@@ -88,7 +88,7 @@ Once the product has been evaluated one finds the following forms of interaction
     \mathcal{L}_{4A} \propto g^{2}f^{abc}f^{ade}A_{\mu}^{b}A_{\nu}^{c}A_{\lambda}^{d}A_{\sigma}^{e}
 \end{equation}
 %
-which correspond to interactions between three and four gauge bosons respectively. 
+that correspond to interactions between three and four gauge bosons respectively. 
 We now have the three types of interaction vertices which allow for the construction of Feynman diagrams for a generic Yang-Mills theory (Figure \ref{fig:theory:YM-vertices}). 
 Their strengths are all set in terms of a single parameter: the gauge coupling $g$.
 One should note that the three and four-gauge boson interactions come from the commutator in the gauge field kinematic term and are not present in the Abelian case. 
@@ -144,8 +144,8 @@ One should note that the three and four-gauge boson interactions come from the c
 \end{figure}
 
 \section{Spontaneous Symmetry Breaking}
-Spontaneous symmetry breaking (SSB) occurs when the lowest energy solutions to a theory do not respect the symmetries of the Lagrangian which describes it. 
-A straightforward example is that of a three-dimensional ferromagnetic material which is cooling down from above its Curie temperature.
+Spontaneous symmetry breaking (SSB) occurs when the lowest energy solutions to a theory do not respect the symmetries of the Lagrangian that describes it. 
+A straightforward example is that of a three-dimensional ferromagnetic material cooling down from above its Curie temperature.
 Above this threshold there is no magnetisation and solutions obey the $\mathrm{SO}(3)$ symmetry of the Lagranian. 
 Below this threshold the ferromagnet becomes magnetised and must `choose' one of a degenerate family of lowest-energy solutions. This picks out a direction of magnetisation. The $\mathrm{SO}(3)$ symmetry of the ferromagnet has now been broken to $\mathrm{SO}(2)$ (Figure \ref{fig:theory:ferromagnet_ssb}).
 
@@ -185,7 +185,7 @@ If one substitutes this into equation \ref{eq:theory:global_SSB_L} and evaluates
 and there is no equivalent term for $\varphi$. In the spectrum of this theory we now have a massive and a massless scalar boson upon quantisation. This massless boson is known as a Goldstone boson and is a general result of breaking a global symmetry: for each broken symmetry generator there is a massless Goldstone boson. 
 
 To see this more clearly consider the case of a global $\mathrm{SU}(N)$ symmetry where the Lagrangian has the same form as before (equation \ref{eq:theory:global_u1_potential}) but $\phi$ is now a complex scalar $N$-tuplet. 
-There is a global symmetry $\phi\rightarrow{e^{i\theta^{a}T^{a}}}\phi$, and a family of minima at $\phi^{\dag}\phi = \frac{\mu^{2}}{2\lambda}$ which form an $(N^{2}-1)$-dimensional surface instead of a circle. There are $(N^{2}-1)$-many ways to move on this surface and the one remaining direction is away from the centre. The former are the fields associated with the $(N^{2}-1)$ Goldstone bosons and the latter is the single massive scalar boson as before. 
+There is a global symmetry $\phi\rightarrow{e^{i\theta^{a}T^{a}}}\phi$, and a family of minima at $\phi^{\dag}\phi = \frac{\mu^{2}}{2\lambda}$ that form an $(N^{2}-1)$-dimensional surface instead of a circle. There are $(N^{2}-1)$-many ways to move on this surface and the one remaining direction is away from the centre. The former are the fields associated with the $(N^{2}-1)$ Goldstone bosons and the latter is the single massive scalar boson as before. 
 
 \subsection{Gauge Symmetry Breaking}
 In the case where we have a gauge symmetry that is spontaneously broken the behaviour is rather different: there are no Goldstone bosons and the gauge bosons are granted mass. 
@@ -216,7 +216,7 @@ As a result of this we recognise that the $\SUN$ transformations can always be r
 We have removed $2N-1$ degrees of freedom and we only have only one real scalar left: the gauge freedom has eliminated the Goldstone bosons from the spectrum of the theory.
 
 
-When we substitute equation \ref{eq:theory:phi_decomposition} with $\theta^{a}(x)=0$ into the Lagrangian \ref{eq:theory:gauge_u1_lagrangian} and then collect the terms which contain $A_{\mu}$ we get the following Lagrangian for the gauge fields (neglecting interaction terms)
+When we substitute equation \ref{eq:theory:phi_decomposition} with $\theta^{a}(x)=0$ into the Lagrangian \ref{eq:theory:gauge_u1_lagrangian} and then collect the terms that contain $A_{\mu}$ we get the following Lagrangian for the gauge fields (neglecting interaction terms)
 \begin{equation}
     \label{eq:theory:abelian_gaugefield_L}
     \mathcal{L}_{A} = -\frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu} + g^{2}v^{2}A^{a}_{\mu}A^{a\mu}
@@ -233,7 +233,7 @@ and we conclude that the theory contains a massive scalar field with $m_{H}^{2} 
 
 
 \section{The Standard Model of Particle Physics}
-The SM is a phenomenologically-motivated theory of fundamental particle interactions which consists of two Yang-Mills theories: one of the unified weak and electromagnetic interaction (electroweak theory) and one of the strong interaction (quantum chromodynamics). This section will treat these in turn using the theoretical machinery presented in previous sections. At the end of this section the resulting Higgs boson and its behaviour will then be discussed. 
+The SM is a phenomenologically-motivated theory of fundamental particle interactions consisting of two Yang-Mills theories: one of the unified weak and electromagnetic interaction (electroweak theory) and one of the strong interaction (quantum chromodynamics). This section will treat these in turn using the theoretical machinery presented in previous sections. At the end of this section the resulting Higgs boson and its behaviour will then be discussed. 
 \subsection{Electroweak Theory}
 The electroweak unification model of Glashow, Weinberg and Salam was the birth of the SM, and our modern understanding of fundamental physics. In this subsection we will begin by constructing the interaction itself as a massless gauge theory and then break its gauge symmetry via the Brout-Englert-Higgs mechanism. We will then move on to introduce the leptonic sector and then the quark sector discussing their dynamical mass generation and properties. 
 
@@ -317,7 +317,7 @@ We can also examine the Abelian part of the gauge covariant derivative with the 
     D_{\mu}^{\mathrm{Abel}} = \partial_{\mu} + ig\sin{\theta_{W}}(T^{3} + \frac{1}{2}y)A_{\mu}
     \label{eq:theory:charge_operator}
 \end{equation}
-which leads to the interpretation of $T^{3} + \frac{1}{2}y$ as the electromagnetic charge operator where $T^{3}$ is the third component of weak isospin and $y$ is the hypercharge.
+this leads to the interpretation of $T^{3} + \frac{1}{2}y$ as the electromagnetic charge operator where $T^{3}$ is the third component of weak isospin and $y$ is the hypercharge.
 
 
 We now have four vector bosons and one scalar boson: the three weak bosons of the weak interaction $(W_{\mu}^{\pm},Z_{\mu}^{0})$, the photon $(A_{\mu})$ of the electromagnetic interaction and the Higgs boson $(H)$ with the quantum numbers shown in table \ref{tab:theory:elecroweak_qn_bosons}.
@@ -337,7 +337,7 @@ We now have four vector bosons and one scalar boson: the three weak bosons of th
 \subsubsection{Leptons}
 Leptons, fermionic constituents of the SM that interact only via electroweak interactions, must be introduced in a more careful fashion than in equation \ref{eq:theory:int_dirac_gauge_dynamics}. 
 Firstly, neutrinos are assumed massless in the SM (but this not the case in nature).
-Experiment also demonstrates that neutrinos only interact with left-handed chirality, and that there are processes which involve the decay of $W^{-}\rightarrow{}e^{-}+\bar{\nu_{e}}$. Therefore we begin by assigning each lepton and their counterpart neutrino to a weak isodoublet with $T_{3} = \pm\frac{1}{2}$ 
+Experiment also demonstrates that neutrinos only interact with left-handed chirality, and that there are processes involving the decay of $W^{-}\rightarrow{}e^{-}+\bar{\nu_{e}}$. Therefore we begin by assigning each lepton and their counterpart neutrino to a weak isodoublet with $T_{3} = \pm\frac{1}{2}$ 
 \begin{equation}
     \label{eq:theory:lepton_isodoublets}
     \begin{pmatrix}
@@ -373,7 +373,7 @@ We can also write the right-handed leptons doublets as
         e_{R}^{-}
     \end{pmatrix},
 \end{equation}
-which transform as a singlet under $\mathrm{SU}(2)_{L}$ due to the properties of the projection operator. The electroweak quantum numbers of the leptonic families are shown in table \ref{tab:theory:elecroweak_qn_leptons}
+this transforms as a singlet under $\mathrm{SU}(2)_{L}$ due to the properties of the projection operator. The electroweak quantum numbers of the leptonic families are shown in table \ref{tab:theory:elecroweak_qn_leptons}
 \begin{table}[h!]
 \begin{tabular}{ l | c | c | c }
     Particle & Weak isospin third component ($t_{3}$) & Weak hypercharge ($y$) & $Q = t_3 + \frac{y}{2}$ \\
@@ -396,7 +396,7 @@ which is invariant under $\mathrm{SU}(2)_{L}$. Upon spontaneous symmetry breakin
     \label{eq:theory:lepton_mass_higgs_int}
     g_{f}v(\bar{e}_{R}e_{L} + \bar{e}_{L}e_{R}) + g_{f}(\bar{e}_{R}e_{L}H + \bar{e}_{L}e_{R}H)
 \end{equation}
-where we recognise the left hand part of the expression as a fermionic mass term with $m_{f} = g_{f}v$, for which $g_f$ is the Yukawa coupling strength. The Lagrangian of the leptonic sector of the SM is then
+where we recognise the left hand part of the expression as a fermionic mass term with $m_{f} = g_{f}v$, where $g_f$ is the Yukawa coupling strength. The Lagrangian of the leptonic sector of the SM is then
 \begin{equation}
     \begin{split}
     \mathcal{L} =& -\frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu} - \frac{1}{4}G_{\mu\nu}G^{\mu\nu} \\
@@ -408,7 +408,7 @@ where we recognise the left hand part of the expression as a fermionic mass term
 where $D^{Y}_{\mu}$ denotes the part of the covariant derivative that corresponds to the hypercharge, and $f$ labels lepton generation. 
 
 \subsubsection{Quarks}
-To complete the fermionic content of the SM we must include quarks: fermions with fractional electric charge which transform non-trivially under the full SM gauge group. 
+To complete the fermionic content of the SM we must include quarks: fermions with fractional electric charge that transform non-trivially under the full SM gauge group. 
 In analogy with the leptons we begin by grouping the quarks into three generations of $\mathrm{SU}(2)_{L}$ isodoublets with $T_{3} = \pm\frac{1}{2}$
 \begin{equation}
     \label{eq:theory:quark_isodoublets}
@@ -461,7 +461,7 @@ where $\tau_{2}$ is the second Pauli matrix. Now, when the Higgs isodoublet gain
     + \bar{d}_{iR}\phi^{\dag}_{C}q_{iL}
     + \mathrm{h.c.})
 \end{equation}
-where h.c. denotes Hermitian conjugate. This grants equal masses to the up and down-type quarks which is in disagreement with experiment, we therefore have to introduce matrix-valued couplings which mix the flavours
+where h.c. denotes Hermitian conjugate. This grants equal masses to the up and down-type quarks in disagreement with experiment. We therefore have to introduce matrix-valued couplings which mix the flavours
 \begin{equation}
     \sum_{i,j=1,2,3}g(
       \alpha_{ij}\bar{u}_{iR}\phi^{\dag}q_{jL} 
@@ -484,7 +484,7 @@ Finally, in the physical flavour-changing currents of the SM it is combinations 
     \end{pmatrix},
     q{'}_{f} = \sum_{f'=d,s,b}V_{ff'}q_{f'}
 \end{equation}
-where the $V_{ff'}$ are elements of the Cabbibo-Kobayashi-Maskawa (CKM) matrix, a unitary matrix which performs the required rotation in flavour space.
+where the $V_{ff'}$ are elements of the Cabbibo-Kobayashi-Maskawa (CKM) matrix, a unitary matrix that performs the required rotation in flavour space.
 
 \subsection{Quantum Chromodynamics}
 As mentioned previously quarks are the only fermions of the SM to transform non-trivially under the full SM gauge group. This means that they experience an extra interaction from the gauging of the $\mathrm{SU}(3)$ subgroup, the strong interaction, and carry colour charge. This is described by quantum chromodynamics (QCD), the other Yang-Mills theory which constitutes the SM. 
@@ -493,7 +493,7 @@ To construct the Lagrangian of QCD we begin by defining the $\mathrm{SU}(3)$ cov
 \begin{equation}
     D_{\mu} = \partial_{\mu} + ig_{s}t^{a}A^{a}_{\mu}
 \end{equation}
-where $t^{a}$ are the generators of $\mathrm{SU}(3)$, and $g_{s}$ is QCD gauge coupling. Then replace $\partial_{\mu}$ in a Dirac-type Lagrangian which has the corresponding non-Abelian field strength tensor $F^{a}_{\mu\nu}$ and whose fermions are the six flavours of quarks. 
+where $t^{a}$ are the generators of $\mathrm{SU}(3)$, and $g_{s}$ is QCD gauge coupling. Then replace $\partial_{\mu}$ in a Dirac-type Lagrangian that has the corresponding non-Abelian field strength tensor $F^{a}_{\mu\nu}$ and whose fermions are the six flavours of quarks. 
 Each of these are isodoublets that also carry the colour charge $q^{C}_{f}$, $C=R,G,B$ (red, green, blue) and are structured in colour triplets transforming under $\mathrm{SU}(3)$
 \begin{equation}
     \psi_{f} = \begin{pmatrix}
@@ -506,7 +506,7 @@ The Lagrangian is then
 \begin{equation}
     \mathcal{L}_{\mathrm{QCD}} = \sum_{f}i\bar{\psi}_{f}\gamma^{\mu}D_{\mu}\psi_{f} - \frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu}
 \end{equation}
-where the index $f$ denotes quark flavour. Upon quantisation we will have eight massless gauge bosons called gluons which couple to quark pairs of the same flavour. 
+where the index $f$ denotes quark flavour. Upon quantisation we will have eight massless gauge bosons called gluons that couple to quark pairs of the same flavour. 
 
 The strong interaction behaves differently to the weak or electromagnetic interactions: instead of the weakening with distance the strong force increases in strength. An important result of this phenomenon is that colour-carrying particles such as quarks and gluons are confined and can only exist within composite particles called hadrons. This is responsible for the phenomenon of jets in high-energy particle collisions. Jets are cone-shaped sprays of particles where a quark or gluon has been produced, cannot exist freely and then hadronizes. 
 
@@ -514,7 +514,7 @@ We now have the full fundamental particle content of the SM and the couplings be
 
 
 \subsection{Higgs boson phenomenology}
-The Higgs boson couples directly to every massive particle in the SM: either through the gauge-covariant derivative which gives interactions with the weak gauge bosons, or the Yukawa couplings which cause interaction with the non-neutrino fermions. In this section we will look at how Higgs bosons are created in proton-proton collisions at the Large Hadron Collider, and then how they decay.
+The Higgs boson couples directly to every massive particle in the SM: either through the gauge-covariant derivative that gives interactions with the weak gauge bosons, or the Yukawa couplings which cause interaction with the non-neutrino fermions. In this section we will look at how Higgs bosons are created in proton-proton collisions at the Large Hadron Collider, and then how they decay.
 
 \subsubsection{Higgs boson production in proton collisions}
 There are four main ways that a Higgs boson can be produced in proton collisions: gluon fusion (ggH), vector boson fusion (VBF), associated production (VH), and top fusion (\ttH) (Figure \ref{fig:theory:higgs_production}). 
@@ -604,11 +604,11 @@ There are four main ways that a Higgs boson can be produced in proton collisions
     \caption{The four main production modes of the Higgs boson at the LHC. Left to right: ggH, VBF, VH and \ttH}
     \label{fig:theory:higgs_production}
 \end{figure}
-Gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV and proton collisions at $\sqrt{s} = 13$\,TeV with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and \ttH is last with $0.5$\,pb. Although ggH has by far the largest cross-section, the other production modes contain extra objects in their final state which aid the separation of Higgs bosons from events which resemble them. In particular VBF which gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
+Gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV and proton collisions at $\sqrt{s} = 13$\,TeV with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and \ttH is last with $0.5$\,pb. Although ggH has by far the largest cross-section, the other production modes contain extra objects in their final state aiding the separation of Higgs bosons from events that resemble them. In particular VBF gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
 
 \subsubsection{Higgs boson decays}
 Once produced the Higgs boson is predicted to decay very quickly to pairs of particles. At tree-level it will decay into massive particles in proportion to their masses in two different ways: in the case of particles granted mass through the Yukawa couplings (fermions) the branching ratio will be proportional to the square of the mass, in the case of particles granted mass through the gauge-covariant derivative the branching ratio will be proportional to the fourth power of the mass (weak gauge bosons). 
-The Higgs boson can also decay via loop diagrams which have a reduced branching ratio. The prevalence of the main decay modes are summarised in table \ref{tab:theory:higgs_branching_ratios}.
+The Higgs boson can also decay via loop diagrams that have a reduced branching ratio. The prevalence of the main decay modes are summarised in table \ref{tab:theory:higgs_branching_ratios}.
 \begin{table}[h!]
 \begin{tabular}{ l | c | c | c | c | c | c | c}
     Decay Mode & $b\bar{b}$ & $W^{\pm}W^{\mp*}$ & $gg$ & $\tau\bar{\tau}$ & $c\bar{c}$ & $ZZ^{*}$ & $\gamma\gamma$ \\
@@ -619,7 +619,7 @@ The Higgs boson can also decay via loop diagrams which have a reduced branching 
  \label{tab:theory:higgs_branching_ratios}
 \end{table}
 
-The \Hgg decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum, which can cause difficulty in a high-multiplicity hadronic environment such as at the LHC. This decay mode's clean signal lead to it being one of the two channels in which the Higgs boson was discovered in 2012.
+The \Hgg decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum, that causes difficulty in a high-multiplicity hadronic environment such as at the LHC. This decay mode's clean signal lead to it being one of the two channels in which the Higgs boson was discovered in 2012.
 \begin{figure}[h!]
     \begin{center}
         \begin{tikzpicture}[baseline=(current bounding box.center)]

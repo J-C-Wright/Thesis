@@ -2,8 +2,321 @@
 \chapter{Statistical Analysis and Results}
 \label{chap:statistical}
 
-%\chapterquote{If your experiment needs statistics, you ought to have done a better experiment.}{Ernest Rutherford}
 \newpage
 
 \section{Introduction}
+The set of categorised diphoton candidates are subjected to a statistical interpretation to measure the Higgs boson signal in data and to determine how its properties compare to SM expectation.
+This procedure consists of a statistical model that is fitted simultaneously to the \mgg distribution in data for each tag category. 
+Separate models are constructed and then combined for signal and background that take into account the contribution of different categories, production modes and systematic uncertainties.
+
+This chapter begins by describing the construction of these models and the inclusion of the associated systematic uncertainties (following (ref)). 
+After this the final fit of the model and the statistical interpretation of the result is described with emphasis on how the two different VBF tagging approaches affect the result. 
+Tags with higher priority than VBF (upstream) are unaffected and these are presented as a single result. 
+
+
+\section{Statistical Models}
+\subsection{Signal Modelling}
+The signal modelling aims to construct a signal shape for each category using simulated data samples of the different Higgs production modes.
+This is achieved by constructing many parameterised signal shapes: one for each choice of production mode, category and whether the vertex has been correctly identified. 
+
+Furthermore, the Higgs boson mass \mH is not assumed to have a specific value. A parameterisation of the signal shape in terms of \mH is derived from a collection of samples with different \mH.
+This is constructed by performing a simultaneous fit over all of the mass points where the parameters of the signal shape are all polynomials of \mH. 
+The floating parameters of this fit are then the coefficients of the polynomial. 
+This approach is used instead of interpolating the parameters as it leads to fewer parameters per fit and guarantees consistency across mass points. 
+
+This procedure is also used to determine relative normalisation of the RV and WV scenario shapes when they are combined. This is given by the vertex selection efficiency derived from simulated data, the value is then treated the same way as the other shape parameters in the simultaneous mass point fit. 
+
+Once constructed the different signal shapes from production modes are combined together to produce the signal model for each category. The production mode shapes are normalised to their expected signal yield and then summed.
+
+
+
+\subsection{Background Modelling}
+The background modelling aims to construct a smoothly falling background distribution that takes uncertainty about the choice of functional form into account. This is achieved with a data-driven approach based on the discrete profiling method (ref). This technique allows for the estimation of this systematic and its propagation to the final fits as a discrete nuisance parameter without assumptions about underlying processes or functional forms. 
+
+The candidate functions are expressed as a set of function families, each of these are expressed as a sequence where we pick a lowest and highest order form to consider. The maximum order is found via an F-test and the minimum order is found by requiring a minimal level of goodness-of-fit. 
+The families considered are polynomials in the Berstein basis, Laurent series, sums of exponentials, and sums of power laws. 
+
+The functions are fitted to the \mgg sideband data using twice negative likelihood (2NLL) minimisation with an additional regularization term $n_p$ (number of parameters) to penalise function complexity. 
+
+
+
+\section{Systematic uncertainties}
+Systematic uncertainties are propagated to the final fits by including nuisance parameters primarily in the signal model. 
+Systematic error in the signal model is handled in one of three main ways via nuisance parameters that have different effects on the \mgg distribution:
+\begin{itemize}[noitemsep]
+    \item Shape uncertainties are propagated via nuisance parameters that alter the shape of the Gaussian signal peak position, width and normalisation.
+    \item Yield uncertainties are handled by nuisance parameters that scale the \mgg distribution and are subject to a log-normal constraint during the final fit.
+    \item Categorisation uncertainties are implemented as category migration nuisances which behave in a similar way to yield uncertainties but will reduce yield in other categories simultaneously as the category of interest is increased.
+\end{itemize}
+There is a further exception to this scheme with the vertex uncertainty. Here there is a nuisance parameter that controls the relative fraction of the RV/WV signal distributions. 
+
+An extra systematic uncertainty from choice of background functional form is propagated to the final fits via the background model as a discrete nuisance parameter. 
+
+
+
+\subsection{Theoretical uncertainties}
+Uncertainties from QCD theory calculations have their effect modelled in two ways: uncertainty on the overall yield for a process and uncertainty associated with analysis category migration. 
+The migration uncertainties extracted separately by scaling such that the overall yield is unchanged.  
+\begin{itemize}[noitemsep]
+    \item {\textbf{QCD scale uncertainty}: yield uncertainty is parameterised separately for renormalisation scale and factorisation scale. 
+                                            Category migrations associated with varying these paramters independently and together are also included.}
+    \item{\textbf{PDF uncertainties}: There is a log-normal uncertainty associated with variation in the signal yield of each production process, and category migration uncertainties.   
+                                     The yield uncertainty is calculated using the procedure from PDF4LHC and the migration uncertainties are computed from the NNPDF3.0 PDF set and the MC2Hessian procedure.}
+    \item{\textbf{Strong force coupling ($\alpha_{s}$) uncertainty}: evaluated with the same procedure as the PDF uncertainties.}
+    \item{\textbf{Underlying event and parton shower uncertainty}: evaluated using simulated data where the modelling of the underlying event and the parton showers have been varied. This manifests primarily as variation in the jets of the analysis and is modelled as a category migration uncertainty. The probability that events move within the categories of the VBF tag, or from the VBF tag to Untagged are found to be 7 and 9\%.}
+    \item{\textbf{Gluon fusion contamination in \ttH Tag categories}: when the Higgs boson is produced by ggH it can be produced in association with a number of jets. As the number of jets becomes large the accuracy of theoretical precictions becomes worse and introduces a systematic uncertainty in ggH contamintion of the jet-based Tag categories. This manifests in the \ttH tags in multiple ways:
+        \begin{itemize}[noitemsep]
+            \item[\textbullet] \textbf{Uncertainty due to limited ggH sample size}: only a small quantity of simulated ggH events are accepted into the \ttH tag. This introduces a significant statistical uncertainty on the ggH yield and contributes a 10\% uncertainty.
+            \item[\textbullet] \textbf{Uncertainty due to modelling parton showers}: this is estimated by comparing simulation and data for events whose production is dominated by gluon-fusion-type diagrams ($\mathrm{t}\bar{\mathrm{t}}+\mathrm{jets}$ with fully-leptonic $\mathrm{t}\bar{\mathrm{t}}$ decays) binnned by the number of jets. The largest discrepancy is in $N_{\mathrm{jets}}\geq{5}$ which corresponds to an uncertainty of 35\%.
+            \item[\textbullet] \textbf{Uncertainty due to modelling gluon splitting}: estimated by calculating the difference in the ratio $\sigma(\mathrm{t\bar{t}b\bar{b}})/\sigma(\mathrm{t\bar{t}jj})$ for simulation and data. The fraction of events in simulated ggH with b jets are then scaled by this difference. This gives a 50\% variation in the ggH yield for the \ttH tags. 
+        \end{itemize}}
+    \item{\textbf{Gluon fusion contamination in tag categories with jets and a high-\pt Higgs boson}: how ggH mismodelling manifests in the VBF categories in particular 
+        \begin{itemize}[noitemsep]
+            \item[\textbullet] \textbf{Uncertainty due to jet multiplicity mismodelling}: two nuisance parameters due to missing higher-order terms and two more nuisance parameters for category migration due to variation in jet multiplicity based on predictions from (ref).
+            \item[\textbullet] \textbf{Uncertainty due to Higgs boson \pt mismodelling}: two nuisances associated with migration between two bins in Higgs boson \pt bins; from 60 to 120 \,GeV and above 120\,GeV. There is also a third nussiance due to uncertainty in top quark mass effects. This is negligible for \pt less than 150\,GeV but increases to 35\% at 500\,GeV. These impact the highest-score VBF and Untagged categories where the ggH yield uncertainty is 6-8\%.
+            \item[\textbullet] \textbf{Uncertainty in the acceptance of ggH in VBF categories due to QCD effects}: effects from missing higher-order terms are estimated via variations in the renormalisation and factorisation scales in (ref). Two nuisance parameters are introduced associated with the overall normalisation of Higgs bosons produced in association with two jet and three or more. This allows for the impact of jet supression from how the kinematic variables are used to form the VBF scores to be propagated to the analysis. The procedure is based on the Stewart-Tackmann method (ref) and then impact on the ggH yield in the VBF categories is 8-13\%. 
+        \end{itemize}}
+    \item{\textbf{Uncertainty in the \Hgg branching fraction}: the uncertainty on the theoretical prediction of the \Hgg branching fraction is taken from (ref) and is approximately 2\%.}
+\end{itemize}
+
+The theory uncertainties with the largest impact on measuring signal strengths and couplings are the \Hgg branching fraction; and the renormalisation and factorisation scale uncertainties from the QCD scale. 
+
+
+
+\subsection{Experimental uncertainties}
+Imperfection in the measurement and construction of physics objects at CMS give rises to associated experimental systematic uncertainties. 
+These affect the shape of the signal distribution and are propagated through to the final fits via the signal model. 
+\subsubsection{Photon energy measurement uncertainties}
+Uncertainties in the photon energy measurement are a particularly important contribution and can affect the signal shape via both the photon energy scale and resolution.
+\begin{itemize}[noitemsep]
+    \item {\textbf{Energy scale and resolution}: 
+           uncertainties associated with the photon energy scale and resolution corrections
+           are estimated with events from the \Zee control region reconstructed as photons. Data and simulation are compared in eight bins of $R_9$ and $|\eta|$ (high/low-$R_9$, and four $|\eta|$ bins). 
+           The uncertainties are quantified separately in four photon classes (EB/EE and high/low-$R_9$) and are propagated to the categorization with four scale nuisances (one per photon class) and eight shape nuisances (one constant and one stochastic term per photon class) for each event category. 
+           This has a 0.15-0.5\% effect on the photon energy, and an effect of 2.5\% on the signal strength modifier. 
+           }
+    \item {\textbf{Nonlinearity of photon energy}: 
+          There is potential residual data-simulation difference in the linearity of the ECAL response with photon energy scale. 
+          This is estimated by studying boosted \Zee events has the effect of shifting the peak position by a small amount per category constituting a maximum of 0.1\% in each category except for the untagged where it is 0.2\%. The uncertainty is propagated to the final fits as a shape nuisance parameter that shifts the signal peak position.
+          }
+    \item {\textbf{Nonuniformity of light collection}: 
+           There is a systematic uncertainty associated with the modelling of the fraction of scintillation light reaching the ECAL crystal photodetector as a function of the longitudinal depth of the shower start. The size of this effect is 0.07\% on the photon energy scale.
+           }
+    \item {\textbf{Electromagnetic shower modelling}: 
+        Mismodelling of electomagnetic showers in \texttt{GEANT4} introduces a small difference between electrons and photons and therefore another small uncertainty. 
+           It is estimated by comparing the latest version of shower simulation with a previous one and treating the small difference between them as representing the limit of accurate modelling. 
+           This gives a contribution of 0.05\% uncertainty to the photon energy scale.
+           }
+    \item {\textbf{Modelling of the material budget}: 
+           The amount of material between the interaction point and the ECAL affects the behaviour of photons and electrons. 
+           The modelling of this material is a further source of systematic uncertainty. 
+           This uncertainty is estimated using simulated samples where the material has been uniformly varied by $\pm5\%$ to cover the difference in the estimation between simulation and data.
+           The uncertainty manifests as an effect on the photon energy scale of 0.24\%.
+           }
+    \item {\textbf{Shower shape corrections}: 
+           Finally, there is an uncertainty due to mismodelling of shower shapes themselves. This is estimated by comparing between simulation samples with and without corrections on shower shape variables. This gives an uncertainty in the photon energy scale of 0.01-0.15\% at maximum. This is propagated by separate signal shape nuisances for each photon category.  
+           }
+\end{itemize}
+
+\subsubsection{Additional experimental uncertainties}
+Additional uncertainties that are not directly from the photon measurement arise from estimations of efficiencies, scale factors and selection variables. These are varied and their estimated effects propagated through the analysis chain. They are then applied as per-category yield and category migration nuisance parameters in the final fits. 
+\begin{itemize}[noitemsep]
+    \item {\textbf{Trigger efficiency}: 
+           uncertainty in the trigger efficiency estimation is evaluated with the \Zee control region and the tag-and-probe technique. This leads to an impact on the event yields of 0.1\% at maximum.}
+    \item {\textbf{Photon preselection}: 
+           uncertainty of the photon preselection efficiency is estimated as the ratio between the efficiency measured in simulation and data. This has an impact on event yields of 0.2-0.5\% depending on category.}
+    \item {\textbf{Photon ID BDT score}: 
+           Photon energy measurement uncertainties are propagated through the categorisation process to estimate their effect on category signal yields via the photon ID. The uncertainty is assigned to cover the observed difference between data and simulation in the \Zee control region. 
+           }
+    \item {\textbf{Photon energy resolution estimation}: 
+        This uncertainty is estimated by rescaling the energy resolution estimate around its nominal value by $\pm{5}\%$ to cover all disagreement between data and simulation. This variation is propagated through the categorisation and is implemented as a yield nuisance. 
+           }
+    \item {\textbf{Jet energy scale and smearing corrections}: 
+           Uncertainties in the correction of jet energy measurements are propagated through the event categorisation and are modelled as category migration nuisances. 
+           These nuisance parameters correspond to migration within VBF categories, within VH categories, within \ttH categories and from these tags to the Untagged categories. 
+           Jet energy scale corrections correspond to the following migrations: 
+           \begin{itemize}[noitemsep]
+               \item[\textbullet] 8-11\% between VBF categories and 11\% from VBF to Untagged;
+               \item[\textbullet] 15\% from VH to Untagged;
+               \item[\textbullet] 5\% from \ttH to Untagged.
+           \end{itemize}
+           The jet energy resoultion has a migration effect of at most 3\% across all tags except for VH where it can reach 20\%.
+           }
+    \item {\textbf{Missing transverse energy}: 
+           uncertainty in the measurement of \MET is estimated by varying the \pt of reconstructed physics objects entering the calculation of \MET for the event. 
+           These variations correspond to the momentum scale and resolution uncertainties of each type of physics object. 
+           This is correspond to a 10-15\% migration between Untagged and VH MET and is propagated to the final fits as a category migration nuisance.
+           }
+    \item {\textbf{Pileup jet ID}: 
+           uncertainty associated with the PUJID in the VBF tags is analysed using \Zee events with one jet whose momentum balances the dielectron in the transverse plane.            
+           Data and simulation are compared and the disagreement is used to estimate VBF category migrations. This effect is found to be at most 1\% and is propagated to the final fits as a category migration nuisance. 
+           }
+    \item {\textbf{Lepton isolation and ID}: 
+           the associated uncertainty is estimated for both electrons and muons by measuring the difference in efficiency between simulation and data and varying an associated scale factor within this difference. 
+           This is measured using the tag-and-probe technique on both \Zee and \Zmumu.
+           The associated variations manifest as yield uncertainties and are at most 1\% for the \ttH Leptonic category, 1.5\% for the WH Leptonic category and 3\% for the ZH Leptonic category. They are propagated to the final fit as category yield nuisances. 
+           }
+    \item {\textbf{Efficiency of b-tagging}: 
+           this uncertainty is evaluated by comparing data and simulation distributions of the b-tagging discriminant score. The uncertainty has a statistical component associated with the estimation of the relative amount of light and heavy quark initiated jets and confusion between them. 
+           This uncertainty is propagated in two different ways due to the difference in approach of the \ttH Hadronic and \ttH Leptonic tags
+           \begin{itemize}[noitemsep]
+               \item[\textbullet] the hadronic category uses a BDT that receives the b-tagger discriminant score as an input feature. The associated yield uncertainty is evaluated by altering the shape of the score in simulation and found to be at most 5\%.
+               \item[\textbullet] the leptonic category uses a fixed selection on the b-tagger discriminant score. This uncertainty is evaluated by varying the efficiency in data and simulation within their uncertainties and is found to be 2\%.  
+           \end{itemize}
+           }
+    \item {\textbf{Vertex finding efficiency}: 
+           this uncertainty derives from mismodelling of the underlying event and disagreement between data and simulation from evaluating \Zmumu events. The size of this uncertainty is around 2\% and is propagated to the final fit as a nuisance parameter that changes the relative contribution of the RV and WV signal shapes.
+           }
+    \item {\textbf{Integrated luminosity}: 
+        this uncertainty is taken from (ref) and modelled as a yield nuisance that affects all processes uniformly. The size of this effect is 2.5\%.
+           }
+    \item {\textbf{Background modelling}: 
+           Handled by the discrete profiling method and propagated to the final fits as a discrete nuisance that picks different functional forms. 
+           }
+\end{itemize}
+
+The experimental systematic uncertainties with the largest impact on signal strength and couplings measurements are from the photon shower shape corrections which affects the photon ID and the photon energy resolution estimate; the photon energy scale and smearing; the jet energy scale; and th integrated luminosity.
+
+
+
+
+
+
+
+
+
+\section{Results}
+Different measurements are extracted by performing a series of fits to the \mgg distributions simultaneously across all event categories under different constraints. 
+The fits are caried out in the range $100 < m_{\gamma\gamma} < 180$\,GeV with a binning of 250\,MeV; using a binned maximum-likelihood fit.
+The likelihood function to be used is the product of the individual category likelihoods and has the following form:
+\begin{equation}
+    \mathcal{L}(\mu_{c},m_H,\vec{n}|m_{\gamma\gamma}) = \prod_{c=0}^{N-1} \left( \mu_{c} S_{c}( m_{H}, \vec{n}_{s} | m_{\gamma\gamma}) + B_{c}( \vec{n}_{s} | m_{\gamma\gamma}) \right),
+\end{equation}
+where $c$ enumerates the $N$-many event categories; $S_{c}$ is the signal model of category $c$; $B_{c}$ is the background model of category $c$; $m_H$ is the Higgs signal peak position; $\vec{n}$ are the nusiance parameters of the model with $\vec{n}_s$ and $\vec{n}_b$ being the nuisance parameters of the signal and background models respectively; and $\mu_{c}$ is the category signal strength. 
+The signal strengths are constrained to be the same depending on the measurement being performed: a global $\mu$ fit constrains them all to the same value that then floats in the fit, per-process $\mu$ fits will allow for different values between the production modes, but categories within them will use the same value. 
+
+This is maximised by finding the minimum twice negative log-likelihood (2NLL) of $\mathcal{L}$, 
+\begin{equation}
+    -2\mathrm{NLL} = -2\ln\mathcal{L}(\mu_{c},m_H,\vec{n}|m_{\gamma\gamma}),
+\end{equation}
+while taking into account constraints on the parameters. 
+
+\subsection{Best Fit of Model to Data}
+A maximum-likelihood fit is performed with a single global $\mu$ profiled in $m_H$. 
+Category yields by production mode contribution are shown in Table \ref{tab:stats_results:yield_table} and 
+VBF category significances for the DCNN and BDT-based tags are shown in Table \ref{tab:stats_results:sig_table}.
+
+\begin{landscape}
+    \begin{table}
+        \centering
+        \resizebox{1.35\textwidth}{!}{%
+        \begin{tabular}{rcccccccccccccc}
+        \hline
+        \hline
+            \multirow{2}{*}{Event categories} &\multicolumn{13}{c}{Expected SM 125\,GeV Higgs boson signal (BDT-based VBF Tag)} & Bkg \\ \cline{2-14}
+          &  Total & ggH & VBF & \ttH & bbH & tHq & tHW & WH lep & ZH lep & WH had & ZH had &   $\sigma_{\text{eff}}$  & $\sigma_{\text{HM}}$ & (GeV$^{-1}$) \\
+          &  & & & & & & & & & & & (GeV) & (GeV) & \\
+        \hline
+        \rowcolor{GGH0} Untagged 0 &    32.5  &  72.0 \% &  16.6 \% &  2.6 \% &  0.6 \% &  0.7 \% &  0.3 \% &  0.6 \% &  0.3 \% &  4.2 \% &  2.2 \%& 1.32 & 1.26 & 21.8 \\
+        \rowcolor{GGH1} Untagged 1 &    469.3  &  86.5 \% &  7.9 \% &  0.6 \% &  1.2 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.9 \% &  1.1 \%& 1.46 & 1.32 & 925.1 \\
+        \rowcolor{GGH2} Untagged 2 &    678.3  &  89.9 \% &  5.4 \% &  0.4 \% &  1.2 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.4 \% &  0.8 \%& 1.93 & 1.67 & 2391.7 \\
+        \rowcolor{GGH3} Untagged 3 &    624.3  &  91.3 \% &  4.4 \% &  0.5 \% &  1.0 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.2 \% &  0.7 \%& 2.61 & 2.27 & 4855.1 \\
+        \rowcolor{VBF0} VBF 0 &    9.3  &  15.5 \% &  83.2 \% &  0.4 \% &  0.4 \% &  0.3 \% &  $<$0.05 \% &  $<$0.05 \% &  $<$0.05 \% &  0.2 \% &  $<$0.05 \%& 1.52 & 1.31 & 1.6 \\
+        \rowcolor{VBF1} VBF 1 &    8.0  &  28.4 \% &  69.7 \% &  0.4 \% &  0.6 \% &  0.4 \% &  $<$0.05 \% &  0.1 \% &  $<$0.05 \% &  0.3 \% &  0.1 \%& 1.66 & 1.38 & 3.3 \\
+        \rowcolor{VBF2} VBF 2 &    25.2  &  45.1 \% &  51.2 \% &  0.9 \% &  0.8 \% &  0.6 \% &  0.1 \% &  0.2 \% &  0.1 \% &  0.8 \% &  0.3 \%& 1.64 & 1.37 & 18.9 \\
+        \ttH Hadronic &    5.6  &  7.0 \% &  0.7 \% &  81.1 \% &  2.1 \% &  4.3 \% &  2.1 \% &  0.1 \% &  0.1 \% &  0.7 \% &  1.9 \%& 1.48 & 1.30 & 2.4 \\
+        \ttH Leptonic &    3.8  &  1.5 \% &  $<$0.05 \% &  87.8 \% &  0.1 \% &  4.7 \% &  3.1 \% &  1.5 \% &  1.2 \% &  $<$0.05 \% &  $<$0.05 \%& 1.60 & 1.35 & 1.5 \\
+        ZH Leptonic &    0.5  &  $<$0.05 \% &  $<$0.05 \% &  2.6 \% &  $<$0.05 \% &  $<$0.05 \% &  0.1 \% &  $<$0.05 \% &  97.3 \% &  $<$0.05 \% &  $<$0.05 \%& 1.65 & 1.43 & 0.1 \\
+        WH Leptonic &    3.6  &  1.3 \% &  0.6 \% &  5.2 \% &  0.2 \% &  3.0 \% &  0.7 \% &  84.5 \% &  4.3 \% &  0.1 \% &  0.1 \%& 1.64 & 1.43 & 2.1 \\
+        VH LeptonicLoose &    2.7  &  8.1 \% &  2.7 \% &  2.4 \% &  0.6 \% &  1.8 \% &  0.1 \% &  64.4 \% &  19.1 \% &  0.6 \% &  0.2 \%& 1.67 & 1.56 & 3.5 \\
+        \rowcolor{VHH} VH Hadronic &    7.9  &  47.6 \% &  4.5 \% &  4.4 \% &  0.4 \% &  1.7 \% &  0.3 \% &  0.2 \% &  0.5 \% &  25.2 \% &  15.1 \%& 1.38 & 1.30 & 7.2 \\
+        \rowcolor{VHM} VH MET &    4.0  &  18.7 \% &  2.6 \% &  15.4 \% &  0.4 \% &  2.1 \% &  1.2 \% &  26.8 \% &  30.4 \% &  1.4 \% &  0.9 \%& 1.56 & 1.39 & 3.5 \\
+        \rowcolor{Gray} Total &    1875.0  &  86.9 \% &  7.1 \% &  1.0 \% &  1.1 \% &  0.2 \% &  $<$0.05 \% &  0.8 \% &  0.4 \% &  1.6 \% &  0.9 \%& 1.96 & 1.62 & 8237.8 \\
+        \hline
+            \multirow{2}{*}{} &\multicolumn{13}{c}{Expected SM 125\,GeV Higgs boson signal (DCNN-based VBF Tag and Downstream Tags)} & \\ \cline{2-14}
+        \hline
+        \rowcolor{GGH0} Untagged 0 &    33.3  &  73.5 \% &  14.7 \% &  2.9 \% &  0.6 \% &  0.7 \% &  0.3 \% &  0.6 \% &  0.3 \% &  4.2 \% &  2.2 \%& 1.26 & 1.19 &  21.7 \\
+        \rowcolor{GGH1} Untagged 1 &    466.5  &  87.2 \% &  7.3 \% &  0.6 \% &  1.2 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.8 \% &  1.1 \%& 1.46 & 1.31 &  910.0 \\
+        \rowcolor{GGH2} Untagged 2 &    674.8  &  90.3 \% &  5.0 \% &  0.4 \% &  1.2 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.4 \% &  0.8 \%& 1.92 & 1.64 &  2415.6 \\
+        \rowcolor{GGH3} Untagged 3 &    620.5  &  91.6 \% &  4.1 \% &  0.5 \% &  1.0 \% &  0.1 \% &  $<$0.05 \% &  0.5 \% &  0.3 \% &  1.2 \% &  0.7 \%& 2.62 & 2.29 &  4848.2 \\
+        \rowcolor{VBF0} VBF 0 &    14.2  &  9.5 \% &  89.7 \% &  0.2 \% &  0.3 \% &  0.2 \% &  $<$0.05 \% &  0.1 \% &  $<$0.05 \% &  0.1 \% &  $<$0.05 \%& 1.70 & 1.41 &  3.4 \\
+        \rowcolor{VBF1} VBF 1 &    17.2  &  25.0 \% &  73.2 \% &  0.3 \% &  0.5 \% &  0.4 \% &  $<$0.05 \% &  0.1 \% &  $<$0.05 \% &  0.3 \% &  0.1 \%& 1.78 & 1.43 & 10.6 \\
+        \rowcolor{VBF2} VBF 2 &    19.6  &  44.2 \% &  51.7 \% &  0.7 \% &  0.9 \% &  0.6 \% &  $<$0.05 \% &  0.2 \% &  $<$0.05 \% &  1.2 \% &  0.5 \%& 1.78 & 1.40 & 23.0 \\
+        \rowcolor{VHH} VH Hadronic &    7.9  &  47.3 \% &  4.5 \% &  4.8 \% &  0.4 \% &  1.7 \% &  0.3 \% &  0.3 \% &  0.5 \% &  25.2 \% &  14.9 \%& 1.46 & 1.38 & 7.2 \\
+        \rowcolor{VHM} VH MET &    3.9  &  19.0 \% &  3.0 \% &  13.4 \% &  0.5 \% &  2.2 \% &  1.2 \% &  27.3 \% &  30.9 \% &  1.5 \% &  1.0 \%& 1.61 & 1.46 & 3.4 \\
+        \rowcolor{Gray} Total &    1874.3  &  86.9 \% &  7.1 \% &  1.0 \% &  1.1 \% &  0.1 \% &  $<$0.05 \% &  0.8 \% &  0.4 \% &  1.6 \% &  0.9 \%& 1.96 & 1.61 & 8252.9 \\
+        \hline
+        \hline
+        \end{tabular}%
+    }
+        \caption{Expected signal yields per category for BDT-based VBF Tag (top) and DCNN-based VBF Tag (bottom). 
+                 Only the downstream tags are shown for the DCNN-based tag as the others are unaffected.
+                 The width values $\sigma_{\text{eff}}$ and $\sigma_{\text{HM}}$ correspond to the smallest interval 
+                 containing 68.3\% of the \mgg distribution and the width at half maximum of the signal peak respectively.}
+        \label{tab:stats_results:yield_table}
+    \end{table}
+
+\end{landscape}
+\begin{table}[h!]
+    \begin{tabular}{rcccc}
+        \hline
+        \hline
+        & \multicolumn{3}{c}{Category $S/\sqrt{S+B}$} & \\ 
+        & VBF0 & VBF0 & VBF0 & Total \\
+        \hline
+        BDT-based  & 2.02 & 1.25 & 1.35 & 2.73\\
+        DCNN-based & 2.44 & 1.65 & 0.97 & 3.10\\
+        \hline
+        \hline
+    \end{tabular}
+    \caption{VBF Tag category expected signal significances comparing BDT-based VBF Tag to the DCNN-based VBF Tag.}
+    \label{tab:stats_results:sig_table}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Signal Strength Scans}
+To measure mu and the uncertainty on it we do a profile likelihood scan
+placeholder
+
+\begin{equation}
+    -2\Delta{\mathrm{NLL}} = -2\ln{\mathcal{L}}(\mu,\hat{m}_H,\vec{n} | m_{\gamma\gamma}) + 2\ln\mathcal{L}(\hat{\mu},\hat{m}_{H},\hat{n} | m_{\gamma\gamma})
+\end{equation}
+
+\subsubsection{Global $\mu$ Likelihood Scan}
+single for all categories together. Scanned. Result is...
+
+\subsubsection{Per-production Mode $\mu$s}
+production modes
+
+STXS
+
+\subsubsection{Fermionic versus bosonic production}
+2D likelihood scan
+
+
+
+
+
+\subsection{Couplings Measurements}
+deviations from SM parameterised with $\kappa$ framework
+
+2D likelihood scans
+
+
+
+
+
+
+
+
 
