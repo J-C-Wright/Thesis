@@ -63,7 +63,7 @@ The migration uncertainties extracted separately by scaling such that the overal
     \item{\textbf{PDF uncertainties}: There is a log-normal uncertainty associated with variation in the signal yield of each production process, and category migration uncertainties.   
                                      The yield uncertainty is calculated using the procedure from PDF4LHC and the migration uncertainties are computed from the NNPDF3.0 PDF set and the MC2Hessian procedure.}
     \item{\textbf{Strong force coupling ($\alpha_{s}$) uncertainty}: evaluated with the same procedure as the PDF uncertainties.}
-    \item{\textbf{Underlying event and parton shower uncertainty}: evaluated using simulated data where the modelling of the underlying event and the parton showers have been varied. This manifests primarily as variation in the jets of the analysis and is modelled as a category migration uncertainty. The probability that events move within the categories of the VBF tag, or from the VBF tag to Untagged are found to be 7 and 9\%.}
+    \item{\textbf{Underlying event and parton shower uncertainty}: evaluated using simulated data where the modelling of the underlying event and the parton showers have been varied. This manifests primarily as variation in the jets of the analysis and is modelled as a category migration uncertainty. The probability that events move within the categories of the VBF tag, or from the VBF tag to Untagged are found to be 7 and 9\%. This was reevaluated for the DCNN-based VBF tag and found to be unchanged.}
     \item{\textbf{Gluon fusion contamination in \ttH Tag categories}: when the Higgs boson is produced by ggH it can be produced in association with a number of jets. As the number of jets becomes large the accuracy of theoretical precictions becomes worse and introduces a systematic uncertainty in ggH contamintion of the jet-based Tag categories. This manifests in the \ttH tags in multiple ways:
         \begin{itemize}[noitemsep]
             \item[\textbullet] \textbf{Uncertainty due to limited ggH sample size}: only a small quantity of simulated ggH events are accepted into the \ttH tag. This introduces a significant statistical uncertainty on the ggH yield and contributes a 10\% uncertainty.
@@ -202,9 +202,16 @@ This is maximised by finding the minimum twice negative log-likelihood (2NLL) of
 while taking into account constraints on the parameters. 
 
 \subsection{Best Fit of Model to Data}
-A maximum-likelihood fit is performed with a single global $\mu$ profiled in $m_H$. 
-Category yields by production mode contribution are shown in Table \ref{tab:stats_results:yield_table} and 
-VBF category significances for the DCNN and BDT-based tags are shown in Table \ref{tab:stats_results:sig_table}.
+A maximum-likelihood fit is performed with a single global $\mu$ and $m_H$ to find their best fit values.
+These constitute the central values of a measurement of the global $\mu$ and the associated uncertainty is calculated via a likelihood scan of an associated test statistic. 
+Example category mass fit plots are shown in Figures X-Y and the full set of mass fits is shown in Appendix Z. 
+
+Expected category yields by production mode contribution are shown in Table \ref{tab:stats_results:yield_table} for fits with the BDT-based and DCNN-based VBF tags. 
+A reduction in contamination from ggH is observed in the DCNN-based VBF Tag categories, particularly in VBF0 where it has been reduced by 39\% from 15.5\% to 9.5\%. 
+Downstream VH tags are only slightly affected, and the overall effect on the inclusive untagged categories is small. 
+
+The effect of using the DCNN-based VBF Tag over the BDT-based tag on category signnificances is shown in Table \ref{tab:stats_results:sig_table}.
+An increase in overall expected significance of 13\% is observed in the DCNN-based tag. 
 
 \begin{landscape}
     \begin{table}
@@ -255,7 +262,6 @@ VBF category significances for the DCNN and BDT-based tags are shown in Table \r
                  containing 68.3\% of the \mgg distribution and the width at half maximum of the signal peak respectively.}
         \label{tab:stats_results:yield_table}
     \end{table}
-
 \end{landscape}
 \begin{table}[h!]
     \begin{tabular}{rcccc}
@@ -284,33 +290,94 @@ VBF category significances for the DCNN and BDT-based tags are shown in Table \r
 
 
 
-\subsection{Signal Strength Scans}
-To measure mu and the uncertainty on it we do a profile likelihood scan
-placeholder
-
+\subsection{Signal Strength Likelihood Scans}
+General prescription of likelihood scans
+The test statistic used is the twice-negative delta log-likelihood ($-2\Delta{\mathrm{NLL}}$), 
 \begin{equation}
-    -2\Delta{\mathrm{NLL}} = -2\ln{\mathcal{L}}(\mu,\hat{m}_H,\vec{n} | m_{\gamma\gamma}) + 2\ln\mathcal{L}(\hat{\mu},\hat{m}_{H},\hat{n} | m_{\gamma\gamma})
+    -2\Delta{\mathrm{NLL}} = -2\ln{\mathcal{L}}(\mu,\hat{m}_{H,\mu},\vec{n}_{\mu} | m_{\gamma\gamma}) + 2\ln\mathcal{L}(\hat{\mu},\hat{m}_{H},\hat{n} | m_{\gamma\gamma}),
 \end{equation}
+where $\hat{\mu}$, $\hat{m}_{H}$ and $\hat{n}$ are the best fit values for the signal strength modifier, Higgs mass and nuissance parameters respectively. 
+The parameters $\mu$, $\hat{m}_{H,\mu}$ and $\vec{n}_{\mu}$ are the global signal strength being profiled in the likelihood scan, the Higgs mass allowed to float for a given value of $\mu$, and the nuissance paramter values also allowed to float. 
+
+This procedure is used to measure the global $\mu$, the production mode $\mu$s and the fermionic vs bosonic production $\mu$s. 
 
 \subsubsection{Global $\mu$ Likelihood Scan}
-single for all categories together. Scanned. Result is...
+To calculate the uncertainty associated with the measurement of the global signal strength a likelihood scan is performed with a test statistic and profiling in the value of $\mu$.
+The contribution of statistical uncertainty is determined by performing the likelihood scan with the nuisance parameters associated with systematic uncertainties removed. 
+The systematic contribution is then the difference in quadrature between these values and the total uncertainty from the full fit. 
+The $-2\Delta{\mathrm{NLL}}$ values of the global $\mu$ likelihood scans are shown in Figure \ref{fig:stats_results:global_mu_scan}.
+The measured value for $\mu$ and its associated uncertainties are found to be $\hat{\mu} = 1.18^{+0.17}_{-0.14} = 1.18^{+0.12}_{-0.11}(\mathrm{stat.})^{+0.09}_{-0.07}(\mathrm{syst.})^{+0.07}_{-0.06}(\mathrm{theo.})$.
+The best fit value for the Higgs boson mass is found to be $\hat{m}_{H}=125.4\pm{0.3}=125.4\pm{0.2}(\mathrm{stat}.)\pm{0.2}(\mathrm{syst}.)$. 
+A precise determination of the systematic effects on the mass value and therefore a precise determination of the mass itself are beyond the scope of this thesis.
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/stats_results/Figure_015.pdf}
+    \end{center}
+    \caption{Likelihood scan of the global signal strength modifier $\mu$ with a $-2\Delta{\mathrm{NLL}}$ test statistic.}
+        \label{fig:stats_results:global_mu_scan}
+\end{figure}
 
-\subsubsection{Per-production Mode $\mu$s}
-production modes
 
-STXS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Production Mode Signal Strength Modifiers}
+Likelihood scans specific to each production mode are carried out in similar way to the global case, but with some differences. 
+Instead of a single global $\mu$ and likelihood scan there are four, one for each production mode. 
+For each case the corresponding $\mu$ is profiled and the others are allowed to float in the fit. 
+The results of these likelihood scans are shown in Figure \ref{fig:stats_results:prod_mu_scans}. 
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{figures/stats_results/Figure_016.pdf}
+    \end{center}
+    \caption{Likelihood scan results of the prodction mode signal strength modifiers $\mu$ with a $-2\Delta{\mathrm{NLL}}$ test statistic.}
+        \label{fig:stats_results:prod_mu_scans}
+\end{figure}
+
+The same approach is used to extract the ratio of observed cross sections to the SM expectation as part of the simplified template cross section (STXS) framework (stage 0 (ref)).
+This scheme is aimed at reducing the impact of theory uncertainties due to extrapolation to the full phase space from the fiducial region of the analysis. 
+This imposes a criterion on the Higgs boson rapidity of $y<2.5$ and splits the VH into separate WH, ZH and VH Hadronic categories. 
+The results of measuring these ratios are shown in Figure \ref{fig:stats_results:stxs}.
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/stats_results/Figure_017.pdf}
+    \end{center}
+    \caption{SM prediction to measured cross section ratios in the SXTS stage 0 framework.}
+        \label{fig:stats_results:stxs}
+\end{figure}
 
 \subsubsection{Fermionic versus bosonic production}
-2D likelihood scan
-
-
+A measurement of the fermionic versus bosonic signal strength is performed with a 2D likelihood scan.
+The procedure is similar to before but with a signal strength for the bosonic production modes $\mu_{\mathrm{VBF},\mathrm{VH}}$ and the fermionic modes $\mu_{\mathrm{ggH},\mathrm{t\bar{t}H}}$.
+A best fit point is found and then a $-2\Delta\mathrm{NLL}$ test statistic is evaluated over a 2D space corresponding to different values of the two signal strength modifiers. 
+The result with 68\% and 95\% confidence intervals is shown in Figure \ref{fig:stats_results:fermionic_bosonic}. 
+The best fit point was found to be $\mu_{\mathrm{ggH},\mathrm{t\bar{t}H}} = 1.19^{+0.22}_{-0.18}$, $\mu_{\mathrm{VBF},\mathrm{VH}} = 1.21^{+0.58}_{-0.51}$.
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{figures/stats_results/Figure_018.pdf}
+    \end{center}
+    \caption{Two-dimensional likelihood scan of signal strength modifiers for bosonic (VBF, VH) and fermionic (ggH, \ttH) production modes.}
+        \label{fig:stats_results:fermionic_bosonic}
+\end{figure}
 
 
 
 \subsection{Couplings Measurements}
-deviations from SM parameterised with $\kappa$ framework
+Deviation in the Higgs couplings from SM expectation are modelled within the $\kappa$ framework as described in (ref).
+These differences are measures with two 2D likelihood scans 
 
-2D likelihood scans
+
 
 
 
