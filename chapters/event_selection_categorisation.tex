@@ -1,7 +1,7 @@
 \chapter{Event Categorisation}
 \label{chap:event_select}
 
-\newpage
+%\newpage
 \section{Overview and Objectives}
 Once a set of candidate photons is assembled we tag and categorise events using extra final-state objects characteristic of particular Higgs production modes.
 The objective of this tagging procedure is to enhance overall significance, to construct categories of events with superior mass resolution, and to separate out the Higgs production modes for individual measurement. 
@@ -50,9 +50,8 @@ The signal-flattened score distribution for all simulated signal and background 
 %(Validation)
 The performance of the diphoton BDT is validated in a \Zee control region where the normal diphoton selection has been applied, but the electron veto is inverted (Figure \ref{fig:event_categorisaton:diphoton_bdt} right). The Diphoton BDT output score has good agreement between data and simulation in the score region used by the event tagging.
 \begin{figure}[h!]
-    \begin{center}
-        \includegraphics[width=0.9\textwidth]{figures/event_selection/diphoton_BDT.pdf}
-    \end{center}
+    \centering
+        \includegraphics[width=0.99\textwidth]{figures/event_selection/diphoton_BDT.pdf}
     \caption{Stacked diphoton BDT score distributions for simulated signal and background, with data shown superimposed (left). Diphoton BDT score in the \Zee control region (right). 
              The same transformation has been applied to the score distribution in both plots such that the total signal distribution is flat.}
         \label{fig:event_categorisaton:diphoton_bdt}
@@ -66,7 +65,11 @@ If the diphoton does not meet the criteria for this last tag it is discarded.
 In the case of multiple tagged candidate diphotons in an event we select the one with the highest priority tag and category, if they are in the same category we choose the diphoton with the highest diphoton $p_{T}$.
 The criteria for each tag will be speficied in following sections in this chapter.
 \begin{table}[h!]
-    \begin{tabular}{ l || l | l}
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{ l | l l }
+        \thickhline
         Tag & Target Process & Structure \\
         \hline
         \ttH Leptonic      & \ttH with semi-leptonic top decays & Single category \\
@@ -78,7 +81,8 @@ The criteria for each tag will be speficied in following sections in this chapte
         VH MET            & VH with significant amount of \MET & Single category \\
         VH Hadronic        & VH with hadronically-decaying W or Z boson & Single category \\
         Untagged           & Inclusive & Four categories \\
-    \end{tabular}
+        \thickhline
+    \end{tabular}}
     \caption{The \Hgg tag sequence in order of tag priority from highest (top) to lowest (bottom).}
     \label{tab:event_categorisaton:tag_sequence}
 \end{table}
@@ -117,8 +121,8 @@ In the \ttH production mode, a top-antitop pair is produced in association with 
             \vertex [right=of a] (b);
             \vertex [above right=of b] (f1);
             \vertex [below right=of b] (f2) {$b$};
-            \vertex [above right=of f1] (f3) {${(\nu_{e},\nu_{\mu},\nu_{\tau})}$};
-            \vertex [below right=of f1] (f4) {${(\bar{e},\bar{\mu},\bar{\tau})}$};
+            \vertex [above right=of f1] (f3) {${(\nu_{e},\nu_{\mu})}$};
+            \vertex [below right=of f1] (f4) {${(\bar{e},\bar{\mu})}$};
             \diagram* {
                 (a) -- [fermion] (b) -- [boson, edge label=\(W^{+}\)] (f1),
                 (b) -- [fermion] (f2),
@@ -156,7 +160,8 @@ This tag uses a set of selections on kinematic properties of the jets in the eve
 \end{itemize}
 A selection on the BDT output score (Figure \ref{fig:event_categorisaton:tth_hadronic_bdt}) is optimised simultaneously on simulation with a selection on the diphoton BDT score to maximise expected precision on the signal strength of the \ttH production channel. 
 \begin{figure}[h!]
-    \includegraphics[width=0.49\textwidth]{figures/event_selection/Figure_006.pdf}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/event_selection/CMS-HIG-16-040_Figure_006.pdf}
     \caption{Score distribution of the hadronic \ttH BDT. The blue lined histogram shows the distribution for the control region, the red filled histogram shows the score distribution for simulated signal, and the points show the score distribution of the data sideband regions ($m_{\gamma\gamma} < 115$\,GeV or $m_{\gamma\gamma} > 135$\,GeV).}
         \label{fig:event_categorisaton:tth_hadronic_bdt}
 \end{figure}
@@ -184,7 +189,7 @@ The selection requirements of the \ttH Hadronic tag are as follows:
 
 
 
-\section{Associated Production Tagging}
+\section[VH Tagging]{Associated Production Tagging}
 In the associated production (VH) mode a W$^{\pm}$ or Z boson is produced in association with the Higgs boson. The VH tags target different vector bosons decaying in different ways which can manifest as leptons, jets or \MET in the event.
 All of the leptonic VH tags are selection-based and have various isolation requirements to avoid contamination from Drell-Yan background processes.
 
@@ -250,7 +255,7 @@ This tag targets Higgs production in association with a W or Z boson that decays
 
 
 
-\section{VBF Tag}
+\section{VBF Tagging}
 The VBF production mode is characterised by its distinctive event topology and kinematics: two high-$p_{T}$ jets with large pseudorapidity separation and high invariant mass. Furthermore, the dijet substructure will also be distinctive with both jets originating from quarks, having colour connections to the proton remnants and possibly having other correlations in structure between the two jets. 
 
 Other production modes can also produce a Higgs boson in association with jets to produce a VBF-like final state. 
@@ -310,15 +315,18 @@ When a candidate diphoton is considered for VBF selection we apply additional re
 Jets are required to meet the criteria detailed in the previous chapter plus some additional requirements specific to the VBF tag.
 Pileup jet ID (PUJID) uses a BDT classifier \ref{CMS-PAS-JME-13-005} that takes a collection of jet shape variables and produces a score for each jet. A collection of selections on this score are then applied for bins in $p_{T}$ and $\eta$ (Table \ref{tab:event_selection:tight_pujid}). 
 \begin{table}[h!]
-    \begin{tabular}{ l || c | c | c | c }
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{ l | c c c c }
+        \thickhline
          & $|\eta| < 2.5$ & $2.5 \leq |\eta| < 2.75$ & $2.75 \leq |\eta| < 3.0$ & $3.0 \leq |\eta| < 5.0$ \\
-        \hline
         \hline
         $20 < p_{T} \leq 30$\,GeV  & $0.69$ & $-0.35$ & $-0.26$ & $-0.21$ \\
         $30 < p_{T} \leq 50$\,GeV  & $0.86$ & $-0.1$  & $-0.05$ & $-0.01$ \\
         $50 < p_{T} \leq 100$\,GeV & $0.95$ & $0.28$  & $0.31$  & $0.28$  \\
+        \thickhline
 \end{tabular}
-    \caption{Pileup jet ID cuts of the tight working point}
+    \caption{Pileup jet ID cuts of the tight working point.}
     \label{tab:event_selection:tight_pujid}
 \end{table}
 In this analysis the tight working point is used as this gives the highest expected significance for the VBF tag, and also leads to marked improvement in data/simulation agreement in $\eta$ in the \Zee plus jets control region.  
@@ -376,9 +384,11 @@ The BDT receives the following features which are chosen to minimise correlation
         where $\eta_{j1}$ and $\eta_{j2}$ are the pseudorapidities of the leading and subleading jets.
 \end{itemize}
 Their distributions with the VBF preselection applied are shown in Figure \ref{fig:event_categorisaton:dijet_bdt_features}.
-\newpage
+%\newpage
+
 \begin{figure}[h!]
-    \includegraphics[width=0.95\textwidth]{figures/event_selection/dijet_BDT_features_splitBG_PS.pdf}
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/dijet_BDT_features_splitBG_PS.pdf}
     \caption{Dijet BDT feature distributions with the full VBF preselection. Distributions are all normalised to unity with the solid red line corresponding to VBF, blue line to ggH, and black line to SM background. The SM background distribution is shown as a stacked histogram.}
     \label{fig:event_categorisaton:dijet_bdt_features}
 \end{figure}
@@ -388,7 +398,8 @@ This dijet BDT is trained on all simulated SM background samples with ggH includ
 The normalised score distributions for the classes and the ROC curves for each individual sample are shown in Figure \ref{fig:event_categorisaton:dijet_bdt_performance}.
 These scores are then used as an input feature in the next BDT in the VBF tag: the combined BDT. 
 \begin{figure}[h!]
-        \includegraphics[width=0.75\textwidth]{figures/event_selection/dijet_BDT_PS.pdf}
+    \centering
+        \includegraphics[width=0.8\textwidth]{figures/event_selection/dijet_BDT_PS.pdf}
     \caption{Dijet BDT performance. On the left are the output score distributions for VBF (red), ggH (blue) and SM background (black). On the right are the ROC curves for the dijet BDT split into the different samples. We note that the performance against ggH is lower than the other backgrounds.}
     \label{fig:event_categorisaton:dijet_bdt_performance}
 \end{figure}
@@ -411,7 +422,8 @@ Specifically, it takes the following input features:
 \end{itemize}
 The distributions of these features with the full VBF preselection applied are shown in Figure \ref{fig:event_categorisaton:combined_bdt_features}.
 \begin{figure}[h!]
-    \includegraphics[width=0.98\textwidth]{figures/event_selection/combined_BDT_features_splitBG_PS.pdf}
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/combined_BDT_features_splitBG_PS.pdf}
     \caption{Combined BDT feature distributions with the full VBF preselection. Distributions are all normalised to unity with solid red corresponding to VBF, blue line to ggH. The SM background is shown as a stacked histogram.}
     \label{fig:event_categorisaton:combined_bdt_features}
 \end{figure}
@@ -419,9 +431,8 @@ The distributions of these features with the full VBF preselection applied are s
 The combined BDT is then trained with the SM background samples vs VBF. Gluon fusion is not included in this training as it is found to reduce the ability of this BDT to reject SM background. This is considered to be a higher priority than ggH rejection because rejection of SM background has the largest impact on statistical significance. 
 The normalised combined score distributions for the classes and the ROC curves for each individual sample are shown in Figure \ref{fig:event_categorisaton:combined_bdt_performance}.
 \begin{figure}[h!]
-    \begin{center}
-        \includegraphics[width=0.75\textwidth]{figures/event_selection/combined_BDT_PS.pdf}
-    \end{center}
+    \centering
+        \includegraphics[width=0.8\textwidth]{figures/event_selection/combined_BDT_PS.pdf}
     \caption{Combined BDT score distribution with the full VBF preselection. Distributions are all normalised to unity with solid red corresponding to VBF, blue line to ggH, and black line to SM background.}
     \label{fig:event_categorisaton:combined_bdt_performance}
 \end{figure}
@@ -432,6 +443,7 @@ The normalised combined score distributions for the classes and the ROC curves f
 We can interpret how features are used together by examining their joint distribution for highest and lowest-percentile scoring events. 
 This is shown in Figure \ref{fig:event_categorisaton:bdt_based_vbf_tag_interpretation} where the solid colour shows the values averaged over each percentile, and the lines show the top five highest (or lowest) scoring events.
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.65\textwidth]{figures/event_selection/eng_feature_radar_BDT.pdf}
     \caption{Coloured regions correspond to mean values for top percentile (red) and bottom percentile (black) combined score events. 
              The top and bottom five scoring events are also shown by lines and dots.}
@@ -456,18 +468,23 @@ The boundaries are optimised simultaneously for overall significance with a rand
 
 Approximate studies of the three VBF categories, their boundaries and their estimated performance is shown in Figure \ref{fig:event_categorisaton:bdt_mass_fits} and Table \ref{tab:event_selection:legacy_cats}.
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=1.0\textwidth]{figures/event_selection/BDT_mass_fits.pdf}
     \caption{Mass fits for estimating AMS$_2$.}
     \label{fig:event_categorisaton:bdt_mass_fits}
 \end{figure}
 \begin{table}[h!]
-    \begin{tabular}{ c || c | c | c | c | c }
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{ l | c c c c c }
+        \thickhline
         Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS$_2$ & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        0 & $[1.00, 0.957)$     & 1.4 &  2.16 & 0.20 & 0.37 \\
-        1 & $[0.957, 0.902)$ & 1.2 &  1.00  & 0.34 & 0.17 \\
-        2 & $[0.902, 0.553)$ & 2.0 &  0.69 & 0.53 & 0.04 \\
-\end{tabular}
+        VBF0 & $[1.00, 0.957)$     & 1.4 &  2.16 & 0.20 & 0.37 \\
+        VBF1 & $[0.957, 0.902)$ & 1.2 &  1.00  & 0.34 & 0.17 \\
+        VBF2 & $[0.902, 0.553)$ & 2.0 &  0.69 & 0.53 & 0.04 \\
+        \thickhline
+    \end{tabular}
     \caption{Estimated category attributes for the BDT-based VBF tag.}
     \label{tab:event_selection:legacy_cats}
 \end{table}
@@ -502,6 +519,7 @@ We can then use selections on the BDT score to try to isolate regions of the joi
 The results shown in Figure \ref{fig:event_categorisation:zee_bdt_validation} show that the score distributions are similar and discrimination is very low. 
 Therefore we conclude that the joint feature distribution has little disagreement between simulation and data. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.75\textwidth]{figures/event_selection/eng_feature_ROC_Zee_BDT.pdf}
 %    \includegraphics[width=0.6\textwidth]{figures/event_selection/eng_feature_radar_Zee_BDT.pdf}
     \caption{Joint distribution study with BDT on the \Zee control region data-simulation test set.}
@@ -515,8 +533,8 @@ This will have an impact on categorisation with hadronic objects such as jets, a
 
 To test for how such mismodelling affects the VBF tag and VBF/ggH discrimination we evaluate samples with up and down variations on aspects of jet production.
 \begin{itemize}[noitemsep]
-    \item Underlying event: interactions between parton pairs in the proton collision that are not part of the hard scatter. 
-    \item Parton shower: simulates a succession of parton emissions from the incoming and outgoing partons of the interaction.
+    \item \textbf{Underlying event}: interactions between parton pairs in the proton collision that are not part of the hard scatter. 
+    \item \textbf{Parton shower}: simulates a succession of parton emissions from the incoming and outgoing partons of the interaction.
 \end{itemize}
 Both of these will affect the cross section for jet production, the configuration of the jet substructure and particularly the degree of colour connection to the proton remnant.
 
@@ -543,6 +561,7 @@ Furthermore, the original train-test split of the two-step BDT was unavailable. 
 A single-step BDT was trained, and founds to be equal in performance. A small increase in the two-step tag is possibly from the inclusion of training events. 
 It is more of a fair test to compare this model to the dense CNN because we can use the exact same training and holdout sets. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.99\textwidth]{figures/event_selection/dijet_BDT_PS_unw.pdf}
     \caption{Single BDT performance and comparison to the two step approach.}
     \label{fig:event_categorisation:single_BDT}
@@ -567,7 +586,7 @@ It is more of a fair test to compare this model to the dense CNN because we can 
 %=================================================
 %---Dense CNN tag
 %=================================================
-\section{VBF Tag with a Dense Convolutional Neural Network}
+\section[DCNN VBF Tag]{VBF Tag with a Dense Convolutional Neural Network}
 In the BDT-based tag the ggH separation power is much lower than the SM background samples. 
 This is a challenging problem to solve when equipped with only kinematic variables jet structure variables should offer important extra information.
 
@@ -609,10 +628,11 @@ Finally, the images are normalised such that the sum of the $p_T$-based channels
 All of the images in this thesis will have the same form and are always centred on the jet axis.
 
 \begin{figure}[h!]
-    \includegraphics[width=0.8\textwidth]{figures/event_selection/jet_diagram_RGB.pdf}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/event_selection/jet_diagram_RGB.pdf}
     \begin{center}
-        \includegraphics[width=0.35\textwidth]{figures/event_selection/full_image_polar.pdf}
-        \includegraphics[width=0.35\textwidth]{figures/event_selection/full_image_rect.pdf}
+        \includegraphics[width=0.45\textwidth]{figures/event_selection/full_image_polar.pdf}
+        \includegraphics[width=0.45\textwidth]{figures/event_selection/full_image_rect.pdf}
     \end{center}
     \caption{Construction of single $12\times{}12$-pixel three-channel jet image (top). 
              Arrows correspond to individual jet constituents where red arrows are charged, green are neutral and the opacity the arrows corresponds to candidate $p_{T}$.
@@ -641,6 +661,7 @@ The dijet image distribution has a few notable features that originate from the 
 
 \begin{figure}[h!]
 
+    \centering
     \includegraphics[width=0.49\textwidth]{figures/event_selection/mean_vbf_LPS_uw.pdf}
     \begin{center}
         \includegraphics[width=0.49\textwidth]{figures/event_selection/mean_ggh_LPS_uw.pdf}
@@ -829,8 +850,9 @@ The model trained on images only (step one of the training) is already a relativ
 On data with the loose preselection applied the discrimination power equals that of the combined BDT. 
 However when the full preselection is applied the performance drops below the combined BDT. 
 \begin{figure}[h!]
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/imgonly_DCNN_PS.pdf}
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/full_DCNN_PS.pdf}
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/event_selection/imgonly_DCNN_PS.pdf}
+    \includegraphics[width=0.75\textwidth]{figures/event_selection/full_DCNN_PS.pdf}
     \caption{VBF/ggH discrimination performance for the model trained only on dijet images (top) and the full model (bottom).}
     \label{fig:event_categorisation:image_only_DCNN}
 \end{figure}
@@ -848,17 +870,22 @@ The difference is especially pronounced in the QCD background sample, mostly lik
 The VBF tag categories then re-optimised for the dense CNN model tag using the same procedure as before.
 Approximate studies of the three VBF categories, their boundaries and their estimated performance is shown in Figure \ref{fig:event_categorisation:DCNN_mass_fits} and Table \ref{tab:event_selection:DCNN_cats}.
 \begin{table}[h!]
-    \begin{tabular}{ c || c | c | c | c | c }
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{ l | c c c c c }
+        \thickhline
         Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS$_2$ & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        0 & $[1, 0.856)$     & 1.5 &  2.13 & 0.10 & 0.37 \\
-        1 & $[0.856, 0.704)$ & 2.0 &  1.15  & 0.27 & 0.11 \\
-        2 & $[0.704, 0.495)$ & 2.0 &  0.60 & 0.46 & 0.04 \\
-\end{tabular}
-    \caption{Estimated category attributes for the DCNN-based VBF tag}
+        VBF0 & $[1, 0.856)$     & 1.5 &  2.13 & 0.10 & 0.37 \\
+        VBF1 & $[0.856, 0.704)$ & 2.0 &  1.15  & 0.27 & 0.11 \\
+        VBF2 & $[0.704, 0.495)$ & 2.0 &  0.60 & 0.46 & 0.04 \\
+        \thickhline
+    \end{tabular}
+    \caption{Estimated category attributes for the DCNN-based VBF tag.}
     \label{tab:event_selection:DCNN_cats}
 \end{table}
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=1.0\textwidth]{figures/event_selection/DCNN_mass_fits.pdf}
     \caption{Mass distributions and fits for the three optimised DCNN-based tag categories.}
     \label{fig:event_categorisation:DCNN_mass_fits}
@@ -895,8 +922,9 @@ Our loss in this case will be a single output neuron $o_{l}$. We then alter the 
 where the partial derivative has been computed with back-propagation, and $\alpha$ is the learning rate. We then set negative entries to zero and normalise the image as described in the image formulation section before the next iteration. This is continued for 1000 iterations with the learning rate reduced by a factor of $0.75$ every 100 iterations. 
 The end results of this for the VBF and ggH logits of the image only network are shown in Figure \ref{fig:event_categorisation:feature_vis_vbf_ggh}
 \begin{figure}[h!]
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/norm_logits1.pdf}
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/norm_logits0.pdf}
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/norm_logits1.pdf}
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/norm_logits0.pdf}
     \caption{Generated images for feature visualisation which maximally activate the output neuron: VBF (top) and ggH (bottom).}
     \label{fig:event_categorisation:feature_vis_vbf_ggh}
 \end{figure}
@@ -920,8 +948,9 @@ Training a single BDT model with the pseudorapidities shows a small performance 
 To get a better idea of what sort of physically sensible features are favoured by the network, and whether our conclusions about the feature visualisation are true, we can inspect real event images that are maximally activating. 
 A selection is applied on the leading jet so that it is in the tracker acceptance and the charged-\pt  channel is present. The most activating image without this requirement shows two very forward jets with coarse structure.
 \begin{figure}[h!]
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/max_img_vbf_tkr_cut_logits_normtype1.pdf}
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/max_img_ggh_tkr_cut_logits_normtype1.pdf}
+    \centering
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/max_img_vbf_tkr_cut_logits_normtype1.pdf}
+    \includegraphics[width=0.99\textwidth]{figures/event_selection/max_img_ggh_tkr_cut_logits_normtype1.pdf}
     \caption{Real images that maximally activate the class logits. 
              The top image is the maximally-activating VBF image, and the bottom is the maximally-activating ggH image. }
     \label{fig:event_categorisation:maxact_vis_vbf_ggh}
@@ -940,14 +969,14 @@ These convolution filters are shown in Figure \ref{fig:event_categorisation:fron
 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_0.pdf}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_1.pdf}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_2.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_0.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_1.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_2.pdf}
     \end{center}
     \begin{center}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_3.pdf}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_4.pdf}
-        \includegraphics[width=0.25\textwidth]{figures/event_selection/front_filters_channel_5.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_3.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_4.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/event_selection/front_filters_channel_5.pdf}
     \end{center}
     \caption{Front filters of the network grouped by the six image channels. Positive weight values are darker red and more negative values are darker blue, weights close to zero are shown as white. The vertical direction in the filters corresponds to $\varphi$ and the horizontal direction corresponds to $\Delta{R}$.}
     \label{fig:event_categorisation:front_filters}
@@ -1004,8 +1033,8 @@ We will also attempt to isolate where the \Zee data/simulation disagreement is w
 First we evaluation the simulation/data agreement of the network score used in categorisation for both the image-only and the full DCNNs (Figure \ref{fig:event_categorisation:int_score_zee}). 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.48\textwidth]{figures/event_selection/img_score_zee_LPS.pdf}
-        \includegraphics[width=0.48\textwidth]{figures/event_selection/int_score_zee_LPS.pdf}
+        \includegraphics[width=0.49\textwidth]{figures/event_selection/img_score_zee_LPS.pdf}
+        \includegraphics[width=0.49\textwidth]{figures/event_selection/int_score_zee_LPS.pdf}
     \end{center}
     \caption{\Zee validation plots for the output scores of the image-only network (left) and the full network (right).}
     \label{fig:event_categorisation:int_score_zee}
@@ -1020,7 +1049,8 @@ This network will have the same structure, regularisation, loss and training pro
 Once trained we then evaluate the performance of this network and interpret the features it has built to learn about the disagreement.  
 The performance of the data/simulation discriminant is shown in Figure \ref{fig:event_categorisation:zee_disc_perf}.
 \begin{figure}[h!]
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/ROC_Zee_img_DCNN.pdf}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/event_selection/ROC_Zee_img_DCNN.pdf}
     \caption{\Zee Simulation/data discriminant performance. The score distribution for the simulation and data classes is shown on the left, and the associated ROC curve is shown on the right.} 
     \label{fig:event_categorisation:zee_disc_perf}
 \end{figure}
@@ -1049,7 +1079,7 @@ To verify the feature visualisation we inspect maximally activating images for t
         \includegraphics[width=0.49\textwidth]{figures/event_selection/zee_max_act_mean_data.pdf}
     \end{center}
     \caption{Mean images for top and bottom 5\% maximally activating events. 
-             Score selection for simulation-like is shown on the left, selection for data-like is on the right}
+             Score selection for simulation-like is shown on the left, selection for data-like is on the right.}
     \label{fig:event_categorisation:zee_data_sim_max_act}
 \end{figure}
 
@@ -1065,9 +1095,10 @@ We now evaluate the model over samples that explicitly differ in their modelling
 These consist of up and down variations that should encompas the behaviour of real data.
 The resulting score distribution variation and the variations in the ROC curves for both image-only and the full model are shown in Figure \ref{fig:event_categorisation:DCNN_psvar}.
 \begin{figure}[h!]
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/imgonly_PSvar_PS.pdf}
-    \includegraphics[width=0.7\textwidth]{figures/event_selection/int_PSvar_PS.pdf}
-    \caption{Variation in the score distributions and ROC curves with parton shower and underlying event variation. The top pair corresponds to the image-only model (step 1 of training) and the bottom plots correspond to the full model used in the tag. }
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/event_selection/imgonly_PSvar_PS.pdf}
+    \includegraphics[width=0.75\textwidth]{figures/event_selection/int_PSvar_PS.pdf}
+    \caption{Variation in the score distributions and ROC curves with parton shower and underlying event variation. The top pair corresponds to the image-only model (step 1 of training) and the bottom plots correspond to the full model used in the tag.}
     \label{fig:event_categorisation:DCNN_psvar}
 \end{figure}
 
@@ -1087,7 +1118,7 @@ Finally, the common criticism that CNNs are black boxes is shown not to be the c
 Furthermore we can use the above techniques to analyse data/simulation compatibility and isolate features from regions of disagreement. 
 
 
-\section{Untagged}
+\section[Untagged]{Untagged}
 If the candidate is not assigned to any of the other tags it is considered for inclusion in a final inclusive tag: Untagged. 
 The Untagged tag consists of four categories defined as exclusive selections on the diphoton BDT score and consists mostly of gluon fusion events. 
 If an event does not meet the lowest requirement it is discarded from the analysis.

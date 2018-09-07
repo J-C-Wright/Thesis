@@ -2,7 +2,7 @@
 \label{chap:machine_learning}
 
 
-\newpage
+%\newpage
 
 \section{Fundamentals}
 The field of Machine Learning is concerned with algorithms with the capacity to `learn' from experience, this may be contrasted with algorithms that achieve some task with a set of statically-defined steps \cite{DeepLearningBook}. The ability to learn allows these algorithms to solve problems which may be too complex for a collection of explicitly defined instructions. 
@@ -12,69 +12,93 @@ This chapter will give an overview of machine learning, and deep learning in par
 \subsection{The Learning Process}
 
 \subsubsection{Problem Formulation}
-The data in a machine learning problem are often formulated in terms of a vector space $X = \mathds{R}^{n}$, where each dimension is an observable quantity referred to as a `feature' and a particular datum corresponds to a single feature vector $\vec{x} \in X$ \cite{elementsOfStatsLearning}. A dataset is represented as a set of feature vectors $\vec{x}_{i}$ and each can be considered to be drawn from some underlying probability distribution $F(\vec{x})$.
+The data in a machine learning problem are often formulated in terms of a vector space $X = \mathds{R}^{n}$, where each dimension is an observable quantity referred to as a `feature' and a particular datum corresponds to a single feature vector $\vec{x} \in X$ \cite{elementsOfStatsLearning}. A dataset is a set of feature vectors $\vec{x}_{i}$ sampled from some underlying probability distribution $P(\vec{x})$: the data-generating distribution.
 A machine learning algorithm can then be considered \cite{elementsOfStatsLearning} to consist of a model $f$, 
 \begin{equation}
-    f:(\vec{x},\vec{w})\rightarrow{Y}
+    f(\vec{x},\vec{w})\rightarrow{Y}
 \end{equation}
 a function that maps from a feature vector $\vec{x}$ to an outcome $Y$ given a vector of parameters $\vec{w}$; a loss function $L$
 \begin{equation}
-    L:(f,\vec{x})\rightarrow{\mathds{R}}
+    L(f,\vec{x})\rightarrow{\mathds{R}}
 \end{equation}
 that measures a notion of performance given the model, a set of feature vectors and sometimes the desired outcome; 
 and finally, an optimisation scheme that tunes the parameters of the model with respect the loss to drive the learning process.
 
 
 Learning is said to occur when the model's performance at some class of tasks $T$, as measured by some performance measure $P$, improves given experience $E$ \cite{Learning}.
-There are many classes of task that depend on the dataset and the desired outcome, but the two main classes of interest are classification and regression \cite{DeepLearningBook}:
+There are many types of task that depend on the dataset and the desired outcome, but the two main tasks of interest are classification and regression \cite{DeepLearningBook}:
 \begin{itemize}[noitemsep]
-    \item Classification tasks aim to predict a class given a feature vector, $f:\mathds{R}^{n}\rightarrow{}\{1,\dots,k\}$.
+    \item Classification tasks aim to predict one of $k$-many classes given a feature vector, $f(\vec{x})\rightarrow{}y$ where $y\in\{1,\dots,k\}$.
 This is often an integer class label but can be a probability distribution over classes. An example of a classification problem from physics would be signal-background event discrimination where we attempt to classify events into background-like or signal-like classes.
-    \item Regression tasks aim to predict a continuous value given the input features, $f:\mathds{R}^{n}\rightarrow\mathds{R}$. An example of a regression task in physics would be detector calibration where we attempt to predict the true value from the measured value. 
+    \item Regression tasks aim to predict a continuous value given the input features, $f(\vec{x})\rightarrow{}y$ where $y\in\mathds{R}$. An example of a regression task in physics would be detector calibration where we attempt to predict the true value from the measured value. 
 \end{itemize}
-In addition to these main classes of task there are others such as structured prediction that attempts to predict more complicated structures such as trees and lists, and many others. 
+In addition to these main tasks there are others such as structured prediction that attempt to predict more complicated structures such as trees and lists.
 
 
 The experience that the model receives depends on the data that the model is exposed to during optimisation, and can be split into two broad categories \cite{DeepLearningBook}:
 \begin{itemize}[noitemsep]
-    \item Supervised machine learning algorithms experience target values $y$ as well as the input features $x$. They will experience multiple examples of feature vectors and attempt to reconstruct the correct value, with the loss calculated given the target. An example would be a classifier trained on simulated data where we know the true signal-background class label. 
-    \item Unsupervised algorithms do not have access to target values and will attempt to infer information about the structure of the data such as clusters.
+    \item Supervised machine learning algorithms experience target values $y$ as well as the input features $x$ and learn conditional probabilities $P(\vec{x}|y)$.  
+          An example would be a classifier trained on simulated data where we know the true signal-background class label. 
+    \item Unsupervised algorithms do not have access to target values and will attempt to learn properties of the data-generating distribution itself such as clusters.
+          An example of this would be a Gaussian mixture model used in calorimetric clustering.
 \end{itemize}
 
 
 
 \subsubsection{Training and Evaluation}
-
-The learning process is also referred to as `training' and has a different objective to a typical optimisation problem. Rather than just finding the parameters giving the optimal loss over the training dataset, we require the model to find useful behaviours that generalise to new data \cite{DeepLearningBook}. 
+The learning process is also referred to as `training' and has a different objective to a typical optimisation problem. Rather than just finding the parameters giving the optimal loss over the training dataset, we require the model to find useful properties that generalise to new data \cite{DeepLearningBook}. 
 To estimate the generalisation power of a model, we evaluate performance over another unseen dataset, the test set, which should be chosen such that it is representative of the distribution of the whole dataset.
 
 
 During training most machine learning algorithms will use some form of gradient-based optimisation where one descends the gradient of $L$ with respect to $\vec{w}$ to find the minimum of $L$,
 \begin{equation}
-    \nabla_{\vec{w}}L = 0.
+    \vec{\nabla}_{\vec{w}}L = 0.
 \end{equation}
 The most conceptually simple approach is to evaluate this expression over the entire training set. However, this is often impractical for large datasets with a large population or high dimensionality. 
-
-An alternative is to use stochastic gradient descent (SGD) \cite{DeepLearningBook}. With SGD we descend the gradient in steps where each step is performed by evaluating the gradient with small batches of training data (minibatches). 
-The parameters are then updated as
+An alternative is to use stochastic gradient descent (SGD) \cite{DeepLearningBook}. In SGD the optimiser evaluates the gradient with small batches of training data (minibatches). 
+The parameters of the model are then updated as
 \begin{equation}
-    \vec{w} \rightarrow \vec{w} - \eta\nabla_{\vec{w}}L
+    \vec{w} \rightarrow \vec{w} - \eta\vec{\nabla}_{\vec{w}}L
 \end{equation}
-where $\eta$ is the learning rate, a parameter that controls the size of the steps at each parameter update. As we repeat this step the model parameters should ideally converge to a global optimum, but there are often local optima that the training can get settle into. 
+where $\eta$ is the learning rate, a non-learned parameter that controls the size of the change at each parameter update. 
+As we iterate the model parameters should ideally converge to a global optimum. 
+This is not always guaranteed, as there are sometimes local optima that the optimisation can get stuck in. 
+
+More intuitively, the loss as a function of the model parameters is like a mountainous landscape. 
+Each optimiser iteration during SGD is like a hiker evaluating the gradient at their location and taking a step in the direction of the negative gradient.
+
+SGD is often extended with `momentum' where the update depends on accumulated steps over time: the gradient changes the parameters indirectly through a `velocity'. 
+In practise this often gives better results more quickly \cite{CS231n}.
+This is implemented mathematically as,
+\begin{equation}
+    \begin{split}
+        \vec{v} &\rightarrow \mu\vec{v} - \eta\vec{\nabla}_{\vec{w}}L \\
+        \vec{w} &\rightarrow \vec{w} + \vec{v}
+    \end{split}
+\end{equation}
+where $\vec{v}$ is the velocity and $\mu$ is a non-learned parameter referred to as momentum but actually behaves more like a coefficient of friction. 
+Typical values for $\mu$ are between $0.5$ and $0.9$ so it decays the accumulated velocity and has a damping effect on oscillation during training. 
+In contrast to the hiker example, SGD with momentum is more like a skiier. 
+The skiier begins with zero velocity but accumulates velocity over time as they descend the mountain in the direction of negative gradient. 
+
+
+
+
+
 
 
 \subsubsection{Example: linear regressor}
 Now we have the ingredients of a machine learning algorithm, we can consider the simple example of a linear regressor. 
-
-The dataset will consist of $n$-many points of single features, and the value to predict. These are distributed as a linear function with $\vec{w} = (-2,2)$ and a random noise component drawn from a Gaussian distribution.
-
 The task of linear regression is to predict the value $y$ given a collection of features. In this formulation we will consider a single feature $x$, and the algorithm will have access to the $y$ during training, making this a supervised learning problem. 
 
 The formula of the model is
 \begin{equation}
     \hat{y} = w_{1} + w_{2}x,
+    \label{equation:machine_learning:linear_model}
 \end{equation}
 and the term linear refers to the model parameters, powers of $x$ are considered features. 
+The dataset will consist of $n$-many points of single features, and the value to predict. 
+These are distributed as a linear function of $x$ like the model (Equation \ref{equation:machine_learning:linear_model}) with $\vec{w} = (-2,2)$, plus Gaussian noise.
 The loss will be the mean squared error,
 \begin{equation}
     L = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}_{i}-y_{i})^{2},
@@ -97,27 +121,23 @@ and a single SGD step will be
 \end{equation}
 where $m$ is the minibatch size.
 
-The training is performed for $500$ minibatches with a learning rate of $0.0001$ and parameters initialised to $1$. The training process and final outcome of this algorithm are shown in Figure \ref{fig:machine_learning:lin_example}.
-
+Training is performed for $500$ minibatches with a learning rate of $0.0001$ and parameters initialised to $\vec{w}=(1,1)$. 
+A small learning rate was chosen deliberately to show the progress of the model during training. 
+The training process and final outcome of this algorithm are shown in Figure \ref{fig:machine_learning:lin_example}.
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/loss_history.pdf}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/w1_w2_history.pdf}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/data_and_results.pdf}
     \end{center}
-    \caption{Training a linear regressor. Loss history over training (left), the trajectory of the model parameters in parameter space during training (centre), and the final result with the result in read and the true value in blue, an example minibatch is shown by the black points (right).}
+    \caption{Training a linear regressor. Loss history over training (left), the trajectory of the model parameters in parameter space during training (centre), and the final result with the result in red and the true value in blue. An example minibatch is also shown by the black points (right).}
         \label{fig:machine_learning:lin_example}
 \end{figure}
 
 
 
 
-
-
-
-
 \subsection{Model Capacity and Generalisation}
-
 The space of functions that a model can draw upon to describe observed data is referred to as the model's hypothesis space.
 Taking the example of a linear regressor, the hypothesis space can be expanded by using higher-order polynomials
 \begin{equation}
@@ -128,7 +148,8 @@ Specifically, over or under-capacity can lead to generalisation error from two s
 
 If the capacity is too small, this leads to `underfitting'. Here the model does not have enough descriptive power to fit the data and we get generalisation error due to bias. If there is too much capacity, the model will find a function fit to the training set arbitrarily well and have large variance. This will cause another sort of generalisation error called `overfitting'. Examples of how inappropriate capacity can lead to a failure to generalisation error are shown in Figure \ref{fig:machine_learning:overfitting} where a linear regressor is trained with different order polynomials. 
 \begin{figure}[h!]
-        \includegraphics[width=0.6\textwidth]{figures/machine_learning/capacity.pdf}
+    \centering
+        \includegraphics[width=0.7\textwidth]{figures/machine_learning/capacity.pdf}
     \caption{Linear regressors with different order polynomials fitted to the same data. }
         \label{fig:machine_learning:overfitting}
 \end{figure}
@@ -144,20 +165,21 @@ where $\lambda$ is a value scaling the strength of the regulariser's effect. The
 Two common forms of regularisation are penalty terms based on the squared-$L^{2}$ and $L^{1}$ norm of the model's weight vector
 \begin{equation}
     \begin{split}
-        \lambda||\vec{w}||^{2}_{2} =& \lambda\sum_{i=0}^{n}w_{i}^{2} \\
-        \lambda||\vec{w}||_{1} =& \lambda\sum_{i=0}^{n}|w_{i}|. \\
+        \lambda\Omega(\vec{w}) = \lambda||\vec{w}||^{2}_{2} =& \lambda\sum_{i=0}^{n}w_{i}^{2} \\
+        \lambda\Omega(\vec{w}) = \lambda||\vec{w}||_{1} =& \lambda\sum_{i=0}^{n}|w_{i}|. \\
     \end{split}
 \end{equation}
 These two regularisers have a different effect on the model parameters: $L^{2}$ regularisation expresses a preference for using each parameter a small amount, $L^{1}$ regularisation will prefer sparsity where a few parameters are large, and the rest close to zero. 
-A comparison of a range of values for both regularisers applied to a linear regressor with a $9^{\mathrm{th}}$-degree polynomial is shown in Figure \ref{fig:machine_learning:reg_example}. 
+A comparison of a range of values for both regularisers applied to a linear regressor with a \nth{9}-degree polynomial is shown in Figure \ref{fig:machine_learning:reg_example}. 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.49\textwidth]{figures/machine_learning/L2_reg_plot.pdf}
-        \includegraphics[width=0.49\textwidth]{figures/machine_learning/L1_reg_plot.pdf}
+        \includegraphics[width=0.7\textwidth]{figures/machine_learning/L2_reg_plot.pdf}
+        \includegraphics[width=0.7\textwidth]{figures/machine_learning/L1_reg_plot.pdf}
     \end{center}
     \caption{Fits for different regularisation strengths with $L^{2}$ (left) and $L^{1}$ (right) regularisation data drawn from a uniformly sample of $y=1+x^{2}$ plus noise. The red curve is the unregularised fit, the orange curve is the result with the lowest loss with respect to the validation set (triangles). The bar charts show the parameter values of the overfitted result and optimal regularised result.} 
         \label{fig:machine_learning:reg_example}
 \end{figure}
+
 These models have been evaluated for generalisation error on another unseen dataset: the `validation' set. The reason to use this rather than the test set, is that when we choose a hyperparameter value we are essentially doing another fit to data. If we do this on the test set we may fit to unrepresentative patterns in the test data and overfit again. Evaluation on the test set is then no longer a good measurement of generalisation. 
 
 
@@ -168,8 +190,7 @@ These models have been evaluated for generalisation error on another unseen data
 
 
 \subsection{Ensembles}
-
-It is sometimes useful to train multiple models (base learners) and combine them in some way, for example by some weighted sum of their outputs, chaining them together, or some other approach. This technique is called ensembling, and one of the most popular machine learning algorithms in particle physics is an example of this: boosted decision trees (BDTs) \cite{MiniBooneBDT}. This subsection will give only a narrow overview of this area as relevant to the CMS Higgs diphoton analysis: we will focus on a single ensembling method, gradient boosting, and a single base learner the decision tree.
+It is sometimes useful to train multiple models (base learners) and combine them in some way, for example by some weighted sum of their outputs, chaining them together, or some other approach. This technique is called ensembling, and one of the most popular machine learning algorithms in particle physics is an example of this: boosted decision trees (BDTs) \cite{MiniBooneBDT}. This subsection will give only a narrow overview of this area as relevant to the CMS Higgs diphoton analysis: we will focus on a single ensembling method, gradient boosting, and a single base learner: the decision tree (DT).
 
 
 \subsubsection{Decision Trees}
@@ -177,7 +198,7 @@ Decision trees \cite{DecisionTrees} are binary tree structures that recursively 
 Decision trees are trained by calculating a collection of possible splits and then choosing one optimising a measure of purity in classification case, or a loss function such as mean-squared error in the regression case. This process is usually stopped once the leaf nodes have reached some optimal value, or a maximum depth has been reached. 
 Decision trees are also regularised by pruning which removes branches that use unimportant features and give no overall performance improvement. 
 
-Decision trees have advantages such as their simplicity, interpretability, and their ability to handle different types of data. However, they also have various disadvantages such as their cuts being aligned with the dimensions of the feature space, so diagonal decision boundaries need to be constructed out of many orthogonal cuts, their tendency to get stuck in local minima, and their training variance leading to overfitting. These disadvantages can be mitigated by using decision trees as base learners in an ensemble producing an algorithm stronger than its constituent parts. 
+Decision trees have advantages such as their simplicity, interpretability, and their ability to handle different types of data. However, they also have various disadvantages such as their cuts being aligned with the dimensions of the feature space (so diagonal decision boundaries need to be constructed out of many orthogonal cuts), their tendency to get stuck in local minima, and their training variance leading to overfitting. These disadvantages can be mitigated by using decision trees as base learners in an ensemble producing an algorithm stronger than its constituent parts. 
 
 \subsubsection{Gradient Boosting of Decision Trees}
 Generally, boosting algorithms \cite{Boosting} construct a strong learner from base learners by iteratively training base learners, compensating for earlier weakness in some way. Each base learner is then added together in a weighted fashion to produce the final ensemble.
@@ -220,7 +241,7 @@ where $\eta$ is a learning rate parameter and controls steps size just like in n
 
 % No free lunch theorem
 The No Free Lunch theorem of machine learning \cite{NoFreeLunch} states that, averaged over all possible data-generating distributions, every classification algorithm has the same error rate when classifying previously unobserved points.
-This result essentially means that no machine learning algorithm is universally superior, but it does not mean that they are all equally-powerful for a particular task. 
+This result essentially means that no machine learning algorithm is universally superior, but it does not mean that they are all equally powerful for a particular task. 
 The theorem only holds averaged over all distributions, and some algorithms will indeed perform better given specific focus. We must make assumptions given prior knowledge and build our algorithms accordingly.
 This will inform how we choose the model, how we measure performance, and how we optimise the hyperparameters. 
 
@@ -248,7 +269,8 @@ Furthermore one must use assumptions from prior knowledge of dataset size, dimen
 % Hyperparameters
 Once the model is chosen, hyperparameters can be selected with a variety of optimisation approaches. However, because the underlying function mapping from hyperparameters to performance values is unknown we cannot use gradient-based methods. Here we use derivative-free optimisation methods, two of which will be presented here and used later in this thesis: grid search and Bayesian optimisation. 
 
-Before we can optimise we need to define a performance measure to optimiser with respect to. A common measure for binary classifiers, and the one used in this thesis, is the area under the `Reciever Operating Characteristic' curve (AUROC) demonstrated in Figure \ref{fig:machine_learning:ROC_curve}. 
+Before we can optimise we need to define a performance measure to optimise with respect to. A common measure for binary classifiers, and the one used in this thesis, is the area under the `Reciever Operating Characteristic' curve (AUROC).
+ROC curves are constructed by cutting on the output score of a machine learning model and plotting the false positive rate versus the true positive rate. The area under this curve will be between 1 and 0.5 where 1 indicates a perfect classifier and 0.5 is equivalent to random guessing. This is demonstrated in Figure \ref{fig:machine_learning:ROC_curve}. 
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.99\textwidth]{figures/machine_learning/ROC_figure.pdf}
@@ -256,7 +278,6 @@ Before we can optimise we need to define a performance measure to optimiser with
     \caption{ROC curve construction. On the left is the definition of the True Positive Rate (TPR) and the False Positive Rate (FPR) where TP is true positive, FP is false positive, TN is true negative and FN is false negative. In the centre and right are the distributions that are thresholded with the coloured lines in the central plot being cuts that correspond to the same coloured point on the right plot, a ROC curve. }
         \label{fig:machine_learning:ROC_curve}
 \end{figure}
-ROC curves are constructed by cutting on the output score of a machine learning model and plotting the false positive rate versus the true positive rate. The area under this curve will be between 1 and 0.5 where 1 indicates a perfect classifier and 0.5 is equivalent to random guessing. 
 
 
 % Optimisation with grid search
@@ -269,7 +290,7 @@ Bayesian optimisation \cite{BayesOpt} is part of a class of optimisation algorit
 The method consists of two main steps:
 \begin{enumerate}[noitemsep]
     \item using evaluated points in the hyperparameter space, calculate a posterior expectation of the performance as a function of the hyperparameters
-    \item evaluate the performance at a new point maximising an 'acquisition function', a function that determines how optimal a point in the hyperparameter space is to evaluate. 
+    \item evaluate the performance at a new point maximising an 'acquisition function'. This is a function that trades off exploration versus exploitation in choosing the next optimal point to sample given the posterior expectation.
 \end{enumerate}
 Bayesian optimisation makes efficient use of sampling and is more appropriate when evaluating a single point in the hyperparameter space is expensive. The difficulty of the optimisation will still increase rapidly with the dimensionality so one should consider, where possible, the optimisation as a set of orthogonal problems.  
 These two methods can be combined where an initial grid search is performed, and the set of evaluated points are used in the first iteration of the Bayesian optimisation. 
@@ -278,10 +299,9 @@ This step is called a `warm start'.
 Often we do not know the form of the data-generating distribution a priori. Therefore a good approach to choosing and tuning a model is to have as much capacity as design constraints allow and then restrict this capacity with regularisation using an optimisation over the validation set as described earlier.
 
 \section{Deep Learning}
-
-Deep learning offers a powerful approach to supervised learning problems based on artificial neural networks (ANNs), especially when there are large quantity of input features. 
-The name of the field refers to the depth of the ANNs, as depth increases they can model ever-more complex functions of the input data. 
-This section will give a description of ANNs, how they are trained and regularised, the challenges that come with increasing network depth, and finally convolutional neural networks and specifically dense convolutional neural networks.  
+Deep learning is a powerful approach to machine learning problems based on artificial neural networks (ANNs), especially with a large quantity of input features. 
+The name of the field refers to the depth of the ANNs: as depth increases they can model ever-more complex functions of the input features. 
+This section will give a description of ANNs, how they are trained and regularised, the challenges that come with increasing network depth, and finally convolutional neural networks including dense convolutional neural networks.  
 
 \subsection{Artificial Neural Networks}
 
@@ -293,8 +313,7 @@ Artificial neurons receive a weighted collection of input signals and then `fire
 A schematic of an artificial neuron is shown in Figure \ref{fig:machine_learning:neuron_and_activation} along with two commonly used activation functions. 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{figures/machine_learning/neuron.pdf}
-        \includegraphics[width=0.4\textwidth]{figures/machine_learning/activation_functions.pdf}
+        \includegraphics[width=0.9\textwidth]{figures/machine_learning/neuron_and_activation.pdf}
     \end{center}
     \caption{Schematic of an artificial neuron(left) and two activation functions (right).}
         \label{fig:machine_learning:neuron_and_activation}
@@ -312,11 +331,12 @@ ANNs come in many different architectures, but the ones we will consider here wi
 These networks are constructed from layers of neurons where each layer feeds into the ones after it, starting with the input layer, then often multiple hidden layers, with the final output layer giving the prediction. 
 The most common layer type used is the `fully-connected' layer where each neuron in layer $l$ is connected to every neuron in layer $l+1$. 
 
-A classic feedforward architecture is the multi-layer perceptron (MLP) consisting of a series of fully-connected layers. Often the outputs $\vec{o}$ of these networks are fed through the `softmax' function which maps these outputs to a vector of probabilities that sum to one,
+A classic feedforward architecture is the multi-layer perceptron (MLP) consisting of a series of fully-connected layers. Often the outputs $\vec{o}$ of these networks (referred to as `logits') are transformed with the `softmax' function,
 \begin{equation}
     \sigma(\vec{o})_{i} = \frac{e^{o_{i}}}{\sum_{k=1}^{N}e^{o_{k}}},
 \end{equation}
 where $N$ is the number of outputs. 
+This maps the vector of network logits to a vector of probabilities that sum to one.
 
 When we connect multiple layers together we are constructing a model capable of performing a chain of feature space transformations $\phi(x_{i})$ where each layer produces features for the one that follows it, and the final layer can place a linear decision boundary on this transformed feature space \cite{DeepLearningBook}. 
 The effect of composing layers together can be seen by comparing a model with no hidden layers versus a model with a single hidden layer on data that are not linearly separable (Figure \ref{fig:machine_learning:mlp_example}).
@@ -360,9 +380,9 @@ Each of these will cause the network to behave in a different way: the hinge los
 %Backprop
 Once the loss has been defined, neural networks are trained via gradient descent with an algorithm called back-propagation \cite{Backprop}. A single iteration works as follows:
 \begin{enumerate}[noitemsep]
-    \item Forward pass: inputs are repeatedly repeatedly transformed from the first layer to the last with product sums dependent on $w_{ij}^{k}$ and then by the activation functions. The final output $\hat{y}$, the input to each activation, and the output from each activation are stored for the next step. 
-    \item Backward pass: this works like the forward pass but from the output layer backwards to the input calculating $\partial{L}/\partial{w_{ij}^{k}}$ as it goes. The ``input'' is the output layer's loss terms and these are repeatedly transformed by product sums with the weights $w_{ij}^{k}$ and then multiplied by the values of the derivatives of the activation function with inputs from the forward pass.  
-    \item Weight update: after the backward pass, we now have the gradients required to update the weights by typical gradient descent.
+    \item Forward pass: inputs are repeatedly transformed from the first layer to the last with product sums dependent on $w_{ij}^{k}$ and then by the activation functions. The final output $\hat{y}$, the input to each activation, and the outputs from each activation are stored for the next step. 
+    \item Backward pass: this works like the forward pass but from the output layer backwards to the input calculating $\partial{L}/\partial{w_{ij}^{k}}$ as it goes. The `input' is the output layer's loss terms and these are repeatedly transformed by product sums with the weights $w_{ij}^{k}$ and then multiplied by the values of the derivatives of the activation function with inputs from the forward pass.  
+    \item Weight update: after the backward pass, we now have the gradients required to update the weights by gradient descent.
 \end{enumerate}
 
 
@@ -443,7 +463,7 @@ This can be interpreted as a volume of neurons each of whom only see a small por
     \begin{center}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_neuron.pdf}
         \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_layer.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_transforms.pdf}
+        %\includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_transforms.pdf}
     \end{center}
     \caption{Convolution layer: a single neuron connected and its connection to a $4\times{}4$ patch of input (left), an image patch and neurons in context with an input image \cite{Higgs_photo} (centre), and transformed versions of the input image with random filters (right).}
         \label{fig:machine_learning:convolution}
@@ -460,6 +480,7 @@ Pooling layers are inspired by the local corellation assumption and reduce the s
 This has the dual function of reducing model complexity and increasing the local field of view of later neurons as each later neuron input corresponds to multiple neuron outputs from prior layers. 
 The two main types of mapping are the maximum value of the patch and average the average value, referred to as max pooling and average pooling respectively (Figure \ref{fig:machine_learning:pooling}). 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.45\textwidth]{figures/machine_learning/pooling.pdf}
     \caption{An example input to a pooling layer is shown on the left with two outputs on the right from max pooling (above) and average pooling (below).}
         \label{fig:machine_learning:pooling}
@@ -472,6 +493,7 @@ Average pooling takes the average in the region of interest and does not lose as
 \subsubsection{Classic Architecture}
 The classic example of a CNN \cite{CS231n} consists of interleaved convolutional and pooling layers. At the end of these, the feature map is flattened to a 1D array of neurons and the rest of the network has the structure of an MLP (Figure \ref{fig:machine_learning:classic_CNN}). 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.85\textwidth]{figures/machine_learning/convnet_arch.pdf}
     \caption{A typical CNN architecture with three convolutional layers (grey) containing neurons with a restricted FOV (green), pooling layers for downsampling (orange), a flattening of the final feature map (purple) and a set of fully-connected layers.}
         \label{fig:machine_learning:classic_CNN}
@@ -488,8 +510,9 @@ Instead of interleaved convolution and pooling layers dense CNNs have dense bloc
 \subsubsection{Composite Layers}
 These layers are the basic unit constituting the dense blocks. They consist of (Figure \ref{fig:machine_learning:composite_layer}) a batch normalisation, a ReLU activation function, a $1\times{}1$ convolution for compressing the depth of the input volume, a second batch normalisation, a second ReLU activation and then an ordinary convolution that outputs a feature volume of a set length $k$ called the growth rate. The $1\times{}1$ convolution is called a bottleneck and serves to reduce model complexity and perform feature reduction. These layers, as formulated in this thesis, have two hyperparameters: the depth of the output feature volume, the `growth rate' and the size (width and height) of the filter in the second convolution. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.75\textwidth]{figures/machine_learning/composite_layer.pdf}
-    \caption{A composite layer}
+    \caption{The separate components of a composite layer.}
         \label{fig:machine_learning:composite_layer}
 \end{figure}
 
@@ -498,6 +521,7 @@ These layers are the basic unit constituting the dense blocks. They consist of (
 Dense blocks consist of $d$-many composite layers where there is direct connection from each layer to all those after it (Figure \ref{fig:machine_learning:dense_block}). 
 In other words each layer receives all of the feature volumes produced before it, concatenated along the depth axis. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.90\textwidth]{figures/machine_learning/dense_block.pdf}
     \caption{A dense block with depth 5 and growth rate 4. Input feature volume is shown by the stack of white squares, each composite layer is shown as a grey square and the output feature volume of the layer is shown by the coloured layered stack. Coloured arrows show the which layers each feature volume is input to. The final concatenated output of the dense layer is shown by the white and coloured stack on the right.}
         \label{fig:machine_learning:dense_block}
@@ -509,6 +533,7 @@ Each dense block has a number of hyperparameters. In the formulation used in thi
 Transition layers are pooling layers with average pooling, but with batch normalisation applied to the input and a $1\times{}1$ convolution for compressing the input feature volume before the pooling operation (Figure \ref{fig:machine_learning:transition_layer}). 
 This compression of the feature volume performs feature reduction where less useful features are removed. It will also reduce model complexity and overfitting. This reduction is controlled by another hyperparameter: the reduction factor. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.75\textwidth]{figures/machine_learning/transition_layer.pdf}
     \caption{A transition layer with a reduction factor of 0.5.}
         \label{fig:machine_learning:transition_layer}

@@ -1,9 +1,9 @@
+
 \chapter{Apparatus}
 \label{chap:apparatus}
 
 %\chapterquote{This thing, what is it in itself, in its own constitution? What is its substance and material?}{Marcus Aurelius}
 
-\newpage
 
 \section{Introduction}
 This chapter describes the experimental apparatus used to produce the 2016 proton-proton collision dataset used in this thesis. A description of the means of collision production, the Large Hadron Collider (LHC), will be given and their measurement with the Compact Muon Solenoid (CMS) will be described in particular detail. The CMS design and operation described here will correspond to the 2016 running period.
@@ -17,6 +17,7 @@ The remainder of this section will be solely concerned with the LHC's proton-pro
 
 Before collisions occur at the LHC interaction points the beams must be produced and conditioned with a collection of accelerators \cite{CERN_accelerator_complex} before injection into the LHC (Figure \ref{fig:apparatus:lhc_chain}).
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.9\textwidth]{figures/apparatus/accel_chain.pdf}
     \caption{A schematic view of the LHC accelerator chain for proton-proton operation.}
     \label{fig:apparatus:lhc_chain}
@@ -53,6 +54,7 @@ An angular coordinate system is commonly used in physics analyses which consists
 Generally, the high $|\eta|$ regions closer to the beamline are referred to as forward, and the low $|\eta|$ region is referred to as central. 
 In addition, the radial distance in the $x$, $y$ plane $r$ is sometimes used. The different coordinates used at CMS are summarised in Figure \ref{fig:apparatus:coords}. This thesis will use the $(\phi,\eta,z)$ coordinate system. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.45\textwidth]{figures/apparatus/CMS_coords.pdf}
     \caption{Coordinate systems used at CMS. Example values for the pseudorapidity $\eta$ are shown by the red arrows.}
     \label{fig:apparatus:coords}
@@ -65,14 +67,14 @@ The LHC produces proton-proton bunch crossings at a high rate (40\,MHz) and this
 
 The physics goals of CMS include the discovery and measurement of the Higgs boson and searches for supersymmetry amongst other topics like extra gauge bosons, extra dimensions and heavy ion collisions. 
 The CMS Higgs physics programme has prioritised searches for the Higgs boson in the leptonic final states as well as the diphoton final state as these have superior signal separation potential and mass resolution in the LHC collision environment when compared to hadronic searches. For supersymmetry searches one expects events with a significant degree of missing-transverse energy ($E_{T}^{\mathrm{miss}}$) and this, along with maximising the acceptance of other analyses, motivates the hermetic design of CMS. Therefore, the main CMS performance goals were decided to be \cite{CMSatLHC}:
-\begin{itemize}%[leftmargin=.5in,noitemsep]
+\begin{itemize}[noitemsep]%[leftmargin=.5in,noitemsep]
     \item Good identification of muons and good muon momentum resolution,
     \item Good charged particle momentum resolution and reconstruction efficiency,
     \item Efficient triggering and offline tagging for $\tau$ leptons and $b$ quark jets, 
     \item Good energy resolution for electromagnetically interacting particles over a large geometric area, and $\pi^{0}$ rejection,
     \item Good missing-transverse energy and dijet mass resolution.
 \end{itemize}
-The design of CMS, shown in Figure \ref{fig:apparatus:CMS}, achieves these goals. 
+The design of CMS, shown in Figure \ref{fig:apparatus:CMS}, is driven by these goals. 
 \begin{figure}[h!]
 %    \includegraphics[width=0.9\textwidth]{figures/apparatus/CMS.pdf}
     \begin{center}
@@ -87,7 +89,7 @@ The design of CMS, shown in Figure \ref{fig:apparatus:CMS}, achieves these goals
 
 The general structure of CMS is a classic hermetic design with a main cylindrical section centred around the interaction point called the `barrel' that is then sealed by two `endcaps' this gives a detector with a pseudorapidity range from $-5$ to $5$ that almost covers the entire $4\pi$ solid angle. Both barrel and endcaps consist of multiple concentric detector subsystems with different functionality, all of this is based around the main feature of the CMS detector: its large superconducting solenoid. 
 The CMS solenoid, along with the steel return yoke it is supported by, achieves a high-strength and homogenous magnetic field over a large volume. This field bends the trajectories of charged particles into a helix, and when this bend is measured precisely one can achieve a precise momentum measurement. This meets the performance requirements for momentum resolution of charged particles and especially muons. Within the bore of the solenoid there are three subsystems: the tracker, the electromagnetic calorimeter (ECAL) and the hadron calorimeter (HCAL). The tracker consists entirely of silicon based sensors and performs precise measurements of charged particle trajectories, at the centre are pixel detectors which allow CMS to meet its $\tau$ lepton and $b$-quark jet tagging goals by reconstructing tracks and secondary vertices with great precision. 
-After this, the ECAL measures the energy of electromagnetically-interacting particles with good resolution. This energy resolution allows for excellent mass resolution for dilepton and diphoton objects and is crucial to the measurement of Higgs boson decays to $\gamma\gamma$ and $ZZ^{(*)}$.
+After this, the ECAL measures the energy of electromagnetically interacting particles with good resolution. This energy resolution allows for excellent mass resolution for dilepton and diphoton objects and is crucial to the measurement of Higgs boson decays to $\gamma\gamma$ and $ZZ^{(*)}$.
 Situated around the ECAL, the HCAL measures the energies of neutral hadrons and covers a large area with fine granularity to achieve hermeticity and to meet the objective of good $E_{T}^{\mathrm{miss}}$ measurement.
 Finally, the muon detectors are sited around the outside of the solenoid and cover a large area. These systems are interleaved with the steel return yoke and measure muon trajectories and energy precisely to achieve good muon momentum resolution and particle identification with a fast response. 
 Each of these subdetector systems, with the exception of the tracker, provide fast measurements for the CMS trigger system. This allows CMS to cope with the very high data rate by making fast decisions about whether to keep events.
@@ -99,6 +101,7 @@ Each of these systems will be described in detail in the following subsections. 
 The CMS magnet is a liquid helium cooled superconducting solenoid 12.5\,m in length with a bore of diameter 6\,m and a mass of 220\,t (including all systems operating at cryogenic temperature) \cite{CMSPhysics}. 
 This is situated within a steel return yoke \cite{Yoke} that weighs 12000\,T extends outwards to a diameter of 14\,m and is made of five barrel `wheels' with three layers, and then completed by three disks in each endcap (Figure \ref{fig:apparatus:solenoid_yoke}).
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.5\textwidth]{figures/apparatus/solenoid_yoke.pdf}
     \caption{The CMS solenoid (white) within the steel return yoke (red). Rendering uses \cite{SketchupCMS}.}
     \label{fig:apparatus:solenoid_yoke}
@@ -142,13 +145,14 @@ The entire tracker material budget manages to remain under two radiation lengths
 
 \subsection{Electromagnetic Calorimetry}
 
-The CMS ECAL \cite{CMSEcalTDR} is a calorimeter designed to reconstruct the energy of electromagnetically-interacting particles such as photons with good resolution. In particular the ECAL is aimed at the detection and reconstruction of leptonic and diphoton Higgs final states with good mass resolution within the confines of the CMS solenoid and in LHC operating conditions. To meet these requirements the ECAL must have fine spatial granularity, a large spatial acceptance, a fast response time, and it must capture maximal information from the showers in the restricted space available within the solenoid. 
+The CMS ECAL \cite{CMSEcalTDR} is a calorimeter designed to reconstruct the energy of electromagnetically interacting particles such as photons with good resolution. In particular the ECAL is aimed at the detection and reconstruction of leptonic and diphoton Higgs final states with good mass resolution within the confines of the CMS solenoid and in LHC operating conditions. To meet these requirements the ECAL must have fine spatial granularity, a large spatial acceptance, a fast response time, and it must capture maximal information from the showers in the restricted space available within the solenoid. 
 
 %\subsubsection{Geometry}
 %Overall geometry
 The ECAL as a whole has the following geometry (Figure \ref{fig:apparatus:ecal}): the barrel region (EB) covers a pseudorapidity range of $|\eta|<1.442$, there is then a gap between $1.4442<|\eta|<1.566$, and finally the endcaps (EE) cover the range $1.566<|\eta|<3$. Due to prohibitive radiation and pileup conditions electrons and photons are only measured with precision up to $|\eta|<2.5$. 
 In addition to these subsystems there is the preshower detector (ES) mounted in front of the endcaps that occupies the range $1.54<|\eta|<2.61$. The ES consist of two disks of lead absorber followed by two planes of silicon strip detectors with pitch $1.9$\,mm. This is used for $\pi_{0}$ rejection. 
 \begin{figure}[h!]
+    \centering
     \includegraphics[width=0.9\textwidth]{figures/apparatus/ECAL_alt.pdf}
     \caption{The CMS ECAL with a section removed to show structure \cite{CMSatLHC}.}
     \label{fig:apparatus:ecal}
@@ -219,7 +223,8 @@ It is a sampling calorimeter that uses material to produce particle showers (abs
 
 The structure of the HCAL is shown in Figure \ref{fig:apparatus:hcal}. It consists of a barrel region (HB), two endcaps (HE), a region outside the solenoid (HO), and two forward calorimeters (HF) that take the HCAL acceptance up to $|\eta|<5$. 
 \begin{figure}[h!]
-    \includegraphics[width=0.9\textwidth]{figures/apparatus/HCAL_HF.pdf}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/apparatus/HCAL_HF.pdf}
     \caption{The CMS HCAL with the barrel and endcap sections (left) with part removed to show structure and the forward hadronic calorimeter (right) \cite{SketchupCMS}.}
     \label{fig:apparatus:hcal}
 \end{figure}

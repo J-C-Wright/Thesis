@@ -1,6 +1,8 @@
 
-\documentclass[hyperpdf,bindnopdf,10pt]{hepthesis}
+\documentclass[10pt,twoside,openright]{report}
 
+
+\usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{tikz} 
@@ -11,11 +13,29 @@
 \usepackage{breqn}
 \usepackage{enumitem}
 \usepackage{dsfont}
-\usepackage{amsmath}
 \usepackage{subfig}
 \usepackage{lscape}
 \usepackage{multirow}
 \usepackage{color, colortbl}
+\usepackage[a4paper,width=130mm,top=50mm,bottom=40mm]{geometry}
+\usepackage{setspace}
+\usepackage{epigraph}
+\usepackage[super]{nth}
+\onehalfspacing
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[lo]{\nouppercase{\rightmark}}
+\fancyhead[re]{\nouppercase{\leftmark}}
+\fancyhead[ro,le]{\thepage}
+\cfoot{}
+\renewcommand{\headrulewidth}{1pt}
+\usepackage{url}
+\usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xspace}
+
+\usepackage[font=small, labelfont=bf, justification=raggedright, format=hang]{caption}
+
 
 \definecolor{Gray}{gray}{0.90}
 
@@ -31,61 +51,74 @@
 \definecolor{VHH}{rgb}{0.8,1.0,0.8}
 \definecolor{VHM}{rgb}{0.9,1.0,0.9}
 
-\graphicspath{{images/}}
+\addbibresource{bibliography}
 
-\newcommand{\pt}{{$p_T$ }}
-\newcommand{\SUN}{{\mathrm{SU}(N)}}
-\newcommand{\MET}{{$E_{T}^{miss}$ }}
-\newcommand{\Hgg}{{$\mathrm{H}\rightarrow{\gamma\gamma}$ }}
-\newcommand{\Zee}{{$\mathrm{Z}\rightarrow{\mathrm{e}^{+}\mathrm{e}^{-}}$ }}
-\newcommand{\Zmumu}{{$\mathrm{Z}\rightarrow{\mu^{+}\mu^{-}}$ }}
-\newcommand{\ttH}{{$\mathrm{t}\bar{\mathrm{t}}\mathrm{H}$ }}
-\newcommand{\mgg}{{$m_{\gamma\gamma}$ }}
-\newcommand{\mH}{{$m_{H}$ }}
+\newcommand{\pt}{{$p_T$\xspace}}
+\newcommand{\SUN}{{\mathrm{SU}(N)}\xspace}
+\newcommand{\MET}{{$E_{T}^{\mathrm{miss}}$}\xspace}
+\newcommand{\Hgg}{{$\mathrm{H}\rightarrow{\gamma\gamma}$}\xspace}
+\newcommand{\Zee}{{$\mathrm{Z}\rightarrow{\mathrm{e}^{+}\mathrm{e}^{-}}$}\xspace}
+\newcommand{\Zmumu}{{$\mathrm{Z}\rightarrow{\mu^{+}\mu^{-}}$}\xspace}
+\newcommand{\ttH}{{$\mathrm{t}\bar{\mathrm{t}}\mathrm{H}$}\xspace}
+\newcommand{\mgg}{{$m_{\gamma\gamma}$}\xspace}
+\newcommand{\mH}{{$m_{H}$}\xspace}
 
-\title{Study of Higgs boson production through vector boson fusion at the CMS experiment using a dense convolutional neural network}
-\author{Jack Charles Wright}
+\makeatletter
+\def\thickhline{%
+  \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
+   \reserved@a\@xthickhline}
+\def\@xthickhline{\ifx\reserved@a\thickhline
+               \vskip\doublerulesep
+               \vskip-\thickarrayrulewidth
+             \fi
+      \ifnum0=`{\fi}}
+\makeatother
+
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}%
+\thispagestyle{plain}%
+\newpage%
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\newlength{\thickarrayrulewidth}
+\setlength{\thickarrayrulewidth}{2\arrayrulewidth}
+
 
 \begin{document}
 
-\begin{frontmatter}
-    \input{frontmatter.tex}
-\end{frontmatter}
+%Title page
+\input{titlepage.tex}
+
+\pagenumbering{roman}
+
+\input{frontmatter.tex}
 
 
-\begin{mainmatter}
+\pagenumbering{arabic}
 
-    \cleardoublepage
+\input{chapters/introduction.tex}
 
-    \input{chapters/introduction.tex}
+\input{chapters/theory.tex}
 
-    \input{chapters/theory.tex}
+\input{chapters/apparatus.tex}
 
-    \input{chapters/apparatus.tex}
+\input{chapters/machine_learning.tex}
 
-    \input{chapters/machine_learning.tex}
+\input{chapters/object_reconstruction.tex}
 
-    \input{chapters/object_reconstruction.tex}
+\input{chapters/event_selection_categorisation.tex}
 
-    \input{chapters/event_selection_categorisation.tex}
+\input{chapters/stats_analysis_results.tex}
 
-    \input{chapters/stats_analysis_results.tex}
-
-    \input{chapters/conclusion.tex}
-
-\end{mainmatter}
+\input{chapters/conclusion.tex}
 
 
 \appendix
-\begin{appendices}
-    \input{appendices/vbf_tag_loose_ps_plots.tex}
-    \input{appendices/appendix_placeholder.tex}
-\end{appendices}
+\input{appendices/vbf_tag_loose_ps_plots.tex}
+\input{appendices/appendix_placeholder.tex}
 
-
-\begin{backmatter}
-    \input{backmatter}
-\end{backmatter}
-
-
+\printbibliography
 \end{document}
+

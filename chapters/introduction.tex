@@ -1,7 +1,54 @@
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Introduction}
+%\newpage
+The Standard Model (SM) of particle physics has had its remarkable predictive power demonstrated through many experimental confirmations. 
+At the core of this success is the Higgs field and the way its behaviour radically alters the phenomenology of a pristine, symmetric and massless theory.
+
+The SM consists of a collection of fields whose quanta constitute fundamental matter particles and force mediators, as well as the couplings between them. 
+These couplings determine the interactions in particle physics processes: the signals we observe in experiment. 
+All of these particles, and many of their interactions, have been discovered by generations of high-energy particle physics experiments. 
+This culminated in the completion of the field content of the SM with discovery of the Higgs boson itself in 2012 by the ATLAS and CMS collaborations \cite{ATLAS_Higgs_disc,CMS_Higgs_disc}. 
+
+It is also known that the SM gives an incomplete description of nature. 
+There is no dark matter candidate to explain experimental observations such as the bullet cluster \cite{BulletCluster}, there is no description of the force of gravity, 
+and neutrinos are considered massless when they are known not to be \cite{NeutrinoOscillation}. 
+Various extensions to the SM have been suggested \cite{BSM}, and these can manifest as entirely new particles and as deviations in SM-expected rate for some processes. 
+
+This raises the question of precisely what sort of Higgs boson has been discovered. How does the Higgs field grant mass to the fermions? 
+How does it self-interact and what is the shape of the potential it experiences? Are there any unexpected couplings that alter the Higgs boson's production and decay?
+As we enter the precision measurement era of Higgs physics we aim to answer these questions, and hopefully shed light on physics beyond the SM.
+\\
+
+Precision measurement depends on high-quality data and superior signal extraction.
+The field of machine learning (ML) has produced many algorithms that are used throughout experimental particle physics in both detector operation and data analysis. 
+The discovery of the Higgs boson decaying to a diphoton system (\Hgg) in particular used these techniques in concert with its characteristically clean signal. 
+Here signal extraction is enhanced using information from extra objects characteristic of certain predicted Higgs production modes and an algorithm called a boosted decision tree (BDT). 
+
+BDTs have been a reliable workhorse of particle physics for over a decade \cite{MiniBooneBDT}, but ML has made exceptional leaps in recent years thanks to deep learning (DL).
+In particular, DL applied to image recognition has resulted in powerful approaches that achieve super-human performance \cite{ResNet}. 
+This thesis explores how to use these techniques to improve the extraction of \Hgg events produced via Vector Boson Fusion (VBF). 
+Specifically, VBF signal extraction is reformulated in part as an image classification problem where VBF's characteristic jets of particles are treated as images.  
+\\
+
+This thesis is based on the 2016 \Hgg analysis \cite{HIG-16-040}, and is structured as follows: Chapter \ref{chap:theory} begins by describing the theory underlying the SM, then the SM itself with emphasis on the Higgs sector and its phenomenology. 
+
+Chapter \ref{chap:apparatus} describes the experimental apparatus used to produce and record the proton collision dataset used in this thesis: the Large Hadron Collider (LHC) and the Compact Muon Solenoid (CMS). CMS is described in detail with each detector subsystem's structure and operation explained with emphasis on the electromagnetic calorimeter.
+
+Chapter \ref{chap:machine_learning} presents an introduction to machine learning covering basic theory, how to control model capacity for generalisation performance, ensembles (BDTs), plus how to design and tune an ML algorithm. The chapter then introduces neural networks and deep learning, culminating in the more advanced dense convolutional neural network (DCNN) models used in this thesis. 
+
+Chapter \ref{chap:object_reco} describes how physics objects are reconstructed at CMS with emphasis on photons and how they are formed into \Hgg diphoton candidates.
+
+Chapter \ref{chap:event_select} describes how candidate \Hgg events are categorised by different tags in the analysis for signal enhancement.  
+Each of the tags is described in turn, but VBF will be described and validated in fine detail in both the BDT-based and DCNN-based variants. 
+The DCNN will also be examined to determine what features it has learned to detect using a collection of network interpretation techniques.
+
+Chapter \ref{chap:statistical} describes the final statistical analysis of the categorised \Hgg candidates and the resulting measurements.
+The construction of the statistical models for signal and background are described, and a full description of all of the systematic uncertainties is given. 
+Final results of yields and likelihood scans of signal strength and coupling modifiers performed for analyses with the DCNN-based VBF tags and compared to the BDT-based results. 
+
+Finally, Chapter \ref{chap:conclusions} discusses the conclusions we may draw and possible avenues for future development and research. 
 
 
-\newpage
+
+
