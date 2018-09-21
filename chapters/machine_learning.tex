@@ -5,7 +5,7 @@
 %\newpage
 
 \section{Fundamentals}
-The field of Machine Learning is concerned with algorithms with the capacity to `learn' from experience, this may be contrasted with algorithms that achieve some task with a set of statically-defined steps \cite{DeepLearningBook}. The ability to learn allows these algorithms to solve problems which may be too complex for a collection of explicitly defined instructions. 
+The field of Machine Learning is concerned with algorithms with the capacity to `learn' from experience; this may be contrasted with algorithms that achieve some task with a set of statically-defined steps \cite{DeepLearningBook}. The ability to learn allows these algorithms to solve problems which may be too complex for a collection of explicitly defined instructions. 
 This chapter will give an overview of machine learning, and deep learning in particular, as pertinent to the field of high-energy physics. We begin with the fundamentals of machine learning, then move on to ensembling and decision trees, and finally neural networks and deep learning.  
 
 
@@ -22,7 +22,7 @@ a function that maps from a feature vector $\vec{x}$ to an outcome $Y$ given a v
     L(f,\vec{x})\rightarrow{\mathds{R}}
 \end{equation}
 that measures a notion of performance given the model, a set of feature vectors and sometimes the desired outcome; 
-and finally, an optimisation scheme that tunes the parameters of the model with respect the loss to drive the learning process.
+and finally, an optimisation scheme that tunes the parameters of the model with respect to the loss to drive the learning process.
 
 
 Learning is said to occur when the model's performance at some class of tasks $T$, as measured by some performance measure $P$, improves given experience $E$ \cite{Learning}.
@@ -37,7 +37,7 @@ In addition to these main tasks there are others such as structured prediction t
 
 The experience that the model receives depends on the data that the model is exposed to during optimisation, and can be split into two broad categories \cite{DeepLearningBook}:
 \begin{itemize}[noitemsep]
-    \item Supervised machine learning algorithms experience target values $y$ as well as the input features $x$ and learn conditional probabilities $P(\vec{x}|y)$.  
+    \item Supervised machine learning algorithms experience target values $y$ as well as the input features $x$ and learn properties of the conditional probability distribution $P(\vec{x}|y)$.  
           An example would be a classifier trained on simulated data where we know the true signal-background class label. 
     \item Unsupervised algorithms do not have access to target values and will attempt to learn properties of the data-generating distribution itself such as clusters.
           An example of this would be a Gaussian mixture model used in calorimetric clustering.
@@ -78,16 +78,21 @@ This is implemented mathematically as,
 \end{equation}
 where $\vec{v}$ is the velocity and $\mu$ is a non-learned parameter referred to as momentum but actually behaves more like a coefficient of friction. 
 Typical values for $\mu$ are between $0.5$ and $0.9$ so it decays the accumulated velocity and has a damping effect on oscillation during training. 
-In contrast to the hiker example, SGD with momentum is more like a skiier. 
-The skiier begins with zero velocity but accumulates velocity over time as they descend the mountain in the direction of negative gradient. 
+In contrast to the hiker example, SGD with momentum is more like a skiier: the skiier begins with zero velocity but accumulates velocity over time as they descend the mountain in the direction of negative gradient. 
+
+There are also more advanced optimisation algorithms and an alternative formulation of momentum.
+Nesterov momentum \cite{Nesterov} allows the velocity to carry the evaluation point forward and then the gradient is calculated at this new point. 
+This results in a scheme that `looks forwards' and then corrects.
+Optimisation with Nesterov momentum has better theoretical guarantees for convergence and is often superior to ordinary momentum.
+Adaptive optimisers have a learning rate for each parameter that adapts over training depending on how often the parameter is updated \cite{CS231n}.
+An example of this is Adam \cite{Adam} which also includes classical momentum. A variant on this that uses Nesterov momentum (Nadam \cite{Nadam}) is used to train the DCNNs in this thesis. 
 
 
 
 
 
 
-
-\subsubsection{Example: linear regressor}
+\subsubsection{Example: Linear Regressor}
 Now we have the ingredients of a machine learning algorithm, we can consider the simple example of a linear regressor. 
 The task of linear regression is to predict the value $y$ given a collection of features. In this formulation we will consider a single feature $x$, and the algorithm will have access to the $y$ during training, making this a supervised learning problem. 
 
@@ -121,16 +126,17 @@ and a single SGD step will be
 \end{equation}
 where $m$ is the minibatch size.
 
-Training is performed for $500$ minibatches with a learning rate of $0.0001$ and parameters initialised to $\vec{w}=(1,1)$. 
+Training is performed for $500$ minibatches with a learning rate of $0.0001$, parameters initialised to $\vec{w}=(1,1)$, and $\mu=0.9$ in the training with momentum. 
 A small learning rate was chosen deliberately to show the progress of the model during training. 
 The training process and final outcome of this algorithm are shown in Figure \ref{fig:machine_learning:lin_example}.
+The training with SGD plus momentum shows a much faster convergence to the true model parameter values.
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/loss_history.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/w1_w2_history.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/data_and_results.pdf}
+        \includegraphics[width=1.0\textwidth]{figures/machine_learning/ML_figure_1.pdf}
+        \includegraphics[width=0.9\textwidth]{figures/machine_learning/ML_figure_1_3Dloss.pdf}
     \end{center}
-    \caption{Training a linear regressor. Loss history over training (left), the trajectory of the model parameters in parameter space during training (centre), and the final result with the result in red and the true value in blue. An example minibatch is also shown by the black points (right).}
+    \caption{Training a linear regressor with SGD (blue) and SGD plus momentum (magenta). Top row: loss histories over training (left), the trajectory of the model parameters in parameter space during training (centre), and the final result with the result in red and the true value in black. An example minibatch is also shown by the black points (right).
+            Lower plot: how the optimisation descends the `loss landscape' during training. The surface shows the loss calculated over the entire dataset at once for each parameter value. Each step during training computes an estimation of this surface using the sampled minibatch.}
         \label{fig:machine_learning:lin_example}
 \end{figure}
 
@@ -146,7 +152,7 @@ Taking the example of a linear regressor, the hypothesis space can be expanded b
 When we increase or decrease the size of this space we are increasing or decreasing the model's descriptive power, known as its `capacity' \cite{DeepLearningBook}. If it is inappropriately large or small, the model can experience problems with generalisation.
 Specifically, over or under-capacity can lead to generalisation error from two sources which often need to be traded against each other: bias and variance. Bias is the error that comes from the model approximating the underlying function. Variance is how much the trained model estimate will change if the training dataset is changed \cite{DeepLearningBook}. 
 
-If the capacity is too small, this leads to `underfitting'. Here the model does not have enough descriptive power to fit the data and we get generalisation error due to bias. If there is too much capacity, the model will find a function fit to the training set arbitrarily well and have large variance. This will cause another sort of generalisation error called `overfitting'. Examples of how inappropriate capacity can lead to a failure to generalisation error are shown in Figure \ref{fig:machine_learning:overfitting} where a linear regressor is trained with different order polynomials. 
+If the capacity is too small, this leads to `underfitting'. Here the model does not have enough descriptive power to fit the data and we get generalisation error due to bias. If there is too much capacity, the model will find a function fit to the training set arbitrarily well and have large variance. This will cause another sort of generalisation error called `overfitting'. Examples of how inappropriate capacity can lead to generalisation error are shown in Figure \ref{fig:machine_learning:overfitting} where a linear regressor is trained with different order polynomials. 
 \begin{figure}[h!]
     \centering
         \includegraphics[width=0.7\textwidth]{figures/machine_learning/capacity.pdf}
@@ -155,28 +161,28 @@ If the capacity is too small, this leads to `underfitting'. Here the model does 
 \end{figure}
 In this example, we note that the high-capacity model has been fitted to noise and fails to generalise to unseen data. 
 
-An alternative and more general approach to controlling model capacity is to penalise parts of the hypothesis space rather than remove them. This could be considered infinite penalisation. This way, if we have two functions performing equally well, we can express some sort of preference for which one to choose by adding a term to the loss. This penalty term is called a `regulariser' term \cite{DeepLearningBook} and has the form
+An alternative and more general approach to controlling model capacity is to penalise parts of the hypothesis space rather than remove them. Removing them is equivalent to infinite penalisation. This way, if we have two functions performing equally well, we can express some sort of preference for which one to choose by adding a term to the loss. This penalty term is called a `regulariser' term \cite{DeepLearningBook} and has the form
 \begin{equation}
     \lambda\Omega(\vec{w}),
 \end{equation}
 where $\lambda$ is a value scaling the strength of the regulariser's effect. The variable $\lambda$ is an example of a `hyperparameter', defined as any unlearned parameter of a machine learning algorithm. Furthermore, adding regulariser terms to the loss is an example of regularisation, a broad class of techniques that aim to improve an algorithm's generalisation error. 
 
 
-Two common forms of regularisation are penalty terms based on the squared-$L^{2}$ and $L^{1}$ norm of the model's weight vector
+Two common forms of regularisation are penalty terms based on the squared-$L_{2}$ and $L_{1}$ norm of the model's weight vector
 \begin{equation}
     \begin{split}
         \lambda\Omega(\vec{w}) = \lambda||\vec{w}||^{2}_{2} =& \lambda\sum_{i=0}^{n}w_{i}^{2} \\
         \lambda\Omega(\vec{w}) = \lambda||\vec{w}||_{1} =& \lambda\sum_{i=0}^{n}|w_{i}|. \\
     \end{split}
 \end{equation}
-These two regularisers have a different effect on the model parameters: $L^{2}$ regularisation expresses a preference for using each parameter a small amount, $L^{1}$ regularisation will prefer sparsity where a few parameters are large, and the rest close to zero. 
+These two regularisers have a different effect on the model parameters: $L_{2}$ regularisation expresses a preference for using each parameter a small amount, $L_{1}$ regularisation will prefer sparsity where a few parameters are large, and the rest close to zero. 
 A comparison of a range of values for both regularisers applied to a linear regressor with a \nth{9}-degree polynomial is shown in Figure \ref{fig:machine_learning:reg_example}. 
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.7\textwidth]{figures/machine_learning/L2_reg_plot.pdf}
         \includegraphics[width=0.7\textwidth]{figures/machine_learning/L1_reg_plot.pdf}
     \end{center}
-    \caption{Fits for different regularisation strengths with $L^{2}$ (left) and $L^{1}$ (right) regularisation data drawn from a uniformly sample of $y=1+x^{2}$ plus noise. The red curve is the unregularised fit, the orange curve is the result with the lowest loss with respect to the validation set (triangles). The bar charts show the parameter values of the overfitted result and optimal regularised result.} 
+    \caption{Fits for different regularisation strengths with $L_{2}$ (top) and $L_{1}$ (bottom) regularisation data drawn from a uniformly sample of $y=1+x^{2}$ plus noise. The red curve is the unregularised fit, the orange curve is the result with the lowest loss with respect to the validation set (triangles). The bar charts show the parameter values of the overfitted result and optimal regularised result.} 
         \label{fig:machine_learning:reg_example}
 \end{figure}
 
@@ -253,7 +259,7 @@ This can also be formulated in terms of coverage of a hypervolume (Figure \ref{f
 This issue is a primary motivator for the development of deep learning, and is also something that needs to be considered during hyperparameter optimisation. 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.45\textwidth]{figures/machine_learning/curse_of_dimensionality.pdf}
+        \includegraphics[width=0.5\textwidth]{figures/machine_learning/curse_of_dimensionality.pdf}
     \end{center}
     \caption{Range of the side length to cover a fraction of the volume of a unit cube in up to nine dimensions. The grey lines show the fraction required to cover 25\% of the volume.}
         \label{fig:machine_learning:curse_of_dimensionality}
@@ -269,7 +275,7 @@ Furthermore one must use assumptions from prior knowledge of dataset size, dimen
 % Hyperparameters
 Once the model is chosen, hyperparameters can be selected with a variety of optimisation approaches. However, because the underlying function mapping from hyperparameters to performance values is unknown we cannot use gradient-based methods. Here we use derivative-free optimisation methods, two of which will be presented here and used later in this thesis: grid search and Bayesian optimisation. 
 
-Before we can optimise we need to define a performance measure to optimise with respect to. A common measure for binary classifiers, and the one used in this thesis, is the area under the `Reciever Operating Characteristic' curve (AUROC).
+Before we can optimise we need to define a performance measure to optimise with respect to. A common measure for binary classifiers, and the one used in this thesis, is the area under the `Receiver Operating Characteristic' curve (AUROC).
 ROC curves are constructed by cutting on the output score of a machine learning model and plotting the false positive rate versus the true positive rate. The area under this curve will be between 1 and 0.5 where 1 indicates a perfect classifier and 0.5 is equivalent to random guessing. This is demonstrated in Figure \ref{fig:machine_learning:ROC_curve}. 
 \begin{figure}[h!]
     \begin{center}
@@ -290,7 +296,7 @@ Bayesian optimisation \cite{BayesOpt} is part of a class of optimisation algorit
 The method consists of two main steps:
 \begin{enumerate}[noitemsep]
     \item using evaluated points in the hyperparameter space, calculate a posterior expectation of the performance as a function of the hyperparameters
-    \item evaluate the performance at a new point maximising an 'acquisition function'. This is a function that trades off exploration versus exploitation in choosing the next optimal point to sample given the posterior expectation.
+    \item evaluate the performance at a new point maximising an `acquisition function'. This is a function that trades off exploration versus exploitation in choosing the next optimal point to sample given the posterior expectation.
 \end{enumerate}
 Bayesian optimisation makes efficient use of sampling and is more appropriate when evaluating a single point in the hyperparameter space is expensive. The difficulty of the optimisation will still increase rapidly with the dimensionality so one should consider, where possible, the optimisation as a set of orthogonal problems.  
 These two methods can be combined where an initial grid search is performed, and the set of evaluated points are used in the first iteration of the Bayesian optimisation. 
@@ -310,17 +316,35 @@ Artificial neurons receive a weighted collection of input signals and then `fire
 \begin{equation}
     o = f(w_{i}x_{i} + b).
 \end{equation}
-A schematic of an artificial neuron is shown in Figure \ref{fig:machine_learning:neuron_and_activation} along with two commonly used activation functions. 
+A schematic of an artificial neuron is shown in Figure \ref{fig:machine_learning:neuron_and_activation} along with three commonly used activation functions:
+\begin{equation}
+    \begin{split}
+        f(z) &= \frac{e^{z}-e^{-z}}{e^z+e^{-z}}, \\%\,\,\,\text{(tanh)}\\
+        f(z) &= 
+        \begin{cases} 
+            0 & z \leq 0\\
+            z & z > 0
+        \end{cases}, \\%\,\,\,\text{(ReLU)}\\
+        f(z) &=  
+        \begin{cases} 
+            \alpha{z} & z \leq 0\\
+            z & z > 0
+        \end{cases}. \\%\,\,\,\text{(Leaky ReLU)}\\
+    \end{split}
+\end{equation}
+These are tanh, the rectified linear unit (ReLU) and the leaky ReLU respectively. 
+The value $\alpha$ in the leaky ReLU is a hyperparameter and is typically set to a value of $0.2$ \cite{CS231n}.
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.9\textwidth]{figures/machine_learning/neuron_and_activation.pdf}
     \end{center}
-    \caption{Schematic of an artificial neuron(left) and two activation functions (right).}
+    \caption{Schematic of an artificial neuron(left) and a plot of three commonly-used activation functions (right).}
         \label{fig:machine_learning:neuron_and_activation}
 \end{figure}
-The weight vector and the bias constitute the learnable parameters of this model. 
-With the correct loss and activation, this structure is equivalent to a linear classifier, so we can consider each neuron to be attempting to place an optimal linear decision boundary in the space of its input features. 
-If the data are linearly-separable this will be achievable, but if they are not, this simple classifier will struggle. 
+
+The weights vector and the bias constitute the learnable parameters of this model. 
+With the correct loss and activation, this structure is equivalent to a linear classifier: we can consider each neuron to be attempting to place an optimal linear decision boundary in the space of its input features. 
+If the data are linearly separable this will be achievable, but if they are not, this simple classifier will struggle. 
 To help the neuron we could construct a function $\phi(x_{i})$ on the feature space to produce transformed feature vectors in which the data are now linearly separable \cite{DeepLearningBook}. 
 This could be constructed explicitly, or it could be learned from data. 
 
@@ -350,7 +374,7 @@ The effect of composing layers together can be seen by comparing a model with no
         \label{fig:machine_learning:mlp_example}
 \end{figure}
 With increasing depth neural networks are able to construct ever-more complex functions of their input. 
-Mathematically, this corresponds to repeated matrix multiplication of a feature vectors plus biases interleaved with non-linear activation functions,
+Mathematically, this corresponds to a chain of matrix multiplications of feature vectors plus biases interleaved with non-linear activation functions,
 \begin{equation}
     o_{k} = f_{n}(f_{n-1}(\dots{}(f_{1}(w^{1}_{ij}x_{i} + b^{1})))).
 \end{equation}
@@ -378,16 +402,16 @@ and is used in conjunction with a softmax function. This loss can be interpreted
 Each of these will cause the network to behave in a different way: the hinge loss will in effect prioritise accurate classification at the cost of modelling probability, whereas the cross entropy will model $p(y|x_{i})$ with less priority on accuracy \cite{CS231n}.
 
 %Backprop
-Once the loss has been defined, neural networks are trained via gradient descent with an algorithm called back-propagation \cite{Backprop}. A single iteration works as follows:
+Once the loss has been defined, neural networks are usually trained via SGD with gradients computed using an algorithm called backpropagation \cite{Backprop}. A single iteration works as follows:
 \begin{enumerate}[noitemsep]
     \item Forward pass: inputs are repeatedly transformed from the first layer to the last with product sums dependent on $w_{ij}^{k}$ and then by the activation functions. The final output $\hat{y}$, the input to each activation, and the outputs from each activation are stored for the next step. 
     \item Backward pass: this works like the forward pass but from the output layer backwards to the input calculating $\partial{L}/\partial{w_{ij}^{k}}$ as it goes. The `input' is the output layer's loss terms and these are repeatedly transformed by product sums with the weights $w_{ij}^{k}$ and then multiplied by the values of the derivatives of the activation function with inputs from the forward pass.  
-    \item Weight update: after the backward pass, we now have the gradients required to update the weights by gradient descent.
+    \item Weight update: after the backward pass, we now have the gradients required to update the weights by SGD.
 \end{enumerate}
 
 
 \subsubsection{Regularising Neural Networks}
-Just like other machine learning models neural networks will overfit when they have too much capacity and therefore regularisation is crucial. The $L^{1}$ and squared-$L^{2}$ regularisers are commonly used and $L^{2}$ is often preferred \cite{CS231n}. Another regularisation method, max-norm clipping \cite{CS231n}, restricts the norm of the gradient vectors during weight update and stops them from getting above a certain size whilst preserving their direction in parameter space. Finally, a highly-effective and complimentary method is `dropout' \cite{Dropout} (Figure \ref{fig:machine_learning:dropout})  where neurons are switched off at random. This aids model generalisation by stopping the network from over-using neurons and also acts as an effective ensembling where many random subnetworks are trained then combined together at inference time.  
+Just like other machine learning models neural networks will overfit when they have too much capacity and therefore regularisation is crucial. The $L_{1}$ and squared-$L_{2}$ regularisers are commonly used and $L_{2}$ is often preferred \cite{CS231n}. Another regularisation method, max-norm clipping \cite{CS231n}, restricts the norm of the gradient vectors during weight update and stops them from getting above a certain size whilst preserving their direction in parameter space. Finally, a highly-effective and complimentary method is `dropout' \cite{Dropout} (Figure \ref{fig:machine_learning:dropout})  where neurons are switched off at random. This aids model generalisation by stopping the network from over-using neurons and also acts as an effective ensembling where many random subnetworks are trained and then combined together at inference time.  
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.45\textwidth]{figures/machine_learning/no_dropout.pdf}
@@ -404,14 +428,18 @@ Additionally, although they are not strictly regularisations, data preprocessing
 As one simply increases the depth of a neural network, the performance does not always increase. Depth brings with it a collection of problems each of which have their solutions and therefore an impact on network design. 
 
 A major problem that occurs with deep ANNs using sigmoidal activation functions is the vanishing/exploding gradient problem \cite{VanishingGradient}. During training, these functions can have gradients in the range $[0,1]$ that are multiplied $n$-many times given how many layers from the output layer the backward pass is. This causes the gradients to become small, the weight updates in turn become small, and the training slows down heavily or stops altogether. If the gradients are greater than one, the opposite problem can happen where the gradient becomes very large, this will cause inputs to neurons to become large and push the activation functions into the saturation region where the gradient is again small. 
-This can be mitigated by using a non-sigmoidal activation such as ReLU, and choosing the correct weight initialisation (drawn from a Gaussian with $\mu=0$ and $\sigma=\sqrt{2/n}$ where $n$ is the number of elements in $w_{ij}^{k}$ \cite{HeEtAl}). 
+This can be mitigated by using a non-sigmoidal activation such as ReLU, and choosing the correct weight initialisation. The recommended initialisation \cite{CS231n,HeEtAl} is to draw values for each neuron weight vector from a Gaussian with $\mu=0$ and $\sigma=\sqrt{2/n}$ where $n$ is the number of inputs to the neuron.
+
+Using ReLU activations can pose its own problems as well. With these activations there can be large negative corrections to the weights that then cause the inputs to a neuron to become strongly negative. 
+Due to the ReLU having zero gradient for negative input, all future weight updates for this neuron will be zero and it will never activate again. This is the `dying ReLU' problem.
+The solution to this is to use leaky ReLU activations \cite{LeakyRelu} that have a small non-zero gradient below zero and are therefore able to recover from large negative corrections. 
 
 Another problem is internal covariate shift \cite{BatchNorm}: because the input to each layer depends on all the ones before it, small changes can be amplified and cause the distributions in later layers to shift. This makes learning in later layers harder. 
 To solve this issue, we introduce `batch normalisation' layers \cite{BatchNorm}. These layers normalise the input into each layer on a per-minibatch basis during training and also have a learnable scale $\gamma$ and shift $\beta$,
 \begin{equation}
     x{'}=\gamma\frac{x-\mu}{\sigma} - \beta.
 \end{equation}
-During inference, the population statistics of the layer inputs are used, this must be calculated from the training set during the training process. These layers also help with the vanishing gradient problem. 
+During inference, the population statistics of the layer inputs are used, so this must be calculated from the training set during the training process. These layers also help with the vanishing gradient problem. 
 
 Finally, even with the above measures in place the accuracy of a deep network can saturate as depth increases and then drop. This is not caused by overfitting but is actually caused by the network's failure to reproduce identity transformations leading to the degradation of information as it passes to deeper layers \cite{ResNet}. This has been solved by using different sorts of bypass connections where outputs from earlier layers are directly connected to later ones to facilitate the flow of information. This was the key insight that drove the development of the ResNet architecture \cite{ResNet}, and the dense convolutional network architecture used in this thesis.  
 
@@ -429,11 +457,11 @@ This section will describe how images are formulated, classic CNNs with their co
 Images are formulated as three-dimensional volumes of values with height, width, and then a depth usually corresponding to the RGB channels. 
 Each of these values is an individual feature that measures a particular type of information at a transverse location (such as `redness' in a non-transformed image). 
 These features can be more complex, such as an image after a local edge-detection transform where each feature now corresponds to whether an edge is present at that location. 
-Therefore the features located at a particular depth are said to form 2D feature maps, and the depthwise stack of feature maps are said to form a feature volume. 
+Therefore the features located at a particular depth are said to form 2D feature maps, and the depth-wise stack of feature maps are said to form a feature volume. 
 Image processing problems are concerned with manipulating and extracting information from these feature volumes.
 
-Images often have certain properties allowing two assumptions to be made, these inform the design of CNNs. 
-Firstly, the statistical properties of an image dataset is uniform in the transverse directions and therefore local feature detectors will be useful over the whole image extent. 
+Images often have certain properties allowing two assumptions to be made which inform the design of CNNs. 
+Firstly, the statistical properties of an image dataset are uniform in the transverse directions and therefore local feature detectors will be useful over the whole image extent. 
 Secondly, that features near to each other in the transverse directions are highly correlated and we can downsample the image without losing much information. 
 
 
@@ -448,12 +476,12 @@ CNNs are feedforward-type ANNs constructed from successive 3D volumes of neurons
 \subsubsection{Convolution Layers}
 %General function (intro)
 Convolution layers (Figure \ref{fig:machine_learning:convolution}) learn to find local feature transformations that pick out features in the image which are then transformed into ever-more abstract and complex features by later convolution layers. 
-They receive a feature volume as input, and consist of a convolution operation that produces a tranformed (convolved) feature volume and then a volume of activation functions. 
-Each activation function recieves one feature in the convolved feature volume.  
+They receive a feature volume as input, and consist of a convolution operation that produces a transformed (convolved) feature volume and then a volume of activation functions. 
+Each activation function receives one feature in the convolved feature volume.  
 
 
 %More detail on the transformation, how this is related to the image assumptions
-This convolution operation consists of a collection of local transformations that multiply the values of a local patch of the input by learned weights and then sums them. These weights are shared over the transverse extent of the image: each patch will be multiplied by the same set of weights, and all the patches together will produce a feature map. This parameter sharing design is inspired by the feature translation assumption. Each convolution layer will have multiple filters that will each make a different feature map consituting the transormed feature volume given to the activations.
+This convolution operation consists of a collection of local transformations that multiply the values of a local patch of the input by learned weights and then sums them. These weights are shared over the transverse extent of the image: each patch will be multiplied by the same set of weights, and all the patches together will produce a feature map. This parameter sharing design is inspired by the feature translation assumption. Each convolution layer will have multiple filters that will each make a different feature map constituting the transformed feature volume given to the activations.
 
 
 %Neuron FOV interpretation
@@ -461,11 +489,10 @@ This can be interpreted as a volume of neurons each of whom only see a small por
 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_neuron.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_layer.pdf}
-        %\includegraphics[width=0.32\textwidth]{figures/machine_learning/convolution_transforms.pdf}
+        \includegraphics[width=0.49\textwidth]{figures/machine_learning/convolution_neuron.pdf}
+        \includegraphics[width=0.49\textwidth]{figures/machine_learning/convolution_layer.pdf}
     \end{center}
-    \caption{Convolution layer: a single neuron connected and its connection to a $4\times{}4$ patch of input (left), an image patch and neurons in context with an input image \cite{Higgs_photo} (centre), and transformed versions of the input image with random filters (right).}
+    \caption{Convolution layer: a single neuron connected and its connection to a $4\times{}4$ patch of input (left) and an image patch with neurons in context with an input image \cite{Higgs_photo} (right)}
         \label{fig:machine_learning:convolution}
 \end{figure}
 
@@ -476,17 +503,17 @@ This corresponds to feature reduction, where we combine or remove features to pr
 
 
 \subsubsection{Pooling Layers}
-Pooling layers are inspired by the local corellation assumption and reduce the size of their input by mapping sections of neuron outputs to a single value. For example: a $2\times{}2$ patch of each feature map is mapped to a single value whilst keeping the depth of the feature volume the same.
+Pooling layers are inspired by the local correlation assumption and reduce the size of their input by mapping sections of neuron outputs to a single value. For example: a $2\times{}2$ patch of each feature map is mapped to a single value whilst keeping the depth of the feature volume the same.
 This has the dual function of reducing model complexity and increasing the local field of view of later neurons as each later neuron input corresponds to multiple neuron outputs from prior layers. 
-The two main types of mapping are the maximum value of the patch and average the average value, referred to as max pooling and average pooling respectively (Figure \ref{fig:machine_learning:pooling}). 
+The two main types of mapping are the maximum value of the patch and the average value, referred to as max pooling and average pooling respectively (Figure \ref{fig:machine_learning:pooling}). 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.45\textwidth]{figures/machine_learning/pooling.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/machine_learning/pooling.pdf}
     \caption{An example input to a pooling layer is shown on the left with two outputs on the right from max pooling (above) and average pooling (below).}
         \label{fig:machine_learning:pooling}
 \end{figure}
 
-Max pooling leads faster trainings and to translation invariance of feature detection, but loses information from the non-maximal values and will cause the network to be less aware spatial arangement.  
+Max pooling leads to faster trainings and to translation invariance of feature detection, but loses information from the non-maximal values and will cause the network to be less aware of spatial arrangement.  
 Average pooling takes the average in the region of interest and does not lose as much information, however it can be slower and does not have the same translation invariance properties. 
 
 
@@ -494,7 +521,7 @@ Average pooling takes the average in the region of interest and does not lose as
 The classic example of a CNN \cite{CS231n} consists of interleaved convolutional and pooling layers. At the end of these, the feature map is flattened to a 1D array of neurons and the rest of the network has the structure of an MLP (Figure \ref{fig:machine_learning:classic_CNN}). 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.85\textwidth]{figures/machine_learning/convnet_arch.pdf}
+    \includegraphics[width=0.99\textwidth]{figures/machine_learning/convnet_arch.pdf}
     \caption{A typical CNN architecture with three convolutional layers (grey) containing neurons with a restricted FOV (green), pooling layers for downsampling (orange), a flattening of the final feature map (purple) and a set of fully-connected layers.}
         \label{fig:machine_learning:classic_CNN}
 \end{figure}
@@ -502,7 +529,7 @@ The classic example of a CNN \cite{CS231n} consists of interleaved convolutional
 
 \subsection{Dense Convolutional Neural Networks}
 Dense convolutional neural networks \cite{DenseNet} are inspired by the bypass layers in models such as  ResNet, but here every layer is connected to the layers situated after it. 
-This dense connectivity gives superior gradient flow during backpropagation and allows for increased depth (due to the mitigation of depth degredation) and therefore much more sophisticated features. It also encourages feature reuse, and allows the network to achieve high performance with fewer parameters. 
+This dense connectivity gives superior gradient flow during backpropagation and allows for increased depth (due to the mitigation of depth degradation) and therefore much more sophisticated features. It also encourages feature reuse, and allows the network to achieve high performance with fewer parameters. 
 
 Dense CNNs have a similar general structure to ordinary CNNs: they are feedforward and make use of convolution and pooling, but their structure is much more complicated. 
 Instead of interleaved convolution and pooling layers dense CNNs have dense blocks made of multiple composite layers of convolutions, these are interleaved with transition layers which play the role of pooling but can also perform feature reduction. After this the feature volume is flattened and input to a MLP classifier structure as normal. 

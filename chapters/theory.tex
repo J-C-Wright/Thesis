@@ -29,7 +29,7 @@ These warped examples are of interest in gauge theory, specifically when there i
 Particularly, we are interested in the cases when $\mathcal{V}$ is symmetric under some Lie group $\mathcal{G}$ (in our case $\SUN$). 
 These symmetries allow for the warping of the fibre bundle and correspond to the internal symmetries of a field. 
 Furthermore, one can model these examples by taking the fibre to be $\mathcal{G}$ with the identity element not at a fixed location. 
-One can then `lift' the base space into the bundle: for each base space point we get a point within the associated fibre. In the gauge theory context choosing a section of the fibre bundle means choosing a particular $g(x)\in\mathcal{G}$, this is picking a gauge. 
+One can then `lift' the base space into the bundle: for each base space point we get a point within the associated fibre. In the gauge theory context choosing a section of the fibre bundle means choosing a particular $g(x)\in\mathcal{G}$; this is picking a gauge. 
 
 To understand the warping of the fibre bundle we need the notion of a connection just like with the warped spaces of General Relativity.
 This will allow for the introduction of warping to the internal space, and construction of invariants such as curvature and torsion tensors.
@@ -64,7 +64,7 @@ and replace $\partial_{\mu} \rightarrow D_{\mu}$ in the free Lagrangian
     \mathcal{L} = \sum_{\alpha} \bar{\Psi}^{\alpha}[i\gamma^{\mu}(D_{\mu}\Psi)^{\alpha} - m\Psi^{\alpha}].
 \end{equation}
 We must also introduce a kinematic term for the gauge fields, but the contraction of the general non-Abelian field strength tensor with itself is not gauge invariant, only its trace over the generator indices is. 
-Therefore we use this as the gauge-invariant kinetic term for our final Yang-Mills Lagranian \cite{PeskinSchroeder},
+Therefore we use this as the gauge-invariant kinetic term for our final Yang-Mills Lagrangian \cite{PeskinSchroeder},
 \begin{equation}
     \label{eq:theory:int_dirac_gauge_dynamics}
     \mathcal{L}_{YM} = \sum_{\alpha} \bar{\Psi}^{\alpha}[i\gamma^{\mu}(D_{\mu}\Psi)^{\alpha} - m\Psi^{\alpha}] - \frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu}.
@@ -82,7 +82,7 @@ These fields couple to the massive fermionic fields via a trilinear interaction 
 Now consider the gauge field kinetic term: one can reformulate this as $-\frac{1}{4}F^{a}_{\mu\nu}F^{a\mu\nu}$ using $\mathrm{Tr}T^{a}T^{b} = \frac{1}{2}\delta^{a}_{b}$ and $F_{\mu\nu} = F^{a}_{\mu\nu}T^{a}$. 
 Once the product has been evaluated one finds the following forms of interaction terms
 \begin{equation}
-    \mathcal{L}_{3A} \propto gf^{abc}(\partial_{\mu}v_{\nu\lambda}A^{\lambda{a}})A^{b\mu}A^{c\nu} 
+    \mathcal{L}_{3A} \propto gf^{abc}(\partial_{\mu}A_{\nu\lambda}A^{\lambda{a}})A^{b\mu}A^{c\nu} 
 \end{equation}
 %
 \begin{equation}
@@ -187,7 +187,7 @@ If one substitutes this into equation \ref{eq:theory:global_SSB_L} and evaluates
 \end{equation}
 and there is no equivalent term for $\varphi$. In the spectrum of this theory we now have a massive and a massless scalar boson upon quantisation \cite{Nambu,Goldstone}. This massless boson is known as a Nambu-Goldstone boson and is a general result of breaking a global symmetry: for each broken symmetry generator there is a massless Nambu-Goldstone boson. 
 
-To see this more clearly consider the case of a global $\mathrm{SU}(N)$ symmetry where the Lagrangian has the same form as before (equation \ref{eq:theory:global_u1_potential}) but $\phi$ is now a complex scalar $N$-tuplet. 
+To see this more clearly consider the case of a global $\mathrm{SU}(N)$ symmetry where the Lagrangian has the same form as before (equation \ref{eq:theory:global_u1_potential}) but $\phi$ is now a complex scalar $N$-tuple. 
 There is a global symmetry $\phi\rightarrow{e^{i\theta^{a}T^{a}}}\phi$, and a family of minima at $\phi^{\dag}\phi = \frac{\mu^{2}}{2\lambda}$ that form an $(N^{2}-1)$-dimensional surface instead of a circle. There are $(N^{2}-1)$-many ways to move on this surface and the one remaining direction is away from the centre. The former are the fields associated with the $(N^{2}-1)$ Nambu-Goldstone bosons and the latter is the single massive scalar boson as before. 
 
 \subsection{Gauge Symmetry Breaking}
@@ -255,7 +255,7 @@ and a global symmetry group $\mathcal{G}=\mathrm{SU}(2)\times\mathrm{U}(1)$ expe
     D_{\mu} = \partial_{\mu}\mathbb{1} + {ig}W_{\mu}^{a}T^{a} + \frac{ig'}{2}yB_{\mu}\mathbb{1}
 \end{equation}
 where $W_{\mu}^{a}$ are the gauge fields corresponding to each of the generators of the $\mathrm{SU}(2)$ subgroup of $\mathcal{G}$, the $\tau^{a}$ are the $\mathrm{SU}(2)$ generators (Pauli Matrices), $B_{\mu}$ is the gauge field corresponding to the Abelian subgroup $\mathrm{U}(1)$, and $g$,$g'$ are the gauge couplings corresponding to the $\mathrm{SU}(2)$ and $\mathrm{U}(1)$ respectively. 
-The internal field space here has two complex dimensions and the internal geometry corresponds to unit circle in the 2D complex space ($\mathrm{SU}(2)$) warped by a position-dependent complex phase ($\mathrm{U}(1)$).
+The internal field space here has two complex dimensions and the internal geometry corresponds to a unit circle in the 2D complex space ($\mathrm{SU}(2)$) warped by a position-dependent complex phase ($\mathrm{U}(1)$).
 
 
 We construct the following Lagrangian for the complex scalar theory
@@ -270,7 +270,7 @@ As described previously the $\mathrm{SU}(2)$-associated weak gauge fields will g
     \label{eq:theory:physical_W_states}
     W^{\pm}_{\mu} = \frac{1}{\sqrt{2}}(W^{1}_{\mu}{\mp}iW^{2}_{\mu})
 \end{equation}
-and the isospin structure of $D_{\mu}$ is shown explicity by writing it in matrix form
+and the isospin structure of $D_{\mu}$ is shown explicitly by writing it in matrix form
 
 \begin{equation}
     \label{eq:theory:explicit_covderiv_ew}
@@ -323,7 +323,7 @@ We can also examine the Abelian part of the gauge covariant derivative with the 
 this leads to the interpretation of $T^{3} + \frac{1}{2}y$ as the electromagnetic charge operator where $T^{3}$ is the third component of weak isospin and $y$ is the hypercharge.
 
 
-We now have four vector bosons and one scalar boson: the three weak bosons of the weak interaction $(W_{\mu}^{\pm},Z_{\mu}^{0})$, the photon $(A_{\mu})$ of the electromagnetic interaction and the Higgs boson $(H)$ with the quantum numbers shown in table \ref{tab:theory:elecroweak_qn_bosons}.
+We now have four vector bosons and one scalar boson: the three weak bosons of the weak interaction $(W_{\mu}^{\pm},Z_{\mu})$, the photon $(A_{\mu})$ of the electromagnetic interaction and the Higgs boson $(H)$ with the quantum numbers shown in table \ref{tab:theory:elecroweak_qn_bosons}.
 \begin{table}[h!]
     \centering
 %\resizebox{\linewidth}{!}{%
@@ -333,7 +333,7 @@ We now have four vector bosons and one scalar boson: the three weak bosons of th
     Particle & $T^{3}$ & $y$ & $Q = T^3 + \frac{y}{2}$ \\
     \hline
     $W^{\pm}$  & $\pm{1}$ & 0 & $\pm1$ \\
-    $Z^{0}$    & 0 & 0 & 0 \\
+    $Z$    & 0 & 0 & 0 \\
     $\gamma$    & 0 & 0 & 0 \\
     $H$        & $-\frac{1}{2}$ & 1 & 0 \\
     \thickhline
@@ -371,18 +371,18 @@ However, the fact that there are no right-handed neutrino interactions necessita
     e^{-}_{L} = \frac{1-\gamma^{5}}{2}e^{-}
 \end{equation}
 and we note that the $\mathrm{SU}(2)$ gauge symmetry is actually $\mathrm{SU}(2)_{L}$ which denotes operation with the chirality operator along with the elements of the group, and the $L$ subscript has been omitted from the neutrino field as it is assumed that they are only left-handed. 
-We can also write the right-handed leptons doublets as
+We can also write the right-handed lepton doublets as
 \begin{equation}
     \label{eq:theory:right_handed_leptons}
     \begin{pmatrix}
-        \frac{1-\gamma^{5}}{2}\nu_{e} \\
-        \frac{1-\gamma^{5}}{2}e^{-}
+        \frac{1+\gamma^{5}}{2}\nu_{e} \\
+        \frac{1+\gamma^{5}}{2}e^{-}
     \end{pmatrix}=\begin{pmatrix}
         0 \\
         e_{R}^{-}
-    \end{pmatrix},
+    \end{pmatrix}.
 \end{equation}
-this transforms as a singlet under $\mathrm{SU}(2)_{L}$ due to the properties of the projection operator. The electroweak quantum numbers of the leptonic families are shown in table \ref{tab:theory:elecroweak_qn_leptons}
+This transforms as a singlet under $\mathrm{SU}(2)_{L}$ due to the properties of the projection operator. The electroweak quantum numbers of the leptonic families are shown in table \ref{tab:theory:elecroweak_qn_leptons}
 \begin{table}[h!]
     \centering
 %\resizebox{\linewidth}{!}{%
@@ -510,9 +510,9 @@ As mentioned previously quarks are the only fermions of the SM to transform non-
 
 To construct the Lagrangian of QCD we begin by defining the $\mathrm{SU}(3)$ covariant derivative
 \begin{equation}
-    D_{\mu} = \partial_{\mu} + ig_{s}\lambda^{a}A^{a}_{\mu}
+    D_{\mu} = \partial_{\mu} + ig_{s}\lambda^{a}A^{a}_{\mu},
 \end{equation}
-where $\lambda^{a}$ are the generators of $\mathrm{SU}(3)$, and $g_{s}$ is the QCD gauge coupling. Then replace $\partial_{\mu}$ in a Dirac-type Lagrangian that has the corresponding non-Abelian field strength tensor $F^{a}_{\mu\nu}$ and whose fermions are the six flavours of quarks. 
+where $\lambda^{a}$ are the generators of $\mathrm{SU}(3)$, and $g_{s}$ is the QCD gauge coupling. We then replace $\partial_{\mu}$ in a Dirac-type Lagrangian that has the corresponding non-Abelian field strength tensor $F^{a}_{\mu\nu}$ and whose fermions are the six flavours of quarks. 
 Each of these are isodoublets that also carry the colour charge $q^{C}_{f}$, $C=R,G,B$ (red, green, blue) and are structured in colour triplets transforming under $\mathrm{SU}(3)$
 \begin{equation}
     \psi_{f} = \begin{pmatrix}
@@ -523,7 +523,7 @@ Each of these are isodoublets that also carry the colour charge $q^{C}_{f}$, $C=
 \end{equation}
 The Lagrangian is then
 \begin{equation}
-    \mathcal{L}_{\mathrm{QCD}} = \sum_{f}i\bar{\psi}_{f}\gamma^{\mu}D_{\mu}\psi_{f} - \frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu}
+    \mathcal{L}_{\mathrm{QCD}} = \sum_{f}i\bar{\psi}_{f}\gamma^{\mu}D_{\mu}\psi_{f} - \frac{1}{2}\mathrm{Tr}F_{\mu\nu}F^{\mu\nu},
 \end{equation}
 where the index $f$ denotes quark flavour. Upon quantisation we will have eight massless gauge bosons called gluons that couple to quark pairs of the same flavour. 
 
@@ -531,7 +531,7 @@ The strong interaction behaves differently to the weak or electromagnetic intera
 
 Jets are collimated cone-shaped sprays of particles that result from quark or gluon (parton) production \cite{QCD_and_Jets}. 
 When produced these will radiate other partons in a similar process to an electromagnetic particle shower (parton showering). 
-Colinear gluon emission is much more common during this process giving the conical shape of the jet. 
+Collinear gluon emission is much more common during this process giving the conical shape of the jet. 
 However, due to confinement the partons can only exist bound within composite particles and therefore must hadronize to form colourless hadrons.
 These hadrons may further fragment or decay to daughter particles. 
 
@@ -539,10 +539,10 @@ These hadrons may further fragment or decay to daughter particles.
 We now have the full fundamental particle content of the SM and the couplings between them. Next we will consider how the above is manifested as the phenomenology of the Higgs boson.
 
 
-\subsection{Higgs boson phenomenology}
+\subsection{Higgs Boson Phenomenology}
 The Higgs field couples directly to every massive particle in the SM \cite{PDG}: either through the gauge-covariant derivative that gives interaction between the Higgs boson and the weak gauge bosons, or the Yukawa couplings which cause interaction with the non-neutrino fermions. In this section we will look at how Higgs bosons are created in proton-proton collisions at the Large Hadron Collider, and their subsequent decays.
 
-\subsubsection{Higgs boson production in proton collisions}
+\subsubsection{Higgs Boson Production in Proton Collisions}
 There are four main ways that a Higgs boson can be produced in proton collisions: gluon fusion (ggH), vector boson fusion (VBF), associated production (VH), and top fusion (\ttH) (Figure \ref{fig:theory:higgs_production}). 
 \begin{figure}[h!]
     \begin{center}
@@ -630,10 +630,10 @@ There are four main ways that a Higgs boson can be produced in proton collisions
     \caption{The four main production modes of the Higgs boson at the LHC. Clockwise from top left: ggH, VBF, \ttH and VH.}
     \label{fig:theory:higgs_production}
 \end{figure}
-Gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV from proton collisions at $\sqrt{s} = 13$\,TeV with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and \ttH is last with $0.5$\,pb \cite{HiggsPMs}. Although ggH has by far the largest cross-section, the other production modes contain extra objects in their final state aiding the separation of Higgs bosons from events that resemble them. In particular VBF gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
+At $\sqrt{s} = 13$\,TeV gluon fusion dominates over the other processes for a Higgs boson of mass $m_{H}=125$\,GeV from proton collisions with a cross section of 49\,pb. VBF is the second largest with 3.8\,pb, VH is third with 2.3\,pb and \ttH is last with $0.5$\,pb \cite{HiggsPMs}. Although ggH has by far the largest crossection, the other production modes contain extra objects in their final state aiding the separation of Higgs bosons from events that resemble them. In particular VBF gives rise to two highly energetic jets from the final-state quarks with a large angular separation. 
 
-\subsubsection{Higgs boson decays}
-Once produced the Higgs boson is predicted to decay very quickly \cite{HiggsLifetime} to pairs of particles. At tree-level it will decay into massive particles in proportion to their masses in two different ways: in the case of particles granted mass through the Yukawa couplings (fermions) the branching ratio will be proportional to the square of the mass, in the case of particles granted mass through the gauge-covariant derivative the branching ratio will be proportional to the fourth power of the mass (weak gauge bosons). 
+\subsubsection{Higgs Boson Decays}
+Once produced, the Higgs boson is predicted to decay very quickly \cite{HiggsLifetime} to pairs of particles. At tree-level it will decay into massive particles in proportion to their masses in two different ways: in the case of particles granted mass through the Yukawa couplings (fermions) the branching ratio will be proportional to the square of the mass, in the case of particles granted mass through the gauge-covariant derivative the branching ratio will be proportional to the fourth power of the mass (weak gauge bosons). 
 The Higgs boson can also decay via loop diagrams that have a reduced branching ratio. The prevalences of the main decay modes \cite{HiggsBRs} are summarised in table \ref{tab:theory:higgs_branching_ratios}.
 \begin{table}[h!]
     \centering
@@ -650,7 +650,7 @@ The Higgs boson can also decay via loop diagrams that have a reduced branching r
  \label{tab:theory:higgs_branching_ratios}
 \end{table}
 
-The \Hgg decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum, that cause difficulty in the high-multiplicity hadronic environment of the LHC. This decay mode's clean signal lead to it being one of the two channels in which the Higgs boson was discovered in 2012.
+The \Hgg decay (Figure \ref{fig:theory:higgs_gammagamma}) is of particular interest in experimental searches despite its relatively small branching ratio. It has a simple, fully-reconstructed final state with no composite objects such a jets or missing momentum that cause difficulty in the high-multiplicity hadronic environment of the LHC. This decay mode's clean signal led to it being one of the two channels in which the Higgs boson was discovered in 2012.
 \begin{figure}[h!]
     \begin{center}
         \begin{tikzpicture}[baseline=(current bounding box.center)]

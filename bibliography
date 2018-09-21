@@ -15,6 +15,450 @@
       SLACcitation   = "%%CITATION = ARXIV:1207.7235;%%"
 }
 
+@ARTICLE{InductiveBias,
+   author = {{Battaglia}, P.~W. and {Hamrick}, J.~B. and {Bapst}, V. and 
+	{Sanchez-Gonzalez}, A. and {Zambaldi}, V. and {Malinowski}, M. and 
+	{Tacchetti}, A. and {Raposo}, D. and {Santoro}, A. and {Faulkner}, R. and 
+	{Gulcehre}, C. and {Song}, F. and {Ballard}, A. and {Gilmer}, J. and 
+	{Dahl}, G. and {Vaswani}, A. and {Allen}, K. and {Nash}, C. and 
+	{Langston}, V. and {Dyer}, C. and {Heess}, N. and {Wierstra}, D. and 
+	{Kohli}, P. and {Botvinick}, M. and {Vinyals}, O. and {Li}, Y. and 
+	{Pascanu}, R.},
+    title = "{Relational inductive biases, deep learning, and graph networks}",
+  journal = {ArXiv e-prints},
+archivePrefix = "arXiv",
+   eprint = {1806.01261},
+ keywords = {Computer Science - Machine Learning, Computer Science - Artificial Intelligence, Statistics - Machine Learning},
+     year = 2018,
+    month = jun,
+   adsurl = {http://adsabs.harvard.edu/abs/2018arXiv180601261B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{SKLearn,
+ title={Scikit-learn: Machine Learning in {P}ython},
+ author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+         and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+         and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+         Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+ journal={Journal of Machine Learning Research},
+ volume={12},
+ pages={2825--2830},
+ year={2011}
+}
+ 
+@misc{IC_HPC,
+    title={Imperial College Research Computing Service},
+    doi={10.14469/hpc/2232}
+}
+
+@misc{TensorFlow,
+title={ {TensorFlow}: Large-Scale Machine Learning on Heterogeneous Systems},
+url={https://www.tensorflow.org/},
+note={Software available from tensorflow.org},
+author={Martin Abadi and
+    Ashish Agarwal and
+    Paul Barham and
+    Eugene Brevdo and
+    Zhifeng Chen and
+    Craig Citro and
+    Greg S. Corrado and
+    Andy Davis and
+    Jeffrey Dean and
+    Matthieu Devin and
+    Sanjay Ghemawat and
+    Ian Goodfellow and
+    Andrew Harp and
+    Geoffrey Irving and
+    Michael Isard and
+    Yangqing Jia and
+    Rafal Jozefowicz and
+    Lukasz Kaiser and
+    Manjunath Kudlur and
+    Josh Levenberg and
+    Dandelion Mane and
+    Rajat Monga and
+    Sherry Moore and
+    Derek Murray and
+    Chris Olah and
+    Mike Schuster and
+    Jonathon Shlens and
+    Benoit Steiner and
+    Ilya Sutskever and
+    Kunal Talwar and
+    Paul Tucker and
+    Vincent Vanhoucke and
+    Vijay Vasudevan and
+    Fernanda Viegas and
+    Oriol Vinyals and
+    Pete Warden and
+    Martin Wattenberg and
+    Martin Wicke and
+    Yuan Yu and
+    Xiaoqiang Zheng},
+  year={2015}
+}
+
+@article{ProGAN,
+  author    = {Tero Karras and
+               Timo Aila and
+               Samuli Laine and
+               Jaakko Lehtinen},
+  title     = {Progressive Growing of GANs for Improved Quality, Stability, and Variation},
+  journal   = {CoRR},
+  volume    = {abs/1710.10196},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1710.10196},
+  archivePrefix = {arXiv},
+  eprint    = {1710.10196},
+  timestamp = {Mon, 13 Aug 2018 16:46:42 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1710-10196},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{DCGAN,
+  author    = {Alec Radford and
+               Luke Metz and
+               Soumith Chintala},
+  title     = {Unsupervised Representation Learning with Deep Convolutional Generative
+               Adversarial Networks},
+  journal   = {CoRR},
+  volume    = {abs/1511.06434},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1511.06434},
+  archivePrefix = {arXiv},
+  eprint    = {1511.06434},
+  timestamp = {Mon, 13 Aug 2018 16:46:28 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/RadfordMC15},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@techreport{HGC,
+      author        = "Collaboration, CMS",
+      title         = "{The Phase-2 Upgrade of the CMS Endcap Calorimeter}",
+      institution   = "CERN",
+      address       = "Geneva",
+      number        = "CERN-LHCC-2017-023. CMS-TDR-019",
+      month         = "Nov",
+      year          = "2017",
+      reportNumber  = "CERN-LHCC-2017-023",
+      url           = "https://cds.cern.ch/record/2293646",
+      note          = "Technical Design Report of the endcap calorimeter for the
+                       Phase-2 upgrade of the CMS experiment, in view of the
+                       HL-LHC run.",
+}
+
+@article{HLLHC,
+      author         = "Apollinari, G. and Brüning, O. and Nakamoto, T. and
+                        Rossi, Lucio",
+      title          = "{High Luminosity Large Hadron Collider HL-LHC}",
+      journal        = "CERN Yellow Report",
+      year           = "2015",
+      number         = "5",
+      pages          = "1-19",
+      doi            = "10.5170/CERN-2015-005.1",
+      eprint         = "1705.08830",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.acc-ph",
+      reportNumber   = "FERMILAB-DESIGN-2017-02",
+      SLACcitation   = "%%CITATION = ARXIV:1705.08830;%%"
+}
+
+@ARTICLE{GANs,
+   author = {{Goodfellow}, I.~J. and {Pouget-Abadie}, J. and {Mirza}, M. and 
+	{Xu}, B. and {Warde-Farley}, D. and {Ozair}, S. and {Courville}, A. and 
+	{Bengio}, Y.},
+    title = "{Generative Adversarial Networks}",
+  journal = {ArXiv e-prints},
+archivePrefix = "arXiv",
+   eprint = {1406.2661},
+ primaryClass = "stat.ML",
+ keywords = {Statistics - Machine Learning, Computer Science - Machine Learning},
+     year = 2014,
+    month = jun,
+   adsurl = {http://adsabs.harvard.edu/abs/2014arXiv1406.2661G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{GraphCNNs,
+  author    = {Micha{\"{e}}l Defferrard and
+               Xavier Bresson and
+               Pierre Vandergheynst},
+  title     = {Convolutional Neural Networks on Graphs with Fast Localized Spectral
+               Filtering},
+  journal   = {CoRR},
+  volume    = {abs/1606.09375},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1606.09375},
+  archivePrefix = {arXiv},
+  eprint    = {1606.09375},
+  timestamp = {Mon, 13 Aug 2018 16:48:03 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/DefferrardBV16},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{GANChest,
+  author    = {Hojjat Salehinejad and
+               Shahrokh Valaee and
+               Tim Dowdell and
+               Errol Colak and
+               Joseph Barfett},
+  title     = {Generalization of Deep Neural Networks for Chest Pathology Classification
+               in X-Rays Using Generative Adversarial Networks},
+  journal   = {CoRR},
+  volume    = {abs/1712.01636},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1712.01636},
+  archivePrefix = {arXiv},
+  eprint    = {1712.01636},
+  timestamp = {Mon, 13 Aug 2018 16:47:02 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1712-01636},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Attention,
+  author    = {Ashish Vaswani and
+               Noam Shazeer and
+               Niki Parmar and
+               Jakob Uszkoreit and
+               Llion Jones and
+               Aidan N. Gomez and
+               Lukasz Kaiser and
+               Illia Polosukhin},
+  title     = {Attention Is All You Need},
+  journal   = {CoRR},
+  volume    = {abs/1706.03762},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1706.03762},
+  archivePrefix = {arXiv},
+  eprint    = {1706.03762},
+  timestamp = {Mon, 13 Aug 2018 16:48:37 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/VaswaniSPUJGKP17},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{SpatialTransformer,
+  author    = {Max Jaderberg and
+               Karen Simonyan and
+               Andrew Zisserman and
+               Koray Kavukcuoglu},
+  title     = {Spatial Transformer Networks},
+  journal   = {CoRR},
+  volume    = {abs/1506.02025},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1506.02025},
+  archivePrefix = {arXiv},
+  eprint    = {1506.02025},
+  timestamp = {Mon, 13 Aug 2018 16:49:02 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/JaderbergSZK15},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@techreport{LumiUncert,
+      title         = "{CMS Luminosity Measurements for the 2016 Data Taking
+                       Period}",
+      institution   = "CERN",
+      collaboration = "CMS Collaboration",
+      address       = "Geneva",
+      number        = "CMS-PAS-LUM-17-001",
+      year          = "2017",
+      reportNumber  = "CMS-PAS-LUM-17-001",
+      url           = "https://cds.cern.ch/record/2257069",
+}
+
+@article{MCFM,
+      author         = "Campbell, John M. and Ellis, R. K.",
+      title          = "{MCFM for the Tevatron and the LHC}",
+      booktitle      = "{Proceedings,  10th DESY Workshop on Elementary Particle
+                        Theory: Loops and Legs in Quantum Field Theory: Woerlitz,
+                        Germany, April 25-30, 2010}",
+      journal        = "Nucl. Phys. Proc. Suppl.",
+      volume         = "205-206",
+      year           = "2010",
+      pages          = "10-15",
+      doi            = "10.1016/j.nuclphysbps.2010.08.011",
+      eprint         = "1007.3492",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "FERMILAB-CONF-10-244-T",
+      SLACcitation   = "%%CITATION = ARXIV:1007.3492;%%"
+}
+
+@article{StewartTackmann,
+      author         = "Stewart, Iain W. and Tackmann, Frank J.",
+      title          = "{Theory Uncertainties for Higgs and Other Searches Using
+                        Jet Bins}",
+      journal        = "Phys. Rev.",
+      volume         = "D85",
+      year           = "2012",
+      pages          = "034011",
+      doi            = "10.1103/PhysRevD.85.034011",
+      eprint         = "1107.2117",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      SLACcitation   = "%%CITATION = ARXIV:1107.2117;%%"
+}
+
+@article{GangalTackmann,
+      author         = "Gangal, Shireen and Tackmann, Frank J.",
+      title          = "{Next-to-leading-order uncertainties in Higgs+2 jets from
+                        gluon fusion}",
+      journal        = "Phys. Rev.",
+      volume         = "D87",
+      year           = "2013",
+      number         = "9",
+      pages          = "093008",
+      doi            = "10.1103/PhysRevD.87.093008",
+      eprint         = "1302.5437",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "DESY-13-029",
+      SLACcitation   = "%%CITATION = ARXIV:1302.5437;%%"
+}
+
+@article{Kappa,
+      author         = "Andersen, J R and others",
+      editor         = "Heinemeyer, S and Mariotti, C and Passarino, G and
+                        Tanaka, R",
+      title          = "{Handbook of LHC Higgs Cross Sections: 3. Higgs
+                        Properties}",
+      collaboration  = "LHC Higgs Cross Section Working Group",
+      doi            = "10.5170/CERN-2013-004",
+      year           = "2013",
+      eprint         = "1307.1347",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "CERN-2013-004, FERMILAB-CONF-13-667-T",
+      SLACcitation   = "%%CITATION = ARXIV:1307.1347;%%"
+}
+
+@article{Adam,
+  author    = {Diederik P. Kingma and
+               Jimmy Ba},
+  title     = {Adam: {A} Method for Stochastic Optimization},
+  journal   = {CoRR},
+  volume    = {abs/1412.6980},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1412.6980}
+}
+
+@article{FeatureVis,
+  author = {Olah, Chris and Mordvintsev, Alexander and Schubert, Ludwig},
+  title = {Feature Visualization},
+  journal = {Distill},
+  year = {2017},
+  note = {https://distill.pub/2017/feature-visualization},
+  doi = {10.23915/distill.00007}
+}
+
+@article{Inceptionism,
+  author = {Alexander Mordvintsev, Christopher Olah, Mike Tyka},
+  title = {Inceptionism: Going Deeper into Neural Networks},
+  year = {2015},
+  note = {https://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html}
+}
+
+@inproceedings{Nadam,
+  author={Timothy Dozat},
+  title={Incorporating Nesterov Momentum into Adam},
+  year={2016}
+}
+
+@inproceedings{Nesterov,
+ author = {Sutskever, Ilya and Martens, James and Dahl, George and Hinton, Geoffrey},
+ title = {On the Importance of Initialization and Momentum in Deep Learning},
+ booktitle = {Proceedings of the 30th International Conference on International Conference on Machine Learning - Volume 28},
+ series = {ICML'13},
+ year = {2013},
+ publisher = {JMLR.org}
+} 
+
+
+@article{JetsInColour,
+      author         = "Komiske, Patrick T. and Metodiev, Eric M. and Schwartz,
+                        Matthew D.",
+      title          = "{Deep learning in color: towards automated quark/gluon
+                        jet discrimination}",
+      journal        = "JHEP",
+      volume         = "01",
+      year           = "2017",
+      pages          = "110",
+      doi            = "10.1007/JHEP01(2017)110",
+      eprint         = "1612.01551",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "MIT-CTP-4866, MIT-CTP 4866",
+      SLACcitation   = "%%CITATION = ARXIV:1612.01551;%%"
+}
+
+@ARTICLE{DeepMindDeletion,
+   author = {{Morcos}, A.~S. and {Barrett}, D.~G.~T. and {Rabinowitz}, N.~C. and 
+	{Botvinick}, M.},
+    title = "{On the importance of single directions for generalization}",
+  journal = {ArXiv e-prints},
+archivePrefix = "arXiv",
+   eprint = {1803.06959},
+ primaryClass = "stat.ML",
+ keywords = {Statistics - Machine Learning, Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Neural and Evolutionary Computing},
+     year = 2018,
+    month = mar,
+   adsurl = {http://adsabs.harvard.edu/abs/2018arXiv180306959M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{CostSensitivity,
+  author    = {Salman Hameed Khan and
+               Mohammed Bennamoun and
+               Ferdous Ahmed Sohel and
+               Roberto Togneri},
+  title     = {Cost Sensitive Learning of Deep Feature Representations from Imbalanced
+               Data},
+  journal   = {CoRR},
+  volume    = {abs/1508.03422},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1508.03422},
+  archivePrefix = {arXiv},
+  eprint    = {1508.03422},
+  timestamp = {Mon, 13 Aug 2018 16:47:26 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/KhanBST15},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{LeakyRelu,
+  title={Rectifier Nonlinearities Improve Neural Network Acoustic Models},
+  author={Andrew L. Maas},
+  year={2013}
+}
+
+@article{HiggsML,
+  author={C Adam-Bourdarios and G Cowan and C Germain-Renaud and I Guyon and B Kégl and D Rousseau},
+  title={The Higgs Machine Learning Challenge},
+  journal={Journal of Physics: Conference Series},
+  volume={664},
+  number={7},
+  pages={072015},
+  url={http://stacks.iop.org/1742-6596/664/i=7/a=072015},
+  year={2015}
+}
+
+@article{CMSHiggsPhotonReco,
+      author         = "Khachatryan, Vardan and others",
+      title          = "{Observation of the diphoton decay of the Higgs boson and
+                        measurement of its properties}",
+      collaboration  = "CMS",
+      journal        = "Eur. Phys. J.",
+      volume         = "C74",
+      year           = "2014",
+      number         = "10",
+      pages          = "3076",
+      doi            = "10.1140/epjc/s10052-014-3076-z",
+      eprint         = "1407.0558",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ex",
+      reportNumber   = "CMS-HIG-13-001, CERN-PH-EP-2014-117",
+      SLACcitation   = "%%CITATION = ARXIV:1407.0558;%%"
+}
+
 @article{ECALPerformance,
   author={A Benaglia},
   title={The CMS ECAL performance with examples},
@@ -24,6 +468,79 @@
   pages={C02008},
   url={http://stacks.iop.org/1748-0221/9/i=02/a=C02008},
   year={2014}
+}
+
+@article{PhotonReco,
+      author         = "Khachatryan, Vardan and others",
+      title          = "{Performance of Photon Reconstruction and Identification
+                        with the CMS Detector in Proton-Proton Collisions at
+                        sqrt(s) = 8 TeV}",
+      collaboration  = "CMS",
+      journal        = "JINST",
+      volume         = "10",
+      year           = "2015",
+      number         = "08",
+      pages          = "P08010",
+      doi            = "10.1088/1748-0221/10/08/P08010",
+      eprint         = "1502.02702",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.ins-det",
+      reportNumber   = "CMS-EGM-14-001, CERN-PH-EP-2015-006",
+      SLACcitation   = "%%CITATION = ARXIV:1502.02702;%%"
+}
+
+@article{TrackReco,
+      author         = "Chatrchyan, Serguei and others",
+      title          = "{Description and performance of track and primary-vertex
+                        reconstruction with the CMS tracker}",
+      collaboration  = "CMS",
+      journal        = "JINST",
+      volume         = "9",
+      year           = "2014",
+      number         = "10",
+      pages          = "P10009",
+      doi            = "10.1088/1748-0221/9/10/P10009",
+      eprint         = "1405.6569",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.ins-det",
+      reportNumber   = "CMS-TRK-11-001, CERN-PH-EP-2014-070",
+      SLACcitation   = "%%CITATION = ARXIV:1405.6569;%%"
+}
+
+@article{MuonReco,
+      author         = "Chatrchyan, Serguei and others",
+      title          = "{Performance of CMS muon reconstruction in $pp$ collision
+                        events at $\sqrt{s}=7$ TeV}",
+      collaboration  = "CMS",
+      journal        = "JINST",
+      volume         = "7",
+      year           = "2012",
+      pages          = "P10002",
+      doi            = "10.1088/1748-0221/7/10/P10002",
+      eprint         = "1206.4071",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.ins-det",
+      reportNumber   = "CMS-MUO-10-004, CERN-PH-EP-2012-173",
+      SLACcitation   = "%%CITATION = ARXIV:1206.4071;%%"
+}
+
+@article{ElectronReco,
+      author         = "Khachatryan, Vardan and others",
+      title          = "{Performance of Electron Reconstruction and Selection
+                        with the CMS Detector in Proton-Proton Collisions at
+                        $\sqrt{s} = 8$ TeV}",
+      collaboration  = "CMS",
+      journal        = "JINST",
+      volume         = "10",
+      year           = "2015",
+      number         = "06",
+      pages          = "P06005",
+      doi            = "10.1088/1748-0221/10/06/P06005",
+      eprint         = "1502.02701",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.ins-det",
+      reportNumber   = "CMS-EGM-13-001, CERN-PH-EP-2015-004",
+      SLACcitation   = "%%CITATION = ARXIV:1502.02701;%%"
 }
 
 @article{HiggsLifetime,
@@ -375,7 +892,57 @@
   adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 
+@article{JetPtResum,
+      author         = "Stewart, Iain W. and Tackmann, Frank J. and Walsh,
+                        Jonathan R. and Zuberi, Saba",
+      title          = "{Jet $p_T$ resummation in Higgs production at
+                        $NNLL'+NNLO$}",
+      journal        = "Phys. Rev.",
+      volume         = "D89",
+      year           = "2014",
+      number         = "5",
+      pages          = "054001",
+      doi            = "10.1103/PhysRevD.89.054001",
+      eprint         = "1307.1808",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "DESY-13-122, MIT-CTP-4479",
+      SLACcitation   = "%%CITATION = ARXIV:1307.1808;%%"
+}
 
+@article{TheoryUncertHiggs1J,
+      author         = "Liu, Xiaohui and Petriello, Frank",
+      title          = "{Reducing theoretical uncertainties for exclusive
+                        Higgs-boson plus one-jet production at the LHC}",
+      journal        = "Phys. Rev.",
+      volume         = "D87",
+      year           = "2013",
+      number         = "9",
+      pages          = "094027",
+      doi            = "10.1103/PhysRevD.87.094027",
+      eprint         = "1303.4405",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "ANL-HEP-PR-13-16",
+      SLACcitation   = "%%CITATION = ARXIV:1303.4405;%%"
+}
+
+@article{ResummedHiggsPredictions,
+      author         = "Boughezal, Radja and Liu, Xiaohui and Petriello, Frank
+                        and Tackmann, Frank J. and Walsh, Jonathan R.",
+      title          = "{Combining Resummed Higgs Predictions Across Jet Bins}",
+      journal        = "Phys. Rev.",
+      volume         = "D89",
+      year           = "2014",
+      number         = "7",
+      pages          = "074044",
+      doi            = "10.1103/PhysRevD.89.074044",
+      eprint         = "1312.4535",
+      archivePrefix  = "arXiv",
+      primaryClass   = "hep-ph",
+      reportNumber   = "DESY-13-244",
+      SLACcitation   = "%%CITATION = ARXIV:1312.4535;%%"
+}
 
 @misc{CMSLumiPublic,
   Collaboration = {CMS},

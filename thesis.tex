@@ -53,7 +53,7 @@
 
 \addbibresource{bibliography}
 
-\newcommand{\pt}{{$p_T$\xspace}}
+\newcommand{\pt}{$p_T$\xspace}
 \newcommand{\SUN}{{\mathrm{SU}(N)}\xspace}
 \newcommand{\MET}{{$E_{T}^{\mathrm{miss}}$}\xspace}
 \newcommand{\Hgg}{{$\mathrm{H}\rightarrow{\gamma\gamma}$}\xspace}
@@ -62,6 +62,8 @@
 \newcommand{\ttH}{{$\mathrm{t}\bar{\mathrm{t}}\mathrm{H}$}\xspace}
 \newcommand{\mgg}{{$m_{\gamma\gamma}$}\xspace}
 \newcommand{\mH}{{$m_{H}$}\xspace}
+\newcommand{\Etrue}{{$E_{\mathrm{true}}$}\xspace}
+\newcommand{\Eraw}{{$E_{SC}$}\xspace}
 
 \makeatletter
 \def\thickhline{%
@@ -82,6 +84,11 @@
 \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
 
+%Bold maths in subsection titles
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
 \newlength{\thickarrayrulewidth}
 \setlength{\thickarrayrulewidth}{2\arrayrulewidth}
 
@@ -95,29 +102,23 @@
 
 \input{frontmatter.tex}
 
-
 \pagenumbering{arabic}
 
 \input{chapters/introduction.tex}
-
 \input{chapters/theory.tex}
-
 \input{chapters/apparatus.tex}
-
 \input{chapters/machine_learning.tex}
-
 \input{chapters/object_reconstruction.tex}
-
 \input{chapters/event_selection_categorisation.tex}
-
 \input{chapters/stats_analysis_results.tex}
-
 \input{chapters/conclusion.tex}
 
 
 \appendix
 \input{appendices/vbf_tag_loose_ps_plots.tex}
-\input{appendices/appendix_placeholder.tex}
+\input{appendices/zee_validation.tex}
+\input{appendices/feature_visualisation.tex}
+\input{appendices/mass_plots.tex}
 
 \printbibliography
 \end{document}

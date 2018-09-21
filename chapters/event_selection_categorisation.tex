@@ -3,7 +3,7 @@
 
 %\newpage
 \section{Overview and Objectives}
-Once a set of candidate photons is assembled we tag and categorise events using extra final-state objects characteristic of particular Higgs production modes.
+Once a set of candidate photons is assembled they are tagged and categorised using extra final-state objects characteristic of particular Higgs production modes.
 The objective of this tagging procedure is to enhance overall significance, to construct categories of events with superior mass resolution, and to separate out the Higgs production modes for individual measurement. 
 
 
@@ -22,15 +22,15 @@ The input features of this BDT are the following:
     \item the score from the photon identification BDT for both photons;
     \item the mass resolution estimate given the assumption that the correct vertex is selected, $\sigma^{RV}_{\gamma\gamma}/m_{\gamma\gamma}$;
     \item the mass resolution estimate given the assumption that the incorrect vertex is selected, $\sigma^{WV}_{\gamma\gamma}/m_{\gamma\gamma}$;
-    \item the probability that the correct diphoton vertex has been selected $p^{RV}$ estimated with the vertex probability BDT.
+    \item the probability that the correct diphoton vertex has been selected $p^{RV}$,, estimated with the vertex probability BDT.
 \end{itemize}
 
-The mass resolution in the right vertex case, $\sigma^{RV}_{\gamma\gamma}/m_{\gamma\gamma}$, is assumed to be completely dominated by the ECAL photon energy resolution; we can therefore neglect vertex uncertainty. The energy resolution for each photon can be approximated by a Gaussian distribution and combined in quadrature to give the following expression for mass resolution,
+The mass resolution in the right vertex case, $\sigma^{RV}_{\gamma\gamma}/m_{\gamma\gamma}$, is assumed to be completely dominated by the ECAL photon energy resolution; one can therefore neglect vertex uncertainty. The energy resolution for each photon can be approximated by a Gaussian distribution and combined in quadrature to give the following expression for mass resolution,
 \begin{equation}
     \sigma^{RV}_{\gamma\gamma} = \frac{1}{2}\sqrt{(\sigma^{E}_{\gamma{1}}/E_{\gamma{1}})^2 + (\sigma^{E}_{\gamma{2}}/E_{\gamma{2}})^2}
 \end{equation} 
 where $\sigma^{E}_{\gamma{1}}/E_{\gamma{1}}, \sigma^{E}_{\gamma{2}}/E_{\gamma{2}}$ are the relative uncertainties on the photon energies for the leading and subleading photons respectively. 
-In the wrong vertex case, $\sigma^{WV}_{\gamma\gamma}/m_{\gamma\gamma}$, we model the extra contribution to the mass resolution with an extra term. This term is assumed to be Gaussian in form, with a width equal to the extent in $z$ of the beam spot multiplied by $\sqrt{2}$. This extra term is then summed in quadrature with the mass resolution for the right vertex case,
+In the wrong vertex case, $\sigma^{WV}_{\gamma\gamma}/m_{\gamma\gamma}$, the extra contribution to the mass resolution is modelled with an extra term. This term is assumed to be Gaussian in form, with a width equal to the extent in $z$ of the beam spot multiplied by $\sqrt{2}$. This extra term is then summed in quadrature with the mass resolution for the right vertex case,
 \begin{equation}
     \sigma^{WV}_{\gamma\gamma} = \frac{1}{2}\sqrt{(\sigma^{RV}_{\gamma\gamma}/m_{\gamma\gamma})^2 + (\sigma^{V}_{\gamma\gamma}/m_{\gamma\gamma})^2}.
 \end{equation} 
@@ -38,8 +38,8 @@ In the wrong vertex case, $\sigma^{WV}_{\gamma\gamma}/m_{\gamma\gamma}$, we mode
 
 %(Training)
 The diphoton BDT is trained on all four signal samples and the QCD, GJet and diphoton background samples. 
-Each training event is weighted in proportion to its cross-section, its event weight and its expected mass resolution. 
-When we weight events during training like this it can be considered to be a way of defining the `cost' of misclassifying a particular event. Higher weight events will have a higher associated misclassification cost and will therefore be prioritised over lower weight events. 
+Each training event is weighted in proportion to its cross section, its event weight and its expected mass resolution. 
+When events are weighted during training like this it can be considered to be a way of defining the `cost' of misclassifying a particular event. Higher weight events will have a higher associated misclassification cost and will therefore be prioritised over lower weight events. 
 Specifically, signal weight events are weighted as follows,
 \begin{equation}
     w^{sig} = \frac{p^{RV}}{\sigma^{RV}_{\gamma\gamma}/m_{\gamma\gamma}} + \frac{1-p^{RV}}{\sigma^{WV}_{\gamma\gamma}/m_{\gamma\gamma}}.
@@ -48,7 +48,7 @@ This scheme helps ensure that the diphoton BDT will assign a relatively high sco
 The signal-flattened score distribution for all simulated signal and background samples, as well as data, is shown in the lefthand plot in Figure \ref{fig:event_categorisaton:diphoton_bdt}. 
 
 %(Validation)
-The performance of the diphoton BDT is validated in a \Zee control region where the normal diphoton selection has been applied, but the electron veto is inverted (Figure \ref{fig:event_categorisaton:diphoton_bdt} right). The Diphoton BDT output score has good agreement between data and simulation in the score region used by the event tagging.
+The performance of the diphoton BDT is validated in a \Zee control region where the normal diphoton selection has been applied, but the electron veto is inverted (Figure \ref{fig:event_categorisaton:diphoton_bdt} right). The diphoton BDT output score has good agreement between data and simulation in the score region used by the event tagging.
 \begin{figure}[h!]
     \centering
         \includegraphics[width=0.99\textwidth]{figures/event_selection/diphoton_BDT.pdf}
@@ -59,11 +59,11 @@ The performance of the diphoton BDT is validated in a \Zee control region where 
 
 
 \subsection{Tagging Scheme}
-Tagging is implemented as a fall-through sequence where diphotons are offered to each tag in order of priority (Table \ref{tab:event_categorisaton:tag_sequence}). 
-If a diphoton is not accepted by a tag it then passes to the next tag for consideration until the final `untagged' tag category. 
-If the diphoton does not meet the criteria for this last tag it is discarded.
-In the case of multiple tagged candidate diphotons in an event we select the one with the highest priority tag and category, if they are in the same category we choose the diphoton with the highest diphoton $p_{T}$.
-The criteria for each tag will be speficied in following sections in this chapter.
+Tagging is implemented as a fall-through sequence where diphoton events are offered to each tag in order of priority (Table \ref{tab:event_categorisaton:tag_sequence}). 
+If a diphoton event is not accepted by a tag it then passes to the next tag for consideration until the final `untagged' tag category. 
+If the event does not meet the criteria for this last tag it is discarded.
+In the case of multiple tagged candidate diphotons in an event the one with the highest priority tag and category is selected, if they are in the same category the diphoton with the highest diphoton $p_{T}$ is chosen.
+The criteria for each tag will be specified in following sections in this chapter.
 \begin{table}[h!]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -103,7 +103,7 @@ In the \ttH production mode, a top-antitop pair is produced in association with 
             \vertex [right=of a] (b);
             \vertex [above right=of b] (f1);
             \vertex [below right=of b] (f2) {$b$};
-            \vertex [above right=of f1] (f3) {$(u,c,t)$};
+            \vertex [above right=of f1] (f3) {$(u,c)$};
             \vertex [below right=of f1] (f4) {$(\bar{d},\bar{s},\bar{b})$};
             \diagram* {
                 (a) -- [fermion] (b) -- [boson, edge label=\(W^{+}\)] (f1),
@@ -121,8 +121,8 @@ In the \ttH production mode, a top-antitop pair is produced in association with 
             \vertex [right=of a] (b);
             \vertex [above right=of b] (f1);
             \vertex [below right=of b] (f2) {$b$};
-            \vertex [above right=of f1] (f3) {${(\nu_{e},\nu_{\mu})}$};
-            \vertex [below right=of f1] (f4) {${(\bar{e},\bar{\mu})}$};
+            \vertex [above right=of f1] (f3) {${(\nu_{e},\nu_{\mu},\nu_{\tau})}$};
+            \vertex [below right=of f1] (f4) {${(\bar{e},\bar{\mu},\bar{\tau})}$};
             \diagram* {
                 (a) -- [fermion] (b) -- [boson, edge label=\(W^{+}\)] (f1),
                 (b) -- [fermion] (f2),
@@ -147,7 +147,7 @@ Leptons are required to pass selection requirements depending on their flavour:
     \item all selected leptons are required to have an angular separation from a signal photon of $R(\ell,\gamma) > 0.35$;
     \item $|m_{e\gamma} - m_{Z}| > 5$\,GeV (electrons only);
     \item a minimum of two jets in the event with $p_{T} > 25$\,GeV, $|\eta| < 2.4$, $R(j,\gamma) > 0.4$ and $R(j,\ell) > 0.4$;
-    \item at least one jet is tagged as b jet by the CSV tagger (medium requirement).
+    \item at least one jet is tagged as a b jet by the CSV tagger (medium requirement).
 \end{itemize}
 
 
@@ -171,11 +171,11 @@ These events are then weighted in $\eta$ and $p_T$ to reproduce the kinematic pr
 
 The selection requirements of the \ttH Hadronic tag are as follows:
 \begin{itemize}[noitemsep]
-    \item $p_{T}/m_{\gamma\gamma} > 1/3$ and $1/4$ for leading and subleading photons respectively,
-    \item diphoton BDT score $> 0.4$,
-    \item no leptons that meet the criteria of the \ttH Leptonic tag
-    \item a minimum of three jets in the event with $p_{T} > 25$\,GeV and $|\eta| < 2.4$,
-    \item at least one jet is tagged as b jet by the CSV tagger (medium requirement),
+    \item $p_{T}/m_{\gamma\gamma} > 1/3$ and $1/4$ for leading and subleading photons respectively;
+    \item diphoton BDT score $> 0.4$;
+    \item no leptons that meet the criteria of the \ttH Leptonic tag;
+    \item a minimum of three jets in the event with $p_{T} > 25$\,GeV and $|\eta| < 2.4$;
+    \item at least one jet is tagged as a b jet by the CSV tagger (medium requirement);
     \item a \ttH Hadronic BDT score above 0.75.
 \end{itemize}
 
@@ -213,7 +213,7 @@ Targets Higgs production in association with a W$^{\pm}$ boson that subsequently
     \item at minimum one lepton with $p_T > 20$\,GeV and satisfying the same requirements as in the \ttH Leptonic tag;
     \item $R(\gamma,\ell) > 1.0$;
     \item \MET$> 45$\,GeV;
-    \item a maximum of two jets each satisfying $p_T > 20$\,GeV, $|\eta| < 2.4$, $R(j,\ell) > 0.4$, $R(j,\gamma) > 0.4$;
+    \item a maximum of two jets each satisfying $p_T > 20$\,GeV, $|\eta|\, < 2.4$, $R(j,\ell) > 0.4$, $R(j,\gamma) > 0.4$;
     \item electron conversion veto as in the ZH Leptonic tag.
 \end{itemize}
 
@@ -229,7 +229,7 @@ Targets Higgs associated production with \MET from at least one missing lepton. 
     \item $p^{\gamma}_{T}/m_{\gamma\gamma} > 3/8$ for leading photon;
     \item diphoton BDT score $> 0.79$;
     \item \MET$> 85$\,GeV;
-    \item $|\Delta\phi(\gamma\gamma,E_{T}^{miss})| > 2.4$.
+    \item $|\Delta\phi(\gamma\gamma,E_{T}^{miss})|\, > 2.4$.
 \end{itemize}
 
 
@@ -238,12 +238,25 @@ This tag targets Higgs production in association with a W or Z boson that decays
 \begin{itemize}[noitemsep]
     \item $p^{\gamma}_{T}/m_{\gamma\gamma} > 1/2$ for leading photon;
     \item diphoton BDT score $> 0.79$;
-    \item a minimum of two jets with $p_T > 40$\,GeV and $|\eta| < 2.4$, $R(j,\gamma) > 0.4$;
+    \item a minimum of two jets with $p_T > 40$\,GeV and $|\eta|\, < 2.4$, $R(j,\gamma) > 0.4$;
     \item dijet invariant mass $60 < m_{jj} < 120$\,GeV;
-    \item $|\mathrm{cos}{\theta^{*}}| < 0.5$, where $\theta^{*}$ is the difference in diphoton polar angles $\theta_{\gamma\gamma}$ in the diphoton-dijet centre-of-mass frame, and the lab frame.  
+    \item $|\mathrm{cos}{\theta^{*}}| \,< 0.5$, where $\theta^{*}$ is the difference in diphoton polar angles $\theta_{\gamma\gamma}$ in the diphoton-dijet centre-of-mass frame, and the lab frame.  
 \end{itemize}
 
 
+
+
+\section{Untagged}
+If the candidate is not assigned to any of the other tags it is considered for inclusion in a final inclusive tag: Untagged. 
+The Untagged tag consists of four categories defined as exclusive selections on the diphoton BDT score and consists mostly of gluon fusion events. 
+If an event does not meet the lowest requirement it is discarded from the analysis.
+
+These categories are optimised simultaneously in a similar way to the VBF tag, but with a few differences. 
+The procedure begins with the boundaries spaced equally along the score distribution. Each category is evaluated in simulation by fitting an exponential for background plus two Gaussian distributions for the signal. 
+Significance is extracted from each category based on a fit to an Azimov dataset derived from the earlier exponential and Gaussian function fits. 
+The boundaries are optimised to maximise overall significance of the Untagged tag.
+
+This procedure is repeated for increasing numbers of Untagged categories until there is no significant increase in performance. This is then the number of Untagged categories to be used in the tag.
 
 
 
@@ -267,10 +280,10 @@ These dijets will mostly be from gluons, therefore targeting the jet substructur
 The VBF tag targets the VBF production mode by exploiting the distinctive properties of VBF dijets. 
 At the core of the VBF tag is a machine learning model which takes these distinctive properties as input features. 
 The selection and category assignment of the tag is then based on the output of this model.
-In this chapter we will explore two approaches.
+This chapter explores two approaches.
 \begin{itemize}[noitemsep]
-    \item A tag based on two BDTs with engineered kinematic features. This is the approach used in the 2016 \Hgg analysis. 
-    \item A tag based on a single dense convolutional neural network that receives jet structure information in the form of images in addition to engineered kinematic features. 
+    \item A tag based on two BDTs with engineered kinematic features using \texttt{Scikit-learn} \cite{SKLearn}. This is the approach used in the 2016 \Hgg analysis. 
+    \item A tag based on a single dense convolutional neural network built in \texttt{TensorFlow} \cite{TensorFlow} that receives jet structure information in the form of images in addition to engineered kinematic features. 
 \end{itemize}
 Both tags use the same event preselection, and produce scores used to define event categories that enhance the expected significance of the VBF channel and will be evaluated in the same way. The only difference will be the machine learning model that the tags are based around, and the extra image-based information in the dense CNN tag.  
 
@@ -294,13 +307,14 @@ The model is evaluated using the area under the ROC curve (AUROC), a performance
 This measure is chosen because it is robust to class imbalance and can easily be evaluated with weighted events.
 
 %The Tag 
-When developing the tag itself and its categories we use the approximate mean significance (AMS) (REF) as the figure of merit. This is defined as
+When developing the tag itself and its categories the approximate mean significance (AMS) \cite{HiggsML} is used as the figure of merit. This is defined as
 \begin{equation}
-    \mathrm{AMS}_{2} = \sqrt{2\left( (s+b+b_{\mathrm{reg}})\log\left(1 + \frac{s}{b+b_{\mathrm{reg}}}\right) - s \right)},
+    \mathrm{AMS} = \sqrt{2\left( (s+b+b_{\mathrm{reg}})\log\left(1 + \frac{s}{b+b_{\mathrm{reg}}}\right) - s \right)},
 \end{equation}
 where $s$ is the total number of signal events, $b$ is the total number of background events, and $b_{\mathrm{reg}}$ is a regularisation term that reduces sensitivity to local optima. 
-$\mathrm{AMS}_{2}$ is estimated by simultaneously fitting an exponential plus a double Gaussian function to the diphoton mass distribution. 
-The background and signal event weights from an interval of two effective standard deviations around the peak are summed to produce $s$ and $b$, and to estimate $\mathrm{AMS}_{2}$. 
+The value of $b_{\mathrm{reg}}$ is chosen to be 5. 
+$\mathrm{AMS}$ is estimated by simultaneously fitting an exponential plus a double Gaussian function to the diphoton mass distribution. 
+The background and signal event weights from an interval of two effective standard deviations around the peak are summed to produce $s$ and $b$, and to estimate $\mathrm{AMS}$. 
 
 
 
@@ -309,11 +323,11 @@ The background and signal event weights from an interval of two effective standa
 
 
 \subsection{Selections}
-When a candidate diphoton is considered for VBF selection we apply additional requirements based on the jet content of the event. First requirements are applied on a per-jet basis, if there are more than two jets which meet these requirements the top two in $p_{T}$ are selected to form a dijet. Finally, a preselection based on dijet kinematics is applied the candidate dijet. If it does not pass the event falls through to the lower-priority categories (VH MET, VH Hadronic, and Untagged). 
+When a candidate diphoton is considered for VBF selection additional requirements are applied based on the jet content of the event. First requirements are applied on a per-jet basis, if there are more than two jets which meet these requirements the top two in $p_{T}$ are selected to form a dijet. Finally, a preselection based on dijet kinematics is applied to the candidate dijet. If it does not pass, the event falls through to the lower-priority categories (VH MET, VH Hadronic, and Untagged). 
 
 \subsubsection{Jet Selection}
 Jets are required to meet the criteria detailed in the previous chapter plus some additional requirements specific to the VBF tag.
-Pileup jet ID (PUJID) uses a BDT classifier \ref{CMS-PAS-JME-13-005} that takes a collection of jet shape variables and produces a score for each jet. A collection of selections on this score are then applied for bins in $p_{T}$ and $\eta$ (Table \ref{tab:event_selection:tight_pujid}). 
+Pileup jet ID (PUJID) uses a BDT classifier \cite{CMS-PAS-JME-13-005} that takes a collection of jet shape variables and produces a score for each jet. A collection of selections on this score are then applied for bins in $p_{T}$ and $\eta$ (Table \ref{tab:event_selection:tight_pujid}). 
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -322,7 +336,7 @@ Pileup jet ID (PUJID) uses a BDT classifier \ref{CMS-PAS-JME-13-005} that takes 
          & $|\eta| < 2.5$ & $2.5 \leq |\eta| < 2.75$ & $2.75 \leq |\eta| < 3.0$ & $3.0 \leq |\eta| < 5.0$ \\
         \hline
         $20 < p_{T} \leq 30$\,GeV  & $0.69$ & $-0.35$ & $-0.26$ & $-0.21$ \\
-        $30 < p_{T} \leq 50$\,GeV  & $0.86$ & $-0.1$  & $-0.05$ & $-0.01$ \\
+        $30 < p_{T} \leq 50$\,GeV  & $0.86$ & $-0.10$  & $-0.05$ & $-0.01$ \\
         $50 < p_{T} \leq 100$\,GeV & $0.95$ & $0.28$  & $0.31$  & $0.28$  \\
         \thickhline
 \end{tabular}
@@ -330,7 +344,7 @@ Pileup jet ID (PUJID) uses a BDT classifier \ref{CMS-PAS-JME-13-005} that takes 
     \label{tab:event_selection:tight_pujid}
 \end{table}
 In this analysis the tight working point is used as this gives the highest expected significance for the VBF tag, and also leads to marked improvement in data/simulation agreement in $\eta$ in the \Zee plus jets control region.  
-Furthermore there is a photon-jet isolation requirement that requires the jet to have $\Delta{R}(\gamma,j) > 0.4$ with both of the photons of the candidate diphoton, and we also require $|\eta_{j}| < 4.7$.
+Furthermore there is a photon-jet isolation criterion that requires the jet to have $\Delta{R}(\gamma,j) > 0.4$ with both of the photons of the candidate diphoton and a jet pseudorapidity requirement of  $|\eta_{j}| < 4.7$.
 
 
 
@@ -351,7 +365,7 @@ Candidate dijets are required to meet the following selection criteria before be
 
 The criterion on the photon ID score is motivated by under-performance of the diphoton BDT in the VBF phase space. 
 The diphoton BDT was trained over all signal, the bulk of which will consist of ggH where the diphoton is produced with no extra objects such as jets. 
-In this phase space the transverse momentum of the diphoton system is highly-discriminating. 
+In this phase space the transverse momentum of the diphoton system is highly discriminating. 
 This leads the diphoton BDT to assign a high score just on high values of diphoton $p_T$, and with lax requirements on photon ID. 
 This in turn leads to under-performance in the VBF phase space where the $p_T$ spectrum is harder and low photon ID background events are given a high score. 
 
@@ -362,11 +376,11 @@ This in turn leads to under-performance in the VBF phase space where the $p_T$ s
 
 
 
-\subsection{BDT-based Model}
+\section{VBF Tag with BDTs}
 Once a candidate event passes the preselection it is presented to a machine learning model consisting of two BDTs in sequence: the dijet BDT and the combined BDT. 
 The output classification score of this model will be used to define the categories of the tag selection. 
 
-\subsubsection{Dijet BDT}
+\subsection{Dijet BDT}
 The purpose of the dijet BDT is to evaluate how VBF-like events are based on kinematic information from the dijet and the diphoton, and in particular to handle the rejection of ggH.
 The BDT receives the following features which are chosen to minimise correlation with the diphoton mass:
 \begin{itemize}[noitemsep]
@@ -394,13 +408,13 @@ Their distributions with the VBF preselection applied are shown in Figure \ref{f
 \end{figure}
 
 
-This dijet BDT is trained on all simulated SM background samples with ggH included versus VBF. To increase the number of training examples we train with a loosened dijet preselection requirement where the $p_{T}^{\gamma}/m_{\gamma\gamma}$ are reduced to $1/4$ and $1/5$, the jet $p_T$ cuts are reduced by 10\,GeV, the dijet invariant mass cut is reduced to 100\,GeV and the photon ID cuts are not applied.
+This dijet BDT is trained on all simulated SM background samples (with ggH included) versus VBF. To increase the number of training examples the training uses a loosened dijet preselection requirement where the $p_{T}^{\gamma}/m_{\gamma\gamma}$ are reduced to $1/4$ and $1/5$, the jet $p_T$ cuts are reduced by 10\,GeV, the dijet invariant mass cut is reduced to 100\,GeV and the photon ID cuts are not applied.
 The normalised score distributions for the classes and the ROC curves for each individual sample are shown in Figure \ref{fig:event_categorisaton:dijet_bdt_performance}.
 These scores are then used as an input feature in the next BDT in the VBF tag: the combined BDT. 
 \begin{figure}[h!]
     \centering
         \includegraphics[width=0.8\textwidth]{figures/event_selection/dijet_BDT_PS.pdf}
-    \caption{Dijet BDT performance. On the left are the output score distributions for VBF (red), ggH (blue) and SM background (black). On the right are the ROC curves for the dijet BDT split into the different samples. We note that the performance against ggH is lower than the other backgrounds.}
+    \caption{Dijet BDT performance. On the left are the output score distributions for VBF (red), ggH (blue) and SM background (black). The SM background distribution is shown as a stacked histogram. On the right are the ROC curves for the dijet BDT split into the different samples. The performance against ggH is noticeably lower than the other backgrounds.}
     \label{fig:event_categorisaton:dijet_bdt_performance}
 \end{figure}
 
@@ -412,7 +426,7 @@ These scores are then used as an input feature in the next BDT in the VBF tag: t
 
 
 
-\subsubsection{Combined BDT}
+\subsection{Combined BDT}
 The purpose of the combined BDT is to combine information from the diphoton BDT and dijet BDT to produce the final discriminant score for defining VBF tag categories. 
 Specifically, it takes the following input features:
 \begin{itemize}[noitemsep]
@@ -428,20 +442,20 @@ The distributions of these features with the full VBF preselection applied are s
     \label{fig:event_categorisaton:combined_bdt_features}
 \end{figure}
 
-The combined BDT is then trained with the SM background samples vs VBF. Gluon fusion is not included in this training as it is found to reduce the ability of this BDT to reject SM background. This is considered to be a higher priority than ggH rejection because rejection of SM background has the largest impact on statistical significance. 
+The combined BDT is then trained with the SM background samples vs VBF. Gluon fusion is not included in this training as it is found to reduce the ability of this BDT to reject SM background. This is considered to be a higher priority than ggH rejection because rejection of SM background has the largest impact on statistical significance.
 The normalised combined score distributions for the classes and the ROC curves for each individual sample are shown in Figure \ref{fig:event_categorisaton:combined_bdt_performance}.
 \begin{figure}[h!]
     \centering
         \includegraphics[width=0.8\textwidth]{figures/event_selection/combined_BDT_PS.pdf}
-    \caption{Combined BDT score distribution with the full VBF preselection. Distributions are all normalised to unity with solid red corresponding to VBF, blue line to ggH, and black line to SM background.}
+    \caption{Combined BDT score distribution with the full VBF preselection are shown on the left. Distributions are all normalised to unity with solid red corresponding to VBF, blue line to ggH, and black line to SM backgrounds. The SM background distribution is shown as a stacked histogram. ROC curves broken down by background sample are shown in the same colours on the right.}
     \label{fig:event_categorisaton:combined_bdt_performance}
 \end{figure}
 
 
 
-\subsubsection{Model Interpretation}
-We can interpret how features are used together by examining their joint distribution for highest and lowest-percentile scoring events. 
-This is shown in Figure \ref{fig:event_categorisaton:bdt_based_vbf_tag_interpretation} where the solid colour shows the values averaged over each percentile, and the lines show the top five highest (or lowest) scoring events.
+\subsection{Model Interpretation}
+The model can be interpreted by observing how features are used together in high and low-scoring events. This is achieved by examining their joint distribution for highest and lowest percentile scoring events. 
+The result is shown in Figure \ref{fig:event_categorisaton:bdt_based_vbf_tag_interpretation} where the solid colour shows the values averaged over each percentile, and the lines show the top five highest (or lowest) scoring events.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.65\textwidth]{figures/event_selection/eng_feature_radar_BDT.pdf}
@@ -451,26 +465,26 @@ This is shown in Figure \ref{fig:event_categorisaton:bdt_based_vbf_tag_interpret
 \end{figure}
 
 %Some generic comments
-We note that the discrimination power of the model is driven by the dijet angular variables, with the exception of $|\Delta\phi_{\gamma\gamma{jj}}|$ and the dijet mass.
+The discrimination power of the model is driven by the dijet angular variables, with the exception of $|\Delta\phi_{\gamma\gamma{jj}}|$ and the dijet mass.
 High jet \pt is actually more of an indicator of background.
 Diphoton BDT score shows substantial overlap, likely from ggH but there could still be residual high-\pt SM background events and underperformance in the VBF phase space.
 
 
 \subsection{Categorisation and Tag Performance}
 Once a candidate event has been preselected and evaluated by the model it is considered for inclusion in the VBF categories. 
-These are defined as exclusive selections on the combined BDT output score and are chosen to maximise the $\mathrm{AMS}_2$ over all categories. 
+These are defined as exclusive selections on the combined BDT output score and are chosen to maximise the $\mathrm{AMS}$ over all categories. 
 If the combined score is not high enough for inclusion in the lowest category it is rejected and is passed for consideration by lower-priority tags. 
 
-The $\mathrm{AMS}_2$ is estimated for each category by constructing a diphoton mass histogram of all events in the category score range, an exponential function is then fitted to the mass sidebands, and a double Gaussian in the signal region to the background-subtracted mass histogram. The parameters of these fits are then used as initial values for a simultaneous signal-background fit. 
+The $\mathrm{AMS}$ is estimated for each category by constructing a diphoton mass histogram of all events in the category score range, an exponential function is then fitted to the mass sidebands, and a double Gaussian in the signal region to the background-subtracted mass histogram. The parameters of these fits are then used as initial values for a simultaneous signal-background fit. 
 The values of $s$ and $b$ are evaluated in a region around the peak with width equal to two effective sigma either side estimated from the the simultaneous fit. Overall significance is then calculated as the sum in quadrature of the significance of each category. 
 
-The boundaries are optimised simultaneously for overall significance with a random search algorithm. The number of categories is chosen considering an increasingly larger number and performing a category optimisation for each one. We stop when the improvement is less than one percent. This was found to happen with three categories. 
+The boundaries are optimised simultaneously for overall significance with a random search algorithm. The number of categories is chosen considering an increasingly larger number and performing a category optimisation for each one. The procedure stops when the improvement is less than one percent. This was found to happen with three categories. 
 
-Approximate studies of the three VBF categories, their boundaries and their estimated performance is shown in Figure \ref{fig:event_categorisaton:bdt_mass_fits} and Table \ref{tab:event_selection:legacy_cats}.
+Approximate studies (in lieu of the full final fits machinery) of the three VBF categories using the procedure described above are carried out to study tag performance. Their boundaries and their estimated performance is shown in Figure \ref{fig:event_categorisaton:bdt_mass_fits} and Table \ref{tab:event_selection:legacy_cats}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/event_selection/BDT_mass_fits.pdf}
-    \caption{Mass fits for estimating AMS$_2$.}
+    \caption{Mass fits for estimating AMS.}
     \label{fig:event_categorisaton:bdt_mass_fits}
 \end{figure}
 \begin{table}[h!]
@@ -478,11 +492,11 @@ Approximate studies of the three VBF categories, their boundaries and their esti
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{ l | c c c c c }
         \thickhline
-        Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS$_2$ & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
+        Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        VBF0 & $[1.00, 0.957)$     & 1.4 &  2.16 & 0.20 & 0.37 \\
-        VBF1 & $[0.957, 0.902)$ & 1.2 &  1.00  & 0.34 & 0.17 \\
-        VBF2 & $[0.902, 0.553)$ & 2.0 &  0.69 & 0.53 & 0.04 \\
+        VBF 0 & $[1.00, 0.957)$     & 1.4 &  2.16 & 0.20 & 0.37 \\
+        VBF 1 & $[0.957, 0.902)$ & 1.2 &  1.00  & 0.34 & 0.17 \\
+        VBF 2 & $[0.902, 0.553)$ & 2.0 &  0.69 & 0.53 & 0.04 \\
         \thickhline
     \end{tabular}
     \caption{Estimated category attributes for the BDT-based VBF tag.}
@@ -496,7 +510,7 @@ Approximate studies of the three VBF categories, their boundaries and their esti
 
 \subsection{Validation}
 \subsubsection{\Zee Control Region}
-To validate the VBF Tag we use the same \Zee control region as the other tags, but with the extra requirements of the VBF preselection. 
+Validation of the VBF tag uses the same \Zee control region as the other tags, but with the extra requirements of the VBF preselection. 
 This control region is used for simulation/data comparison of both the features input to the BDTs and the BDT scores themselves (Figure \ref{fig:event_categorisation:zee_bdt_score_validation}). 
 \begin{figure}[h!]
     \begin{center}
@@ -506,22 +520,20 @@ This control region is used for simulation/data comparison of both the features 
     \caption{Data/Simulation comparison for dijet and combined BDT output scores.}
     \label{fig:event_categorisation:zee_bdt_score_validation}
 \end{figure}
-There is reasonable data-simulation agreement. 
-%The Kolmogorov-Smirnoff test statistic is calculated for these distributions so we can quantify agreement, and compare between plots. 
-%The value $\alpha_{\mathrm{KS}}$ is the probability that we have rejected the hypothesis that the samples belong to the same distribution by mistake. 
+There is good data-simulation agreement in the output scores of the BDTs and in the kinematic features (Appendix \ref{appendix:vbf_zee}).
 
 
 These plots only show the marginal distributions of these variables, they do not show their joint behaviour. 
-To examine data-simulation agreement of the joint distribution we train a BDT to discriminate between simulation and data events. 
-If the discrimination power of the resulting model is high then the agreement is bad, if it is equivalent to guessing we can infer that the joint distributions match closely. 
-We can then use selections on the BDT score to try to isolate regions of the joint distribution where there is disagreement. 
+To examine data-simulation agreement of the joint distribution a BDT is trained to discriminate between simulation and data events. 
+If the discrimination power of the resulting model is high then the agreement is bad, if it is equivalent to guessing this suggests that the joint distributions match closely. 
+Selections on the BDT score can then be used to try to isolate regions of the joint distribution where there is disagreement. 
 
-The results shown in Figure \ref{fig:event_categorisation:zee_bdt_validation} show that the score distributions are similar and discrimination is very low. 
-Therefore we conclude that the joint feature distribution has little disagreement between simulation and data. 
+The results shown in Figure \ref{fig:event_categorisation:zee_bdt_validation} show that the score distributions are similar, discrimination is very low, and therefore the joint feature distribution has little disagreement.
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/event_selection/eng_feature_ROC_Zee_BDT.pdf}
+    \begin{center}
+    \includegraphics[width=0.9\textwidth]{figures/event_selection/eng_feature_ROC_Zee_BDT.pdf}
 %    \includegraphics[width=0.6\textwidth]{figures/event_selection/eng_feature_radar_Zee_BDT.pdf}
+    \end{center}
     \caption{Joint distribution study with BDT on the \Zee control region data-simulation test set.}
     \label{fig:event_categorisation:zee_bdt_validation}
 \end{figure}
@@ -529,41 +541,41 @@ Therefore we conclude that the joint feature distribution has little disagreemen
 
 \subsubsection{QCD Modelling Variations}
 The accuracy of QCD process modelling in hadronic collisions is a significant source of theoretical uncertainty. 
-This will have an impact on categorisation with hadronic objects such as jets, and especially pertinent for any features that are based on jet substructure. 
+This will have an impact on categorisation with hadronic objects such as jets, and is especially pertinent for any features that are based on jet substructure. 
 
-To test for how such mismodelling affects the VBF tag and VBF/ggH discrimination we evaluate samples with up and down variations on aspects of jet production.
+To test for how such mismodelling affects the VBF tag and VBF/ggH discrimination, samples are evaluated with up and down variations on aspects of jet production:
 \begin{itemize}[noitemsep]
-    \item \textbf{Underlying event}: interactions between parton pairs in the proton collision that are not part of the hard scatter. 
+    \item \textbf{Underlying event}: interactions between parton pairs in the proton collision that are not part of the hard scatter;
     \item \textbf{Parton shower}: simulates a succession of parton emissions from the incoming and outgoing partons of the interaction.
 \end{itemize}
 Both of these will affect the cross section for jet production, the configuration of the jet substructure and particularly the degree of colour connection to the proton remnant.
 
-To evaluate how the performance of the model changes depending on the variant we construct a ROC curve for each, and draw an envelope around the variation to estimate performance bounds. This is shown in figure \ref{fig:event_categorisation:ps_variant_validation}
+To evaluate how the performance of the model changes depending on the QCD modelling, a ROC curve is constructed for each variant, and an envelope is drawn around the curves to estimate performance bounds. This is shown in figure \ref{fig:event_categorisation:ps_variant_validation}
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.75\textwidth]{figures/event_selection/psvar_ROCs_PS.pdf}
+        \includegraphics[width=0.9\textwidth]{figures/event_selection/psvar_ROCs_PS.pdf}
     \end{center}
-    \caption{ROC curves for parton shower and pythia tune variations. The nominal performance is shown in black, 
+    \caption{ROC curves for parton shower and underlying event variations. The nominal performance is shown in black, 
              and the magenta lines show the upper and lower bounds of the envelope covering all the curves.}
     \label{fig:event_categorisation:ps_variant_validation}
 \end{figure}
 
-We note that the change in performance is modest. This is expected as the VBF model only uses kinematic variables, and the main impact of these variations may be through pileup mitigation and selecting the incorrect jet rather than substructure mismodelling. 
+The change in performance is modest. This is expected as the VBF model only uses kinematic variables, and the main impact of these variations may be through pileup mitigation and selecting the incorrect jet rather than substructure mismodelling. 
 
 
 \subsection{Single BDT Model}
 The two-step structure of the VBF tag was first developed for the Higgs boson Run 1 analysis  on less performant software and different selections. 
 In particular, the photon ID cut of the preselection removes much of the background that the combined BDT targets. 
 When trained over events with this cut applied, the combined BDT adds little to the performance of the VBF Tag. 
-Using a single BDT equivalent to simply adding diphoton BDT score to the dijet BDT performs at the same level as the two step tag (Figure \ref{fig:event_categorisation:single_BDT}).
+Using a single BDT equivalent to simply adding the diphoton BDT score to the dijet BDT performs at the same level as the two step tag (Figure \ref{fig:event_categorisation:single_BDT}).
 
 Furthermore, the original train-test split of the two-step BDT was unavailable. Evaluating over the entire sample will include training events and exaggerate the performance of the BDT-based tag. 
-A single-step BDT was trained, and founds to be equal in performance. A small increase in the two-step tag is possibly from the inclusion of training events. 
-It is more of a fair test to compare this model to the dense CNN because we can use the exact same training and holdout sets. 
+A single-step BDT was trained and found to be equal in performance. A small increase in the two-step tag is possibly from the inclusion of training events. 
+It is a fairer test to compare this model to the dense CNN because the exact same training and test sets can be used. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.99\textwidth]{figures/event_selection/dijet_BDT_PS_unw.pdf}
-    \caption{Single BDT performance and comparison to the two step approach.}
+    \caption{Single BDT performance and comparison to the two step approach. Distributions of the single BDT score are shown on the left and are all normalised to unity with solid red corresponding to VBF, blue line to ggH, and black line to SM backgrounds. The SM background distribution is shown as a stacked histogram. Corresponding ROC curves for the single BDT (centre) and original approach (right) are shown with colours denoting the same samples as the histogram.}
     \label{fig:event_categorisation:single_BDT}
 \end{figure}
 
@@ -588,12 +600,12 @@ It is more of a fair test to compare this model to the dense CNN because we can 
 %=================================================
 \section[DCNN VBF Tag]{VBF Tag with a Dense Convolutional Neural Network}
 In the BDT-based tag the ggH separation power is much lower than the SM background samples. 
-This is a challenging problem to solve when equipped with only kinematic variables jet structure variables should offer important extra information.
+This is a challenging problem to solve when equipped with only kinematic variables. Jet structure variables should offer important extra information.
 
-Rather than using hand-engineered jet substructure features we approach this problem by formulating jet structure as an image, and training a dense convolutional neural network.
+Rather than using hand-engineered jet structure features, this problem is approached by formulating jet structure as an image and then training a dense convolutional neural network.
 The model will form many discriminating features as part of the learning process, some hopefully more sophisticated  and more powerful than common engineered features. 
 
-This section will describe the construction of these images, and the model built to process them in detail. We will consider the optimisation techniques for selecting the model structure and we will also explore what the model has learned using a collection of techniques. After this we will validate the model with particular emphasis on how it is affected by the quality of QCD event modelling. 
+This section will describe the construction of these images, and the model built to process them in detail. The optimisation techniques for selecting the model structure are described, and the features the model has learned will be explored using a collection of techniques. After this the model will be validated with particular emphasis on how it is affected by the quality of QCD event modelling. 
 
 
 
@@ -604,8 +616,8 @@ The properties of a jet's constituent particles can provide important informatio
 An image is a natural way of representing this information, with the spatial distribution represented by the arrangement of pixel values and the channels of the image representing properties such as charged particle $p_{T}$ deposition in the pixel region. 
 
 \subsubsection{Formulation}
-The image formulation used in this thesis (Figure \ref{fig:event_categorisation:jet_image}) is of two three-channel jet images (corresponding to the leading and subleading jets) stacked in the channels' dimension to produce a $n\times{}n\times{}6$ dijet image.
-The three channels are the following: $p_T$ deposition of charged candidates, $p_T$ deposition of neutral candidates, and particle multiplicity.
+The image formulation used in this thesis (Figure \ref{fig:event_categorisation:jet_image}) is inspired by \cite{JetsInColour}, and uses two three-channel jet images (corresponding to the leading and subleading jets) stacked in the channels' dimension to produce a $n\times{}n\times{}6$ dijet image.
+The three channels are the following: $p_T$ deposition of charged PF candidates, $p_T$ deposition of neutral PF candidates, and PF candidate multiplicity.
 The space that the pixels correspond to is the space of particle displacements in pseudorapidity and azimuthal angle from the jet axis $(\Delta\eta,\Delta\phi)$,
 \begin{equation}
     \begin{split}
@@ -619,7 +631,7 @@ The pixels themselves are not a rectilinear grid in $(\Delta\eta,\Delta\phi)$, b
 \begin{equation}
     \begin{split}
         \Delta{R} =& \sqrt{\Delta\eta^2 + \Delta\phi^2} \\
-        \varphi   =& \mathrm{tan}(\Delta\phi/\Delta\eta) \\
+        \varphi   =& \mathrm{atan2}(\Delta\phi,\Delta\eta) \\
     \end{split}
     \label{eq:event_categorisation:pixel_coords}
 \end{equation}
@@ -635,7 +647,7 @@ All of the images in this thesis will have the same form and are always centred 
         \includegraphics[width=0.45\textwidth]{figures/event_selection/full_image_rect.pdf}
     \end{center}
     \caption{Construction of single $12\times{}12$-pixel three-channel jet image (top). 
-             Arrows correspond to individual jet constituents where red arrows are charged, green are neutral and the opacity the arrows corresponds to candidate $p_{T}$.
+             Arrows correspond to individual jet constituents where red arrows are charged, green are neutral and the opacity of the arrows corresponds to candidate $p_{T}$.
              The multiplicity channel is drawn separately, and black pixels lightened so the charged and neutral channels can be seen clearly.
              The final image (bottom) shown in both $(\Delta\eta,\Delta\phi)$ coordinates (left) and the $(\Delta{R},\varphi)$ coordinates seen by the network (right).}
     \label{fig:event_categorisation:jet_image}
@@ -644,11 +656,11 @@ All of the images in this thesis will have the same form and are always centred 
 %(Why this formulation: why polar images and why stack two jets?)
 %(Translation invariance and cross-correlation between jets at low level)
 
-We use this stacked dijet image formulation to facilitate finding correlation between jets. 
-In particular we wish this to happen at a low level rather than constructing features on a per-jet basis and then comparing them. 
-This is needed for detecting the characteristic colour connection of VBF: if the jets are in opposite hemispheres the jet image will show the candidates to be pulled in opposite $\Delta\eta$ directions. 
+This stacked dijet image formulation is used to facilitate finding correlations in structure between the two dijet jets. 
+In this formulation it will happen at a lower level rather than constructing complex features on a per-jet basis and then comparing them. 
+For example, this is needed for detecting the characteristic colour connection of VBF: if the jets are in opposite hemispheres the jet image will show the candidates to be pulled in opposite $\Delta\eta$ directions. 
 
-We use polar coordinate pixels to give finer segmentation at the centre of the jet and to make it easier for a DCNN to construct translation-invariant filters. Features will depend more on $(\Delta{R},\varphi)$ than $(\Delta\eta,\Delta\phi)$. 
+Polar coordinate pixels are used to give finer segmentation at the centre of the jet and to make it easier for a DCNN to construct translation-invariant filters. Features will depend more on $(\Delta{R},\varphi)$ than $(\Delta\eta,\Delta\phi)$. 
 
 
 \subsubsection{Image Dataset and Preprocessing}
@@ -673,7 +685,7 @@ The dijet image distribution has a few notable features that originate from the 
 
 Images are preprocessed before being input to the DCNN for both training and inference such that each feature (image pixel channel value) distribution has mean zero and standard deviation of one. 
 This is achieved by subtracting the per-feature mean of the dataset and dividing by the per-feature standard deviation.
-In the case considered here we use the class-balanced mean and standard deviation where each class has equal weight. This is important for when the training is carried out over class-balanced minibatches.
+In this case the class-balanced mean and standard deviation are used where each class has equal weight. This is important for when the training is carried out over class-balanced minibatches.
 
 
 
@@ -687,7 +699,7 @@ The overall structure of the model can be considered to built from three main pa
     \item \textbf{Main discriminant} fully-connected layers for integrating all information and producing the class logits.
 \end{itemize}
 
-The \textbf{convolutional section} consists of a `spread layer' (SL) followed by three dense blocks (DB1, DB2, DB3) each of which are followed by transition units (TU1, TU2, TU3). All layer activation functions are leaky ReLUs to avoid the `dying ReLU problem' (REF).
+The \textbf{convolutional section} consists of a `spread layer' (SL) followed by three dense blocks (DB1, DB2, DB3) each of which are followed by transition units (TU1, TU2, TU3). All layer activation functions are leaky ReLUs to avoid the dying ReLU problem.
 
 The spread layer is a depth-wise convolution layer that produces $N$-many feature maps for each channel where the filters do not mix the image channels. 
 For each channel's associated feature maps half of them have their values evenly permuted in the vertical direction, this corresponds to a rotation by $\pi$ in the polar image.
@@ -711,17 +723,19 @@ In addition to the above, the formulation of the image can also be tuned like an
 
 \subsubsection{Image Formulation and Network Architecture Search}
 %intro
-Choosing the specific network architecture is a complex and time-consuming problem as there are many choices to explore and model training can take as long as 24 hours.
+Choosing the specific network architecture is a complex and time-consuming problem as there are many hyperparameter choices to explore and model training can take as long as 24 hours.
 To find an optimal model in the space of possible hyperparameter choices an optimisation scheme based on Bayesian optimisation is used. 
 
 
 %procedure
 As the training time is a severe bottleneck the hyperparameter space is sampled for trainings on the two-class subproblem of only VBF/ggH. 
-The metric to be optimised for is the peak AUROC evaluated on the validation set during training.  
+The metric to be optimised for is the peak AUROC evaluated on the validation set during training, and each training can only take a maximum of 24 hours. 
+This time requirement is to keep the model size and therefore training time to a practical level for use in a physics analysis.  
 The optimisation is split into a series of steps targeting different parts of the hyperparameter space.
+All of these optimisations were carried out using the Imperial College London Research Computing Service \cite{IC_HPC}.
 
-First an approximate optimisation is carried out over all of the structure hyperparameters to ensure that the candidate model we start with is not in a strongly suboptimal region. 
-Next we optimise the choice of image channels and pixels to find the optimal image formulation. After this we optimise the spread unit, dense block and transition unit depth structure and then do another optimisation for the filter sizes in the spread layer and dense blocks. Finally, the depth and size of the fully-connected layers of the merge unit and main discriminant are optimised. 
+First an approximate optimisation is carried out over all of the structure hyperparameters to ensure that the candidate model is not in a strongly suboptimal region to begin with. 
+Next the choice of image channels and pixels is optimised to find the optimal image formulation. After this the spread unit, dense block and transition unit depth structure are optimised and then another optimisation is carried out for the filter sizes in the spread layer and dense blocks. Finally, the depth and size of the fully-connected layers of the merge unit and main discriminant are optimised. 
 
 %result
 The final optimised structure is as follows.
@@ -737,23 +751,28 @@ The final optimised structure is as follows.
     \item Merge: first layer size factor $1.5$, layer size 512, depth 2.
     \item Discriminant: layer size 512, depth 3.
 \end{itemize}
-We note that the optimisation seems to have favoured more abstract and complex features later in the model where the field of view is larger. This is shown by the fact that much of the depth is introduced in DB3. 
-There is also a strong feature reduction in TU3 
+The optimisation appears to have favoured more abstract and complex features later in the model where the field of view is larger. This is shown by the fact that much of the depth is introduced in DB3. 
+There is also a strong feature reduction in TU3 that strongly curtails model complexity. High-dimensional output from the convolutional section leads to a large increase in parameters due to the fully-connected layer immediately after it. 
 
 
 
 
 \subsubsection{Regularisation}
 %Intro
-The model is regularised with a single $L_2$ regulariser term, dropout, and gradient clipping.
+The DCNN model is regularised with a single $L_2$ regulariser term for the convolutional section, dropout, and gradient clipping.
 
 %L2 regularization
-L2 encourages smoothness in the convolutional section. We want the features to be smooth to make it less likely to memorise particular configurations of pixels. 
-We also want the model representation to be spread-out in the neurons as this leads to robustness and better generalisation (deepmind paper on neuron deletion).
-This was tuned using Bayesian optimisation, originally there was L1 and L2 in the other sections but they became so small during the optimisation that they didn't matter. The most effect is in the convolutional region. 
+$L_2$ regularisation encourages the learning of smoother features in the convolutional section and was found in optimisation studies to give better performance than $L_1$ or $L_1 + L_2$. 
+In the $L_1 + L_2$ optimisation the $L_1$ term became very small and effectively converged to the $L_2$ result.
+A three-dimensional Bayesian optimisation was carried out to tune the final $L_2$ hyperparameters for the convolution, merge and main discriminant sections.
+This optimisation showed that very small values are preferred in the non-convolutional sections, and they were therefore set to zero. 
+The use of $L_2$ regularisation in the convolutional section will encourage smoother features. This may stop the model memorising particular configurations of pixels and prevent overfitting. 
+It is desirable that the representation learned by the model is spread-out in the neurons as this leads to robustness and better generalisation \cite{DeepMindDeletion}.
+This is another effect of $L_2$ regularisation.
 
 %Dropout
-Dropout is used in all sections, but the dropout in the convolutional section is different to standard dropout. In the convolutional section we use spatial dropout where entire feature maps are dropped rather than individual neurons. 
+Dropout is used in all sections, but the dropout in the convolutional section is different to standard dropout. 
+In the convolutional section spatial dropout is used where entire feature maps are dropped rather than individual neurons. 
 This stops the model from getting over-reliant over particular features and is another way of encouraging a more spread-out representation. 
 
 
@@ -762,19 +781,19 @@ Gradient clipping is particularly crucial to keep training updates stable in thi
 The scheme limits the maximum size of parameter updates during stochastic gradient descent by clipping the gradients to some maximum value. 
 Specifically this is done by calculating the global $L_2$ norm of the gradient vector in the parameter space and scaling the gradient vector back if it is over the maximum value.  
 
-This is necessary when the loss surface as a function of the model parameters has cliff-like regions. If we evaluate the gradient at the cliff face the gradient may be very large which will lead to a very large parameter update kicking the parameters of the model far from the point it was evaluated at. Gradient clipping will stop this from happening by keeping the parameter update small and allowing the parameters of the model to settle at the bottom of the cliff. These cliff like regions are common when we are dealing with sparse inputs where most values are zero therefore this is most likely a consequence of the dijet image sparsity. 
+This is necessary when the loss surface as a function of the model parameters has cliff-like regions. If the gradient is evaluated at the cliff face the gradient may be very large which will lead to a very large parameter update kicking the parameters of the model far from the point it was evaluated at. Gradient clipping will stop this from happening by keeping the parameter update small and allowing the parameters of the model to settle at the bottom of the cliff. These cliff-like regions are common when dealing with sparse inputs where most values are zero, therefore this is most likely a consequence of the dijet image sparsity. 
 
 
 
 \subsubsection{Loss}
-The loss encodes our opinion of what constitutes good model performance and it is here that we can define the cost of particular sorts of misclassification over others. 
-There are two components to this: intra-class costs and inter-class costs. 
+The loss function encodes an opinion of what constitutes good model performance and it is here that one can define the cost of particular sorts of misclassification over others. 
+There are two components to this: inter-class costs and intra-class costs. 
 
-Inter-class cost is where we define the relative cost of misclassification between the classes. 
+\textbf{Inter-class} cost defines the relative priority of misclassification between the classes. 
 This was attempted in a less formal manner in the BDT-based model when ggH was left out of the combined BDT training. 
-We can consider this to be equivalent to setting the misclassification cost for the ggH events to zero. 
+This would be equivalent to setting the misclassification cost for the ggH events to zero. 
 
-For the DCNN-based model we use a cost-sensitive version of cross entropy developed in (ref),
+For the DCNN-based model a cost-sensitive version of cross entropy developed in \cite{CostSensitivity} is used,
 \begin{equation}
     L_i = -\log\left(\frac{\xi_{pp}e^{o^{i}_{p}}}{\sum_{j=0}^{2}\xi_{pj}e^{o^{i}_{j}}}\right)
 \end{equation} 
@@ -784,19 +803,23 @@ The cost matrix has the following definition,
     \xi = \begin{pmatrix}
         c_{\mathrm{BG}} & c_{\mathrm{BG}/\mathrm{ggH}} & c_{\mathrm{BG}/\mathrm{VBF}} \\
         c_{\mathrm{BG}/\mathrm{ggH}} & c_{\mathrm{ggH}} & c_{\mathrm{ggH}/\mathrm{VBF}} \\
-        c_{\mathrm{BG}/\mathrm{VBF}} & c_{\mathrm{VBF}/\mathrm{ggH}} & c_{\mathrm{VBF}} \\
+        c_{\mathrm{BG}/\mathrm{VBF}} & c_{\mathrm{ggH}/\mathrm{VBF}} & c_{\mathrm{VBF}} \\
     \end{pmatrix}
 \end{equation}
-where each element $c$ is a real number belonging to the interval $(0,1]$ on the diagonal and $[0,1]$ off-diagonal. If all the elements are set to one this is equivalent to ordinary cost-insensitive cross entropy. 
+where each element $c$ is a real number belonging to the interval $(0,1]$ on the diagonal and $[0,1]$ off-diagonal. 
+This was selected to be symmetric to simplify the cost optimisation problem.
+If all the elements are set to one this is equivalent to ordinary cost-insensitive cross entropy. 
 
-When training the model we set $c_{\mathrm{BG}/\mathrm{ggH}}$ to zero as we do not care about this type of misclassification at all. We do not want the training to compromise on other types of misclassification to improve this. This lead to the largest performance increase in VBF discrimination and is crucial to being able to treat this as a three-class problem.
- The diagonal values are all set to one, tuning this was found to make little difference. This is equivalent to setting the general cost of misclassifying a class.
+When training the model $c_{\mathrm{BG}/\mathrm{ggH}}$ is set to zero as this type of misclassification does not matter at all in the VBF tag. 
+The training should not compromise on other types of misclassification to improve it. 
+This leads to the largest performance increase in VBF discrimination and is crucial to being able to treat this as a three-class problem.
+The diagonal values are all set to one, tuning this was found to make little difference. These entries are equivalent to setting the general cost of misclassifying a class.
 The cost $c_{\mathrm{BG}/\mathrm{VBF}}$ is kept at one as this type of discrimination is the primary objective of the model. 
 Finally, $c_{\mathrm{ggH}/\mathrm{VBF}}$ was tuned to maximise VBF/ggH discrimination while keeping VBF/BG discrimination at or above the level of the BDT-based model. This was found to be $0.5$.
 
-Intra-class costs are introduced by weighting events in each minibatch depending on their event weight and their class.  
+\textbf{Intra-class} costs are introduced by weighting events in each minibatch depending on their event weight and their class.  
 Within each class in the minibatch each event is given a weight in proportion to its event weight scaled to belong to an interval $[1,a]$ where $a$ is a positive real number greater than one. 
-If we do not use this scaling the difference in weights between events is multiple orders of magnitude and leads to instability and underperformance. 
+If this scaling is not used the difference in weight between events can be multiple orders of magnitude leading to instability and underperformance. 
 The total weight for each class is then scaled to be equal to mitigate the effects of class imbalance. 
 
 The loss over the entire minibatch is expressed as a weighted sum of events,
@@ -811,25 +834,29 @@ This is the final loss that is minimised by the optimiser during training.
 \subsubsection{Training Process}
 %intro
 %Training is done in two steps: image only and then the rest. This is why...
-The training process consists of two steps: first the convolutional part is trained on its own with two fully-connected layers, then the convolutional layer parameters are frozen and the full model is trained with the engineered features. This approach is used because it was found that when the convolutional section is trained simultaneously with the rest of the network the training is less stable and the model under-performs.
+The training process consists of two steps: first the convolutional part is trained on its own with two fully-connected layers, then the convolutional layer parameters are frozen and the full model is trained with the engineered features. This approach is used because it was found that when the convolutional section is trained simultaneously with the rest of the network, the training is less stable and the model under performs.
 
 %Convolutional section training
 The objective of the convolutional section training is to develop the learned features that will be used in the full model. 
 This is targeting VBF/ggH discrimination, therefore training is treated as a two-class problem with just the ggH and VBF samples.  
 
 This runs over 150000 batches of 900 events with event weights equal to one. Each batch is class-balanced and contains 450 events from each of ggH and VBF.  
+During the training the data are augmented by randomly reflecting the images in the $\Delta\eta$ and $\Delta\phi$ directions to improve generalisation. 
+
 The optimisation algorithm used is Adam with Nesterov momentum (Nadam) with learning rate $0.001$ and the loss used is cross entropy. 
 Nadam was found to be the most performant in contrast to the CNN literature where SGD with Nesterov momentum is consistently better. 
-This is likely due to adaptive learning rate algorithms such as Adam being better at handling sparse network input. 
-During training the the training data are augmented by randomly reflecting the images in the $\Delta\eta$ and $\Delta\phi$ directions during training to improve generalisation. 
+This is likely due to adaptive learning rate algorithms such as Adam having parameter-specific learning rates that are increased if the parameter does not change much. 
+This makes them better at handling sparse network inputs which can result some parameters of the network not being updated as often as others. 
+
 
 
 %Integration training
-We then take the trained convolutional model, freeze its parameters and cut off everything after TU3. 
+The trained convolutional model then has its parameters frozen, and the fully-connected layers after the convolutional section (after TU3) are removed. 
 The output of TU3 will be the learned features produced in the first training step, they are then concatenated with the `spread-out' engineered features of the merge section.
-We then perform another training over the full training set to train the merge section and the final discriminant. 
+Another training is then performed over the full training set to train the merge section and the final discriminant. 
 
-This training runs over 100000 batches of 900 events with scaled event weights as described in the loss subsection. Each batch is again class-balanced, but this time it has 300 events from the three classes: VBF, ggH, and SM background. 
+This training runs over 100000 batches of 900 events with scaled event weights as described in the loss subsection. 
+Each batch is again class-balanced, but this time it has 300 events from the three classes: VBF, ggH, and SM background. 
 The optimisation algorithm is Nadam with the same learning rate and the loss is the cost-sensitive cross entropy described previously. 
 
 
@@ -846,20 +873,57 @@ The optimisation algorithm is Nadam with the same learning rate and the loss is 
 
 
 \subsection{Model Performance}
-The model trained on images only (step one of the training) is already a relatively strong VBF/ggH discriminant. 
-On data with the loose preselection applied the discrimination power equals that of the combined BDT. 
-However when the full preselection is applied the performance drops below the combined BDT. 
+%Image only performance (Text and figure)
+To determine how the learned features contribute to VBF/ggH discrimination performance the image-only network (stage one of the training) may be compared to the single-step BDT model.
+This performance is examined on the same test set with both the loose and full VBF preselections.
+On the loose preselection the image-only network achieves an AUROC of $0.800$ which is already better than the $0.796$ of the BDT (Table \ref{tab:event_categorisation:auroc_table}) 
+However, upon moving to the full PS the image-only performance drops below the BDT. The score distribution and the associated ROC curve for the image-only model are shown in Figure \ref{fig:event_categorisation:image_only_DCNN}. This drop is possibly due to the more stringent \pt cuts removing gluon jets which have a softer \pt spectrum.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/event_selection/imgonly_DCNN_PS.pdf}
-    \includegraphics[width=0.75\textwidth]{figures/event_selection/full_DCNN_PS.pdf}
-    \caption{VBF/ggH discrimination performance for the model trained only on dijet images (top) and the full model (bottom).}
+    \includegraphics[width=0.9\textwidth]{figures/event_selection/imgonly_DCNN_PS.pdf}
+    \caption{VBF/ggH discrimination performance for the image-only model with the full VBF preselection. The score distribution for VBF (red) and ggH (blue) is shown on the left. The associated ROC curve measuring VBF/ggH discrimination power is shown on the right.}
     \label{fig:event_categorisation:image_only_DCNN}
 \end{figure}
 
-The final model performance brings a substantial improvement in the VBF/ggH discrimination, especially with the full preselection. 
-The discrimination power for the VBF versus all background processes is the same as the previous tag, but the breakdown by sample is different. 
-The difference is especially pronounced in the QCD background sample, mostly likely as an effect of large background weights and poor sample size. 
+%Full model performance 
+The full model includes the same set of kinematic variables as the BDT and has been trained with the tuned costs over all of the backgrounds (stage two of the training).
+This model brings a substantial improvement in the VBF/ggH discrimination, especially with the full preselection. 
+For the other background samples the performance is similar with the DCNN AUROCs being slightly higher. 
+This information is summarised in Table \ref{tab:event_categorisation:auroc_table} and the score distribution with the associated ROC curves are shown in Figure \ref{fig:event_categorisation:perf_full_DCNN}.
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{l|cccc}
+        \thickhline
+        & \multicolumn{2}{c}{Full PS} & \multicolumn{2}{c}{Loose PS} \\ 
+        Sample & BDT & DCNN & BDT & DCNN \\
+        \hline
+        ggH             & 0.778 & 0.837 & 0.796 & 0.845\\
+        QCD             & 0.901 & 0.907 & 0.892 & 0.885\\
+        $\gamma$-jet    & 0.868 & 0.870 & 0.869 & 0.882\\
+        $\gamma\gamma$  & 0.884 & 0.891 & 0.870 & 0.881\\
+        All             & 0.895 & 0.901 & 0.883 & 0.884\\
+        \thickhline
+    \end{tabular}
+    \caption{Comparison table for BDT/DCNN AUROCs with full and loose preselections broken down by background sample.}
+    \label{tab:event_categorisation:auroc_table}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/event_selection/full_DCNN_PS.pdf}
+    \caption{Discrimination performance for all of the background samples with the full model and the full VBF preselection.
+             Score distributions (left) are shown as stacked histograms for the SM background, a blue line histogram for ggH, and a red line histogram for VBF. 
+             Associated ROC curves (left) are shown in the same colours for each sample, with all background together shown in black.}
+    \label{fig:event_categorisation:perf_full_DCNN}
+\end{figure}
+
+In conclusion, the DCNN-based model demonstrates a strong improvement over the BDT-based model in VBF/ggH discrimination and the learned features alone are strongly discriminating. 
+
+
+
+
+
+
 
 
 
@@ -867,18 +931,20 @@ The difference is especially pronounced in the QCD background sample, mostly lik
 
 
 \subsection{Categorisation and Tag Performance}
-The VBF tag categories then re-optimised for the dense CNN model tag using the same procedure as before.
+To determine how the higher model performance of the DCNN translates into the VBF tagging and categorisation itself, the category boundaries are re-evaluated. 
+This uses the same procedure as before for the boundary optimisation itself and the number of categories. 
+The optimal number of categories for the DCNN-based VBF tag is found to be three.
 Approximate studies of the three VBF categories, their boundaries and their estimated performance is shown in Figure \ref{fig:event_categorisation:DCNN_mass_fits} and Table \ref{tab:event_selection:DCNN_cats}.
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{ l | c c c c c }
         \thickhline
-        Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS$_2$ & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
+        Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        VBF0 & $[1, 0.856)$     & 1.5 &  2.13 & 0.10 & 0.37 \\
-        VBF1 & $[0.856, 0.704)$ & 2.0 &  1.15  & 0.27 & 0.11 \\
-        VBF2 & $[0.704, 0.495)$ & 2.0 &  0.60 & 0.46 & 0.04 \\
+        VBF 0 & $[1, 0.856)$     & 1.5 &  2.13 & 0.10 & 0.37 \\
+        VBF 1 & $[0.856, 0.704)$ & 2.0 &  1.15  & 0.27 & 0.11 \\
+        VBF 2 & $[0.704, 0.495)$ & 2.0 &  0.60 & 0.46 & 0.04 \\
         \thickhline
     \end{tabular}
     \caption{Estimated category attributes for the DCNN-based VBF tag.}
@@ -890,8 +956,10 @@ Approximate studies of the three VBF categories, their boundaries and their esti
     \caption{Mass distributions and fits for the three optimised DCNN-based tag categories.}
     \label{fig:event_categorisation:DCNN_mass_fits}
 \end{figure}
-We note that there has been a reduction in the ggH contamination of VBF 0, but everything else is approximately the same. 
-It is quite challenging to improve ggH discrimination as it needs to be traded off against overall background rejection performance, and as a corollary: statistical significance. . 
+
+The proper measurement of these category performances requires the full machinery of the signal and background modelling, and the final fits of Chapter \ref{chap:statistical}.
+These studies show a reduction in the ggH contamination of VBF 0, but the other categories are approximately unchanged. 
+This demonstrates the challenge of improving ggH discrimination as it needs to be traded off against overall background rejection performance, and as a corollary; statistical significance.
 
 
 
@@ -902,64 +970,66 @@ It is quite challenging to improve ggH discrimination as it needs to be traded o
 
 
 \subsection{Model Interpretation}
-We can employ a collection of techniques to determine what sort of features the convolutional section is learning to form.
-In this section we will explore three: feature visualisation with synthetic images generated to maximally activate part of the network, real images that achieve the same thing, and direct inspection of the frontmost filters (filters of the spread layer).
+A collection of techniques can be used to determine what sort of features the convolutional section is learning to form.
+This section will explore three: feature visualisation with synthetic images generated to maximally activate part of the network, real images that achieve the same thing, and direct inspection of the frontmost filters (filters of the spread layer).
 
 
 
 \subsubsection{Feature Visualisation}
-The technique of feature visualisation uses optimisation and differentiability of neural networks to interpret their inner workings, particularly CNNs (ref). A famous example of this process is inceptionism which produces the so-called `deep dream' images. We in effect cause the network to hallucinate by creating a feedback loop between its visual input and neural activations that iteratively alters the visual input to maximise the activation.
+The technique of feature visualisation uses optimisation and differentiability of neural networks to interpret their inner workings, particularly CNNs \cite{FeatureVis}. A famous example of this process is inceptionism and the so-called `deep dream' images \cite{Inceptionism}. The network is in effect forced to `hallucinate' by creating a feedback loop between its visual input and neural activations that iteratively alters the visual input to maximise the activation.
 
-The approach we use in this thesis is based on SGD with classical momentum with no regularisation or other conditions. 
-We begin with an initial image tensor, $x_{ijk}$, with small random positive values, and a momentum tensor, $v_{ijk}$, of the same size initialised to zero.
-Our loss in this case will be a single output neuron $o_{l}$. We then alter the image as follows
+The approach used in this thesis is based on SGD with momentum and no regularisation or other conditions. 
+The process begins with an initial image tensor, $x_{ijk}$, with small random positive values, and a momentum tensor, $v_{ijk}$, of the same size initialised to zero.
+The loss in this case will be a single output neuron $o_{l}$. The image is then altered as follows:
 \begin{equation}
     \begin{split}
         v_{ijk} &= \mu{}v_{ijk} + \alpha\frac{\partial{o_{l}}}{\partial{x_{ijk}}} \\
         x_{ijk} &= x_{ijk} + v_{ijk}
     \end{split}
 \end{equation} 
-where the partial derivative has been computed with back-propagation, and $\alpha$ is the learning rate. We then set negative entries to zero and normalise the image as described in the image formulation section before the next iteration. This is continued for 1000 iterations with the learning rate reduced by a factor of $0.75$ every 100 iterations. 
-The end results of this for the VBF and ggH logits of the image only network are shown in Figure \ref{fig:event_categorisation:feature_vis_vbf_ggh}
+where the partial derivative has been computed with backpropagation, and $\alpha$ is the learning rate. Negative pixel values are set to zero and the image is normalised as described in the image formulation section before the next iteration. This continues for 1000 iterations with the learning rate reduced by a factor of $0.75$ every 100 iterations. 
+The end results of this for the VBF and ggH logits of the image only network are shown in Figure \ref{fig:event_categorisation:feature_vis_vbf_ggh}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.99\textwidth]{figures/event_selection/norm_logits1.pdf}
-    \includegraphics[width=0.99\textwidth]{figures/event_selection/norm_logits0.pdf}
+    \includegraphics[width=0.85\textwidth]{figures/event_selection/norm_logits1.pdf}
+    \includegraphics[width=0.85\textwidth]{figures/event_selection/norm_logits0.pdf}
     \caption{Generated images for feature visualisation which maximally activate the output neuron: VBF (top) and ggH (bottom).}
     \label{fig:event_categorisation:feature_vis_vbf_ggh}
 \end{figure}
 
-These images show a clear difference in each class, and some interesting physical features. However, we must keep in mind that these will be somewhat unphysical as the optimisation will try to pack as much evidence for the target class in the image as possible with no constraints on what is sensible. If we take a network such as inception and optimise for the dog class we will produce an image of a carpet of deformed dogs as the optimisation tries to include as many dog features as possible. 
+These images show a clear difference in each class, and some interesting physical features. However, it should be noted that these will be somewhat unphysical as the optimisation will try to pack as much evidence for the target class in to the image as possible with no constraints on what is sensible. For example, if one takes a network such as inception and optimises for the dog class it will produce an image of a carpet of deformed dogs as the optimisation tries to include as many dog features as possible. 
 
 
-In the VBF image we observe clear signs of colour connection where deposition is pulled in opposite $\Delta\eta$ directions. They are also more collimated with more \pt  deposition in the jet core as we expect for quark jets. The dominance of neural \pt  deposition and discrete rings of multiplicity indicate that the model is forming features that detect jets in the forward regions by detector coarseness and lack of charge. 
+The VBF image shows clear signs of colour connection where the jet constituents are pulled in opposite $\Delta\eta$ directions. This causes asymmetry in the jet image where there are more non-zero pixels on one half and the leading and subleading images have this asymmetry in opposite directions.
+They are also more collimated with more \pt  deposition in the jet core as expected for quark jets. This can be observed as more colour at the centre of the image and more empty pixels around the outside. The dominance of neural \pt deposition (green) and discrete rings of multiplicity (blue) indicate that the model is forming features that detect jets in the forward regions by detector coarseness and lack of charge. 
 
-In the ggH image we observe a more circular structure with a larger proportion of charged deposition over a larger area. This is in line with the expectation that gluon jets are less collimated and higher multiplicity. The rings line up with the gaps in the coarse forward structure, this suggests that the model is learning to detect whether the jets are in the tracker acceptance. 
+In the ggH image a more circular structure can be seen with a larger proportion of charged deposition over a larger area. This is in line with the expectation that gluon jets are less collimated and higher multiplicity. The rings line up with the gaps in the coarse forward structure, this suggests that the model is learning to detect whether the jets are in the tracker acceptance. 
 
 
 \subsubsection{Pseudorapidity Inference}
 The structure of the feature visualisation images suggest that the model has learned to reconstruct a coarse estimate of the pseudorapidity properties of the jet: whether the jets are in the coarse forward regions or not. 
-To test this hypothesis we train the second step again with the leading and subleading jet pseudorapidities included in the engineered features. If there is no change in performance this would suggest that the model already has access to this information via the image input. This training shows no performance increase which leads us to conclude that the network does indeed reconstruct this information. 
+To test this hypothesis the second step of the training is run again with the leading and subleading jet pseudorapidities included in the engineered features. If there is no change in performance this would suggest that the model already has access to this information via the image input. This training shows no performance increase with the AUROCs of the two models being almost identical. This leads us to conclude that the network does indeed reconstruct this information or the information is not useful.
 
-Training a single BDT model with the pseudorapidities shows a small performance increase in discrimination power. This suggests that only a small portion of the DCNN performance gain comes from inferring the pseudorapidity. 
+However, training a single BDT model with the pseudorapidities shows a small performance increase in discrimination power. This suggests that only a small portion of the DCNN performance gain comes from inferring the pseudorapidity. 
 
 
-\subsubsection{Maximally-Activating images}
-To get a better idea of what sort of physically sensible features are favoured by the network, and whether our conclusions about the feature visualisation are true, we can inspect real event images that are maximally activating. 
-A selection is applied on the leading jet so that it is in the tracker acceptance and the charged-\pt  channel is present. The most activating image without this requirement shows two very forward jets with coarse structure.
+\subsubsection{Maximally-Activating Images}
+To get a better idea of what sort of physically sensible features are favoured by the network, and whether the conclusions about the feature visualisation are true, real event images are inspected that are maximally activating. 
+A selection is applied on the leading jet so that it is in the tracker acceptance and the charged-\pt  channel is present. The most activating image without this requirement shows two very forward jets with coarse structure.  The two maximally activating images for the VBF and ggH classes are shown in Figure \ref{fig:event_categorisation:maxact_vis_vbf_ggh}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.99\textwidth]{figures/event_selection/max_img_vbf_tkr_cut_logits_normtype1.pdf}
-    \includegraphics[width=0.99\textwidth]{figures/event_selection/max_img_ggh_tkr_cut_logits_normtype1.pdf}
+    \includegraphics[width=0.85\textwidth]{figures/event_selection/max_img_vbf_tkr_cut_logits_normtype1.pdf}
+    \includegraphics[width=0.85\textwidth]{figures/event_selection/max_img_ggh_tkr_cut_logits_normtype1.pdf}
     \caption{Real images that maximally activate the class logits. 
              The top image is the maximally-activating VBF image, and the bottom is the maximally-activating ggH image. }
     \label{fig:event_categorisation:maxact_vis_vbf_ggh}
 \end{figure}
 
-We can see that the max-activating images for ggH and VBF resemble the feature visualisations with SGD. 
-The VBF image is collimated, with a spread in one $\Delta\eta$ direction in the leading jet and the opposite in the subleading. We can also see the effect of the coarse forward structure of CMS on the subleading jet. 
-
-The ggH is far-higher in multiplicity, much less collimated and more circular. This is in line with the image from feature visualisation. 
+The max-activating images for ggH and VBF resemble the feature visualisations with SGD. 
+The VBF image is collimated, with a spread in one $\Delta\eta$ direction in the leading jet and the opposite in the subleading. 
+This effect is easier to see in the leading jet, but is also present in the subleading image where there is one bright pixel to one side.
+The effect of the coarse forward structure of CMS on the subleading jet image can also be observed. 
+The ggH is far higher in multiplicity, much less collimated and more circular. This is in line with the image from feature visualisation. 
 
 
 \subsubsection{Front Filters and Low-level Features}
@@ -982,8 +1052,8 @@ These convolution filters are shown in Figure \ref{fig:event_categorisation:fron
     \label{fig:event_categorisation:front_filters}
 \end{figure}
 
-First we note that the filters are somewhat noisy in appearance. This would be a sign of inappropriate training conditions in a CNN with normal images: either learning rate is too high or the model requires regularisation. 
-In this case the noisiness appears to be intrinsic to the dijet image problem because the images are sparse and are in a sense less smooth. Training without event weights, with large batches and a lower learning rate produced smoother filters and better generalisation performance.  
+The front filters have a coarse and noisy appearance. This would be a sign of inappropriate training conditions in a CNN with normal images: either the learning rate is too high or the model requires regularisation. 
+In this case the noisiness could be intrinsic to the dijet image problem because the images are sparse and are less smooth. Training without event weights, with large batches and a lower learning rate produced smoother filters and better generalisation performance.  
 
 The filters themselves detect radial and angular bands of pixels, this corresponds to horizontal and vertical stripes in the filter. 
 There are also filters that detect separated stripes of pixels these are two positive (red) stripes with a negative stripe (blue) in between. This behaves like an edge detection filter. 
@@ -1010,7 +1080,7 @@ Examples are shown in Figure \ref{fig:event_categorisation:filter_action}.
 
 
 \subsubsection{Conclusion}
-We have now shown that the network is capable of constructing sophisticated and physically relevant features of dijet substructure from the input images. 
+It has been shown that the network is capable of constructing sophisticated and physically relevant features of dijet substructure from the input images. 
 It is learning to infer information about jet pseudorapidity, but this accounts for only a small portion of the performance increase. 
 Furthermore, these studies show that feature visualisation and max-activation images are powerful techniques. 
 These can be applied to any part of the network to extract information about its behaviour.  
@@ -1026,11 +1096,11 @@ These can be applied to any part of the network to extract information about its
 
 
 \subsection{Validation}
-The DCNN-based model may be particularly vulnerable to disagreement between simulation and data. The underlying QCD processes of the underlying event, parton showering, and hadronization are challenging to model and this may adversely affect the application of this model to real data. To determine whether this is the case we will validate the model in the \Zee control region and with QCD modelling variations described previously with special attention given to how the performance of the image-only model changes.
-We will also attempt to isolate where the \Zee data/simulation disagreement is with a specially trained network. 
+The DCNN-based model may be particularly vulnerable to disagreement between simulation and data. The underlying QCD processes of the underlying event, parton showering, and hadronization are challenging to model and this may adversely affect the application of this model to real data. To determine whether this is the case the model is validated in the \Zee control region and with QCD modelling variations described previously with special attention given to how the performance of the image-only model changes.
+The \Zee data/simulation disagreement will be investigated with a specially trained network. 
 
 \subsubsection{\Zee Control Region}
-First we evaluation the simulation/data agreement of the network score used in categorisation for both the image-only and the full DCNNs (Figure \ref{fig:event_categorisation:int_score_zee}). 
+First the simulation/data agreement of the network score is evaluated for both the image-only and the full DCNNs (Figure \ref{fig:event_categorisation:int_score_zee}). 
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.49\textwidth]{figures/event_selection/img_score_zee_LPS.pdf}
@@ -1044,13 +1114,13 @@ Generally, the agreement is good with a very slight shift in the image-only mode
 The systematics bands are slightly larger in the image-only model and at the lower end of the full DCNN score compared to the combined BDT. This difference may not be significant as it is located in a score region that is rejected by the DCNN VBF tag.  
 
 
-To determine how the distribution of images differs between simulation and data train a DCNN on images only to discriminate them. 
+To determine how the distribution of images differs between simulation and data, an images-only DCNN is trained to discriminate between them.
 This network will have the same structure, regularisation, loss and training process as step one of the VBF DCNN model. 
-Once trained we then evaluate the performance of this network and interpret the features it has built to learn about the disagreement.  
+Once trained the performance of this network is evaluated and the features it has built are analysed to learn about the image distribution disagreement.  
 The performance of the data/simulation discriminant is shown in Figure \ref{fig:event_categorisation:zee_disc_perf}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/event_selection/ROC_Zee_img_DCNN.pdf}
+    \includegraphics[width=0.8\textwidth]{figures/event_selection/ROC_Zee_img_DCNN.pdf}
     \caption{\Zee Simulation/data discriminant performance. The score distribution for the simulation and data classes is shown on the left, and the associated ROC curve is shown on the right.} 
     \label{fig:event_categorisation:zee_disc_perf}
 \end{figure}
@@ -1058,73 +1128,63 @@ The performance of the data/simulation discriminant is shown in Figure \ref{fig:
 The AUROC suggests that there is indeed detectable disagreement in the image distributions. 
 However, the network score validation's level of agreement suggests that although there is disagreement the network is fairly robust to it. 
 
-To determine where in the image distribution this disagreement lies we analyse the trained network using the same interpretation techniques described previously. 
-First we use feature visualisation to produce images that contain a collection of discriminating features (Figure \ref{fig:event_categorisation:zee_data_sim_feature_vis}).
+To extract the areas of disagreement between the image datasets from the network the same interpretation techniques described previously are used. 
+First feature visualisation is used to produce images that contain a collection of discriminating features (Figure \ref{fig:event_categorisation:zee_data_sim_feature_vis}).
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.49\textwidth]{figures/event_selection/zee_norm_logits0.pdf}
-        \includegraphics[width=0.49\textwidth]{figures/event_selection/zee_norm_logits1.pdf}
+        \includegraphics[width=0.85\textwidth]{figures/event_selection/zee_norm_logits0.pdf}
+        \includegraphics[width=0.85\textwidth]{figures/event_selection/zee_norm_logits1.pdf}
     \end{center}
-    \caption{Sim/Data discriminant feature visualisation. The left hand dijet image is optimised for the simulation output neuron, and the right is optimised for the data neuron.} 
+    \caption{Sim/Data discriminant feature visualisation. The top dijet image is optimised for the simulation output neuron, and the bottom is optimised for the data neuron.} 
     \label{fig:event_categorisation:zee_data_sim_feature_vis}
 \end{figure}
 
 The difference is most pronounced in the leading jet where there is more charged \pt deposition in simulation and a different structure. The simulation is more rounded and ggH-like, the data has radial bands of neutral \pt along the $\Delta\eta$, $\Delta\phi$ axes and appears more VBF-like.   
 The subleading jet appears to be similar in shape between the two classes but with more charged \pt in the simulation and a more collimated jet in data. Overall the data class visualisation has more VBF-like qualities and the simulation is more ggH-like. 
 
-To verify the feature visualisation we inspect maximally activating images for the most sim-like and most data-like events according to the model. 
+To verify the feature visualisation, maximally activating images are inspected for the most simulation-like and most data-like events according to the model (Figure \ref{fig:event_categorisation:zee_data_sim_max_act}. 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=0.49\textwidth]{figures/event_selection/zee_max_act_mean_sim.pdf}
-        \includegraphics[width=0.49\textwidth]{figures/event_selection/zee_max_act_mean_data.pdf}
+        \includegraphics[width=0.85\textwidth]{figures/event_selection/zee_max_act_mean_sim.pdf}
+        \includegraphics[width=0.85\textwidth]{figures/event_selection/zee_max_act_mean_data.pdf}
     \end{center}
     \caption{Mean images for top and bottom 5\% maximally activating events. 
-             Score selection for simulation-like is shown on the left, selection for data-like is on the right.}
+             Score selection for simulation-like is shown at the top, selection for data-like is at the bottom.}
     \label{fig:event_categorisation:zee_data_sim_max_act}
 \end{figure}
 
-These selected samples have a class purity of approximately 85\%.
-We note that they resemble the generated images and conclude the image feature differences extracted with feature visualisation are valid. 
-The difference in charged-\pt depostion is especially pronounced in these images, but there are a few other features are apparent. In the leading jet data-like sample there is a spread along the $\Delta\phi$ axis that is much less pronounced in the simulation-like sample. 
+These selected samples have a class purity of approximately 85\%, and they resemble the generated images. The image feature differences extracted with feature visualisation appear to be physically sensible. 
+The difference in charged-\pt deposition is especially pronounced in these images, but a few other features are apparent. In the leading jet data-like sample there is a spread along the $\Delta\phi$ axis that is much less pronounced in the simulation-like sample. 
 The smooth appearance of the neutral-\pt channel in the data-like subleading jet also suggests that there is more neutral deposition within the tracker acceptance. 
 
 
 
 \subsubsection{QCD Modelling Variations}
-We now evaluate the model over samples that explicitly differ in their modelling of QCD with the same procedure as the BDT-based model.
-These consist of up and down variations that should encompas the behaviour of real data.
+The model is evaluated over samples that explicitly differ in their modelling of QCD with the same procedure as the BDT-based model.
+These consist of up and down variations that should encompass the behaviour of real data.
 The resulting score distribution variation and the variations in the ROC curves for both image-only and the full model are shown in Figure \ref{fig:event_categorisation:DCNN_psvar}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/event_selection/imgonly_PSvar_PS.pdf}
-    \includegraphics[width=0.75\textwidth]{figures/event_selection/int_PSvar_PS.pdf}
+    \includegraphics[width=0.80\textwidth]{figures/event_selection/imgonly_PSvar_PS.pdf}
+    \includegraphics[width=0.80\textwidth]{figures/event_selection/int_PSvar_PS.pdf}
     \caption{Variation in the score distributions and ROC curves with parton shower and underlying event variation. The top pair corresponds to the image-only model (step 1 of training) and the bottom plots correspond to the full model used in the tag.}
     \label{fig:event_categorisation:DCNN_psvar}
 \end{figure}
 
-Remarkably, the image-only model is not only robust to these variations but actually performs better on the QCD variation samples.
+Remarkably, the image-only model is not only robust to these variations but actually has a higher AUROC and therefore better performance on the QCD variation samples.
 This robustness suggests that the learned features are physically well-motivated as the features found in data should be within these variations.
-The full model shows a small degredation in discrimination power, but at a level comparable to the combined BDT. 
+The full model shows a small degradation in discrimination power, but at a level comparable to the combined BDT. 
 
 \subsection{Conclusions}
-We have shown that dijet images encode useful discriminating fetures and that a dense CNN is capable of extracting them. These features are found to be robust to QCD modelling variations, and the overall response of the model is similar between simulation and data. 
+Dijet images have been demonstrated to encode useful discriminating features and that a dense CNN is capable of extracting them. These features are found to be robust to QCD modelling variations, and the overall response of the model is similar between simulation and data. 
 
 For model development Bayesian optimisation is a powerful technique for navigating possible hyperparameter choices. The final model is a powerful discriminant, but compromises must be made due to the relationship between VBF/ggH discrimination and overall signal significance. 
-To approach this tradeoff correctly and to tune for the right choice we need to introduce the notion of cost sensitivity during training. This is the correct way to set the priority between these two aspects of VBF tag model performance. 
+To approach this tradeoff correctly and to tune for the right choice the notion of cost sensitivity needs to be introduced during training. This is the correct way to set the priority between these two aspects of VBF tag model performance. 
 
 The main impact on tag performance is reducing ggH contamination. This sort of technique will be more useful for targeting high-purity samples of particular processes rather than enhanced signal significance. 
 
-Finally, the common criticism that CNNs are black boxes is shown not to be the case. There are many techniques available to interpret them and only a few a used here. We can use feature visualisation and max-activation images to look inside the network at single neurons, feature maps or even entire feature volumes to determine what they are looking for. 
-Furthermore we can use the above techniques to analyse data/simulation compatibility and isolate features from regions of disagreement. 
-
-
-\section[Untagged]{Untagged}
-If the candidate is not assigned to any of the other tags it is considered for inclusion in a final inclusive tag: Untagged. 
-The Untagged tag consists of four categories defined as exclusive selections on the diphoton BDT score and consists mostly of gluon fusion events. 
-If an event does not meet the lowest requirement it is discarded from the analysis.
-
-
-
+Finally, the common criticism that CNNs are black boxes is shown not to be the case. There are many techniques available to interpret them and only a few are used here. Feature visualisation and max-activation images can be used to look inside the network at single neurons, feature maps or even entire feature volumes to determine what they are looking for. 
+Furthermore the above techniques can be used to analyse data/simulation compatibility and isolate features from regions of disagreement. 
 
 
 
