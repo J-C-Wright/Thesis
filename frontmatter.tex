@@ -1,7 +1,15 @@
 
 
 \chapter*{\centering Abstract}
-Abstract goes here
+Measurements of the Higgs boson using the \Hgg Higgs boson decay mode and two different methods for identifying Higgs bosons produced via vector boson fusion are presented.
+These analyses use proton-proton collision data collected by the CMS collaboration during the 2016 running period and constitute 35.9\,fb$^{-1}$ of integrated luminosity at $\sqrt{s}=13$\,TeV.
+One vector boson fusion identification method is based on boosted decision trees , and the other is based on so-called jet images and a dense convolutional neural network . The categorisations produced by both methods are subjected to the overall \Hgg statistical analysis and their results compared.
+
+The main objectives of this new approach are to reduce contamination from gluon fusion in the vector boson fusion categories and to improve their statistical significance. 
+This is indeed observed in the expected yields measured from simulation.
+The vector boson fusion signal strength relative to the Standard Model is measured to be $0.8^{+0.6}_{-0.5}$ in the boosted decision tree variant and $1.5^{+0.5}_{-0.5}$ in the neural network variant. 
+The neural network is also observed to give a reduced uncertainty on many of the other measurements, especially those more directly impacted by vector boson fusion.
+
 
 \chapter*{\centering }% Dedication}
 \begin{center}
@@ -11,28 +19,56 @@ Abstract goes here
 \end{center}
 
 \chapter*{\centering Declaration}
-I declare that this is my work, except for when it isn't. 
+I declare that this thesis is my own work. It has been built upon the work of others and this is stated in detail below. 
+When the work of others is used in the text it is referenced appropriately.
+
+\textbf{Chapter 1} introduces the work in this thesis referencing prior results in the fields of particle physics and machine learning in my own words.
+
+\textbf{Chapter 2} describes particle physics theory that has been entirely developed by others, but in my own words.
+
+\textbf{Chapter 3} describes the Large Hadron Collider and Compact Muon Solenoid in my own words, but these again were developed and studied by many experimental physicists before me.
+
+\textbf{Chapter 4} describes machine learning theory and practise. This is covers the work of various individuals in the field with my own words.
+
+\textbf{Chapter 5} describes physics objects at CMS. I had a role in part of the calibration of the ECAL for energy scales and smearing. The systems and studies are the work of my other colleagues at CMS.
+
+\textbf{Chapter 6} describes event categorisation. The vector boson fusion tagging is the focus of my work and is based on the official analysis approach. I developed the current version of the boosted decision tree based vector boson fusion tag along with Dr Yacine Haddad. The neural network based vector boson fusion tag is my own work. The other tags are the work of other members the CMS \Hgg analysis group.
+
+\textbf{Chapter 7} describes the final statistical analysis. The official results are the work of the entire \Hgg analysis group. For the neural network based results I developed a framework to produce information in a format that could be consumed by the existing final fits machinery. The final fits over the neural network variant categories were run by Ed Scott.  
+
+\textbf{Chapter 8} summarises and draws conclusions. This is my own writing, and the future developments are my own suggestions.
+
+\begin{flushright}
+    Jack Charles Wright
+\end{flushright}
 
 \chapter*{\centering Acknowledgements}
-First I'd like to thank STFC for giving me money. 
+None of this would've been possible without the contributions of many more people than I can name here. 
+I will always be thankful for the last four years and all the good people I've had the privilege to meet and work with.
+Therefore I'd like to express my sincere gratitude to everyone I'm about to neglect. 
 
-Imperial, CERN, MPI Tuebingen/MLSS
+To begin with I'd like to thank Imperial College London and the HEP group for giving me this opportunity in the first place, and STFC for providing funding.
+I'd also like to thank CERN, the LHC and the CMS collaboration for building and running such remarkable machines and for providing a great environment for research.
+I am particularly grateful to the Max Planck Institute for Intelligent Systems for accepting me into MLSS 2017 and providing such an enriching two weeks that taught me so much. 
 
-Paul and Chris, especially Paul
+A special thank you must go to my supervisors Prof Paul Dauncey and Dr Chris Seez for their guidance and support. 
+Thank you Chris for your uncompromising honesty, and thank you to Paul for making so much time for me and being so supportive even though you're head of group. I couldn't have asked for anyone better.
 
-Seth, Yacine and Ed
+I am grateful for my fantastic colleagues Dr Seth Zenz, Dr Yacine Haddad and Ed Scott. 
+Seth, without your tireless hard work and dedication I and many others would be up the proverbial creek with no paddle.
+Yacine, your guidance and 
 
-Danny and Elliot
+Thank you to Daniel Saunders and his partner Elliot for helping me at an especially difficult time.
+I wish you both the very best for your future together.
 
-Paslay family
+I am also grateful for the deep kindness and generosity of the Paslay family. I'll never forget what you've done for me over the years. 
 
-Lovely Lucie $<3$
+I am eternally thankful to my wonderful partner Lucie Altenburg for all the support and love she has shown me over the last year. 
+You've helped me back up when it all seemed to be going to bits. I can't thank you enough for how you've looked after me. 
 
-Mum and Dad above all. 
+Finally, family. Mum and Dad above all. %Science museum and books supporting curiosity. This thesis is a culmination of that.
 
 
-%\renewcommand{\listfigurename}{List of figures}
-%\renewcommand{\listtablename}{List of tables}
 
 \tableofcontents
 \listoffigures

@@ -60,7 +60,7 @@ The performance of the diphoton BDT is validated in a \Zee control region where 
 
 \subsection{Tagging Scheme}
 Tagging is implemented as a fall-through sequence where diphoton events are offered to each tag in order of priority (Table \ref{tab:event_categorisaton:tag_sequence}). 
-If a diphoton event is not accepted by a tag it then passes to the next tag for consideration until the final `untagged' tag category. 
+If a diphoton event is not accepted by a tag it then passes to the next tag for consideration until the final `Untagged' tag category. 
 If the event does not meet the criteria for this last tag it is discarded.
 In the case of multiple tagged candidate diphotons in an event the one with the highest priority tag and category is selected, if they are in the same category the diphoton with the highest diphoton $p_{T}$ is chosen.
 The criteria for each tag will be specified in following sections in this chapter.
@@ -353,7 +353,7 @@ Furthermore there is a photon-jet isolation criterion that requires the jet to h
 
 
 \subsubsection{Dijet Preselection}
-Dijets are formed by selecting the two highest-$p_T$ jets in the event that pass the jet selection requirements. The highest-$p_T$ jet in the pair is referred to as the leading jet, and the other jet as the subleading jet. If there are fewer than two jets the event is rejected by the VBF tag and falls through to untagged. 
+Dijets are formed by selecting the two highest-$p_T$ jets in the event that pass the jet selection requirements. The highest-$p_T$ jet in the pair is referred to as the leading jet, and the other jet as the subleading jet. If there are fewer than two jets the event is rejected by the VBF tag and falls through to Untagged. 
 Candidate dijets are required to meet the following selection criteria before being presented to the machine learning model:
 \begin{itemize}[noitemsep]
     \item $p^{\gamma}_{T}/m_{\gamma\gamma} > 1/3$ and $1/4$ for leading and subleading photon respectively;
@@ -719,6 +719,16 @@ These logits are then mapped to class probabilities by a softmax function. The V
 
 In addition to the above, the formulation of the image can also be tuned like another hyperparameter to choose the most performant number of pixels. 
 
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.715\textwidth]{figures/event_selection/VBF_DCNN_figure.pdf}
+    \caption{A schematic view of the dense CNN model architecture. The convolutional section is indicated by blue, the merge section by red, and the main discriminant by purple.
+             Grey squares and rectangles show layers of neurons: a depthwise convolution layer in the spread layer, composite layers in the dense blocks, and fully-connected layers
+             in the merge section and main discriminant.}
+    \label{fig:event_categorisation:vbf_dcnn_figure}
+\end{figure}
+
 
 
 \subsubsection{Image Formulation and Network Architecture Search}
@@ -1004,6 +1014,8 @@ The VBF image shows clear signs of colour connection where the jet constituents 
 They are also more collimated with more \pt  deposition in the jet core as expected for quark jets. This can be observed as more colour at the centre of the image and more empty pixels around the outside. The dominance of neural \pt deposition (green) and discrete rings of multiplicity (blue) indicate that the model is forming features that detect jets in the forward regions by detector coarseness and lack of charge. 
 
 In the ggH image a more circular structure can be seen with a larger proportion of charged deposition over a larger area. This is in line with the expectation that gluon jets are less collimated and higher multiplicity. The rings line up with the gaps in the coarse forward structure, this suggests that the model is learning to detect whether the jets are in the tracker acceptance. 
+
+Sets of images generated to show feature construction in different parts of the convolutional section can be found in Appendix \ref{appendix:feature_vis}.
 
 
 \subsubsection{Pseudorapidity Inference}
