@@ -208,7 +208,7 @@ Decision trees have advantages such as their simplicity, interpretability, and t
 
 \subsubsection{Gradient Boosting of Decision Trees}
 Generally, boosting algorithms \cite{Boosting} construct a strong learner from base learners by iteratively training base learners, compensating for earlier weakness in some way. Each base learner is then added together in a weighted fashion to produce the final ensemble.
-Gradient boosting \cite{GradientBoosting} is a particular boosting algorithm that fits to the errors of prior base learners and gradient descent. Gradient boosting assumes that at each iteration $n$, $1<n\leq{N}$ there is a base model $f_{n}(\vec{x})$ that can be improved by addition of another estimator (in our case another decision tree) $h(\vec{x})$
+Gradient boosting \cite{GradientBoosting} is a particular boosting algorithm that fits to the errors of prior base learners in a way that is equivalent to gradient descent. Gradient boosting assumes that at each iteration $n$, $1<n\leq{N}$ there is a base model $f_{n}(\vec{x})$ that can be improved by addition of another estimator (in our case another decision tree) $h(\vec{x})$
 \begin{equation}
     f_{n+1}(\vec{x}) = f_{n}(\vec{x}) + h(\vec{x}).
 \end{equation}
@@ -292,7 +292,7 @@ This method can be used when there are fewer hyperparameters to optimise and the
 As the number of hyperparameters goes up, dimensionality increases and the sampling becomes extremely sparse as each point represents a smaller portion of the space.
 
 % Optimisation with Bayesian Optimisation
-Bayesian optimisation \cite{BayesOpt} is part of a class of optimisation algorithms that use previous observations of the performance to determine the next point to sample. 
+Bayesian optimisation \cite{BayesOpt} belongs to a class of optimisation algorithms that use previous observations of the performance to determine the next point to sample. 
 The method consists of two main steps:
 \begin{enumerate}[noitemsep]
     \item using evaluated points in the hyperparameter space, calculate a posterior expectation of the performance as a function of the hyperparameters

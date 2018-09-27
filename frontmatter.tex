@@ -3,12 +3,14 @@
 \chapter*{\centering Abstract}
 Measurements of the Higgs boson using the \Hgg Higgs boson decay mode and two different methods for identifying Higgs bosons produced via vector boson fusion are presented.
 These analyses use proton-proton collision data collected by the CMS collaboration during the 2016 running period and constitute 35.9\,fb$^{-1}$ of integrated luminosity at $\sqrt{s}=13$\,TeV.
-One vector boson fusion identification method is based on boosted decision trees , and the other is based on so-called jet images and a dense convolutional neural network . The categorisations produced by both methods are subjected to the overall \Hgg statistical analysis and their results compared.
+One vector boson fusion identification method is based on boosted decision trees, and the other is based on jets formulated as images and a dense convolutional neural network. 
+The categorisations produced by both methods are subjected to the overall \Hgg statistical analysis and their results compared.
+The neural network itself is also subjected to analysis to determine what features it has learned to extract from the jet images.
 
 The main objectives of this new approach are to reduce contamination from gluon fusion in the vector boson fusion categories and to improve their statistical significance. 
 This is indeed observed in the expected yields measured from simulation.
 The vector boson fusion signal strength relative to the Standard Model is measured to be $0.8^{+0.6}_{-0.5}$ in the boosted decision tree variant and $1.5^{+0.5}_{-0.5}$ in the neural network variant. 
-The neural network is also observed to give a reduced uncertainty on many of the other measurements, especially those more directly impacted by vector boson fusion.
+The neural network is also observed to give a reduced uncertainty on many of the other measurements, especially those more directly impacted by vector boson fusion production.
 
 
 \chapter*{\centering }% Dedication}
@@ -17,6 +19,7 @@ The neural network is also observed to give a reduced uncertainty on many of the
     To Mum and Dad. \\
     I'm sorry about the electricity bill.
 \end{center}
+
 
 \chapter*{\centering Declaration}
 I declare that this thesis is my own work. It has been built upon the work of others and this is stated in detail below. 
@@ -43,7 +46,7 @@ When the work of others is used in the text it is referenced appropriately.
 \end{flushright}
 
 \chapter*{\centering Acknowledgements}
-None of this would've been possible without the contributions of many more people than I can name here. 
+This thesis depends on the contributions of many more people than I can name here. 
 I will always be thankful for the last four years and all the good people I've had the privilege to meet and work with.
 Therefore I'd like to express my sincere gratitude to everyone I'm about to neglect. 
 
@@ -51,24 +54,32 @@ To begin with I'd like to thank Imperial College London and the HEP group for gi
 I'd also like to thank CERN, the LHC and the CMS collaboration for building and running such remarkable machines and for providing a great environment for research.
 I am particularly grateful to the Max Planck Institute for Intelligent Systems for accepting me into MLSS 2017 and providing such an enriching two weeks that taught me so much. 
 
-A special thank you must go to my supervisors Prof Paul Dauncey and Dr Chris Seez for their guidance and support. 
-Thank you Chris for your uncompromising honesty, and thank you to Paul for making so much time for me and being so supportive even though you're head of group. I couldn't have asked for anyone better.
+A special thank you must go to my supervisors Prof Paul Dauncey and Dr Chris Seez for their support and deep expertise.
+Thank you Chris for welcoming me to CERN and your uncompromising honesty, and thank you to Paul for making so much time for me and being so supportive even though you're head of group. I couldn't have asked for anyone better.
 
-I am grateful for my fantastic colleagues Dr Seth Zenz, Dr Yacine Haddad and Ed Scott. 
+I am grateful for my colleagues Dr Seth Zenz, Dr Yacine Haddad and Ed Scott. 
 Seth, without your tireless hard work and dedication I and many others would be up the proverbial creek with no paddle.
-Yacine, your guidance and 
+Yacine, your encouragement and permanently sunny disposition helped me so much. Both of you have taught me a lot. 
+Finally, special thanks to Ed for your help over the past couple of years but especially for all your work with the final fits. 
+I wish you the best of luck as you start your thesis, I sincerely hope it goes a lot smoother than mine. 
 
 Thank you to Daniel Saunders and his partner Elliot for helping me at an especially difficult time.
 I wish you both the very best for your future together.
 
-I am also grateful for the deep kindness and generosity of the Paslay family. I'll never forget what you've done for me over the years. 
+I am also grateful for the deep kindness and generosity of the Paslay family. 
+I'll never forget what you've done for me over the years. 
 
-I am eternally thankful to my wonderful partner Lucie Altenburg for all the support and love she has shown me over the last year. 
-You've helped me back up when it all seemed to be going to bits. I can't thank you enough for how you've looked after me. 
+I am eternally thankful to my amazing partner Lucie Altenburg for all the love and support she has shown me over the last year. 
+You've helped me back up when it all seemed to be going to bits, you've proofread for me and more. 
+I can't begin to thank you enough for how you've looked after me. 
 
-Finally, family. Mum and Dad above all. %Science museum and books supporting curiosity. This thesis is a culmination of that.
-
-
+Finally, none of this would have been possible without the love and warmth of my family: you're all the bedrock of my life.
+Above all I'd like to thank my wonderful parents Maureen and Kevin Wright who have shown me unwavering support and fed my curiosity from a the start.
+I fondly remember childhood visits to the old Birmingham science museum where we'd look all the machines, at the wave motion and light spectrum displays.
+I especially remember the boxes with table top physics experiments we used to do with prisms, bridge building and other things. 
+You gave me all the books I could ever want on all the subjects I was interested in and then some. 
+You've done so much more for me than I could ever express in here, and this thesis is a culmination of all of that. 
+I feel this is your achievement as well as mine. 
 
 \tableofcontents
 \listoffigures

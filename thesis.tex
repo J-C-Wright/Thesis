@@ -17,6 +17,7 @@
 \usepackage{lscape}
 \usepackage{multirow}
 \usepackage{color, colortbl}
+%\usepackage[a4paper,left=1.5in,right=1.5in,top=50mm,bottom=40mm]{geometry}
 \usepackage[a4paper,width=130mm,top=50mm,bottom=40mm]{geometry}
 \usepackage{setspace}
 \usepackage{epigraph}
@@ -34,9 +35,10 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xspace}
 
+%Figure and table caption style
 \usepackage[font=small, labelfont=bf, justification=raggedright, format=hang]{caption}
 
-
+%colours for yields table
 \definecolor{Gray}{gray}{0.90}
 
 \definecolor{VBF0}{rgb}{1,0.7,0.7}
@@ -51,8 +53,10 @@
 \definecolor{VHH}{rgb}{0.8,1.0,0.8}
 \definecolor{VHM}{rgb}{0.9,1.0,0.9}
 
+%bibliography
 \addbibresource{bibliography}
 
+%useful commands
 \newcommand{\pt}{$p_T$\xspace}
 \newcommand{\SUN}{{\mathrm{SU}(N)}\xspace}
 \newcommand{\MET}{{$E_{T}^{\mathrm{miss}}$}\xspace}
@@ -65,6 +69,7 @@
 \newcommand{\Etrue}{{$E_{\mathrm{true}}$}\xspace}
 \newcommand{\Eraw}{{$E_{SC}$}\xspace}
 
+%thicker hline in tables
 \makeatletter
 \def\thickhline{%
   \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
@@ -76,6 +81,8 @@
       \ifnum0=`{\fi}}
 \makeatother
 
+%I've forgotten what this does
+%possibly removes headers on blank pages
 \makeatletter
 \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
 \hbox{}%
