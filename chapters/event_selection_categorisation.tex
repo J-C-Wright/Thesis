@@ -7,8 +7,15 @@ Once a set of candidate photons is assembled they are tagged and categorised usi
 The objective of this tagging procedure is to enhance overall significance, to construct categories of events with superior mass resolution, and to separate out the Higgs production modes for individual measurement. 
 
 
+The mass-scaled diphoton \pt is used throughout the event categorisation to avoid two unintended effects from correlation between diphoton \pt and diphoton mass. 
+Firstly, cutting out low-\pt diphoton events will also remove low diphoton mass events. 
+This reduces the number of events in the low-mass region and can distort the mass distribution into a non-monotonic shape.
+Monotonic diphoton mass spectra are preferred as this makes the background shape easier to model and also admits a larger set of candidate functions. 
+This larger set is desirable as it spans more of the space of possible function choices and we can better estimate the systematic uncertainty in background function choice. 
+Secondly, using mass-scaled \pt as a feature in the machine learning models avoids biasing them to the signal mass of the simulated events used in training.
+This can happen if the algorithm learns to discriminate using diphoton \pt as a proxy for the diphoton mass.
+
 The event categorisation begins with a selection on the photon candidates with $p_{T}^{\gamma1}/m_{\gamma\gamma} > 1/3$, $p_{T}^{\gamma2}/m_{\gamma\gamma} > 1/4$, and $100 < m_{\gamma\gamma} < 180$\,GeV.
-The use of mass-scaled $p_{T}$ here and in later machine learning models serves a dual purpose: firstly it avoids distortion of lower values in the $m_{\gamma\gamma}$ spectrum, secondly it avoids introducing mass bias from the simulated data during model trainings. 
 There are then further requirements on the photons' supercluster pseudorapidities: both must have $|\eta| < 2.5$ to keep them in the fiducial region of the ECAL, and also must not be in the barrel-endcap transition region $1.44 < |\eta| < 1.57$ to ensure full containment of the electromagnetic showers. 
 
 
@@ -94,7 +101,7 @@ The criteria for each tag will be specified in following sections in this chapte
 
 
 \section{Top Fusion Tagging}
-In the \ttH production mode, a top-antitop pair is produced in association with the Higgs boson. The top quark immediately decays to a b quark and a W boson which will subsequently decay leptonically or hadronically. In the former (semi-leptonic) case there will be a bottom quark jet plus an associated lepton with \MET from the W decay. In the latter (fully-hadronic) case there will be a bottom quark jet plus two quark jets from the W decay to quarks (Figure \ref{fig:event_categorisaton:top_decays}). 
+In the \ttH production mode, a top-antitop pair is produced in association with the Higgs boson. The top quark immediately decays to a b quark and a W boson which will subsequently decay leptonically or hadronically. In the former (semi-leptonic) case there will be a bottom quark jet plus at least one associated lepton with \MET from the W decay. In the latter (fully-hadronic) case there will be a bottom quark jet plus two quark jets from the W decay to quarks (Figure \ref{fig:event_categorisaton:top_decays}). 
 \begin{figure}[h!]
     \begin{center}
         \begin{tikzpicture}[baseline=(current bounding box.center)]
@@ -253,7 +260,7 @@ If an event does not meet the lowest requirement it is discarded from the analys
 
 These categories are optimised simultaneously in a similar way to the VBF tag, but with a few differences. 
 The procedure begins with the boundaries spaced equally along the score distribution. Each category is evaluated in simulation by fitting an exponential for background plus two Gaussian distributions for the signal. 
-Significance is extracted from each category based on a fit to an Azimov dataset derived from the earlier exponential and Gaussian function fits. 
+Significance is extracted from each category based on a fit to an Azimov dataset \cite{Azimov} derived from the earlier exponential and Gaussian function fits. 
 The boundaries are optimised to maximise overall significance of the Untagged tag.
 
 This procedure is repeated for increasing numbers of Untagged categories until there is no significant increase in performance. This is then the number of Untagged categories to be used in the tag.
@@ -548,7 +555,14 @@ To test for how such mismodelling affects the VBF tag and VBF/ggH discrimination
     \item \textbf{Underlying event}: interactions between parton pairs in the proton collision that are not part of the hard scatter;
     \item \textbf{Parton shower}: simulates a succession of parton emissions from the incoming and outgoing partons of the interaction.
 \end{itemize}
-Both of these will affect the cross section for jet production, the configuration of the jet substructure and particularly the degree of colour connection to the proton remnant.
+These variations encompass different choices of generator and tune that the simulated events are still consistent with observations at CMS. 
+These will affect the cross section for jet production, the configuration of the jet substructure and particularly the degree of colour connection to the proton remnant.
+
+%(This is formulated as... )
+This is formulated as eight tunes that effectively provide a basis that spans the different choices of tune and generator. 
+Uncertainties are then evaluated in terms of these, then the uncertainties are summed in quadrature to define upper and lower uncertainties. 
+These are in turn used to define up and down variations around the nominal tune used. 
+This process is applied to VBF and ggH for parton shower modelling uncertainty and underlying event uncertainty individually. 
 
 To evaluate how the performance of the model changes depending on the QCD modelling, a ROC curve is constructed for each variant, and an envelope is drawn around the curves to estimate performance bounds. This is shown in figure \ref{fig:event_categorisation:ps_variant_validation}
 \begin{figure}[h!]
@@ -1010,7 +1024,7 @@ The end results of this for the VBF and ggH logits of the image only network are
 These images show a clear difference in each class, and some interesting physical features. However, it should be noted that these will be somewhat unphysical as the optimisation will try to pack as much evidence for the target class in to the image as possible with no constraints on what is sensible. For example, if one takes a network such as inception and optimises for the dog class it will produce an image of a carpet of deformed dogs as the optimisation tries to include as many dog features as possible. 
 
 
-The VBF image shows clear signs of colour connection where the jet constituents are pulled in opposite $\Delta\eta$ directions. This causes asymmetry in the jet image where there are more non-zero pixels on one half and the leading and subleading images have this asymmetry in opposite directions.
+The VBF image shows clear signs of colour connection to the proton remnant where the jet constituents are pulled in opposite $\Delta\eta$ directions. This causes asymmetry in the jet image where there are more non-zero pixels on one half and the leading and subleading images have this asymmetry in opposite directions.
 They are also more collimated with more \pt  deposition in the jet core as expected for quark jets. This can be observed as more colour at the centre of the image and more empty pixels around the outside. The dominance of neural \pt deposition (green) and discrete rings of multiplicity (blue) indicate that the model is forming features that detect jets in the forward regions by detector coarseness and lack of charge. 
 
 In the ggH image a more circular structure can be seen with a larger proportion of charged deposition over a larger area. This is in line with the expectation that gluon jets are less collimated and higher multiplicity. The rings line up with the gaps in the coarse forward structure, this suggests that the model is learning to detect whether the jets are in the tracker acceptance. 

@@ -1,3 +1,35 @@
+@article{Azimov,
+      author         = "Cowan, Glen and Cranmer, Kyle and Gross, Eilam and
+                        Vitells, Ofer",
+      title          = "{Asymptotic formulae for likelihood-based tests of new
+                        physics}",
+      journal        = "Eur. Phys. J.",
+      volume         = "C71",
+      year           = "2011",
+      pages          = "1554",
+      doi            = "10.1140/epjc/s10052-011-1554-0,
+                        10.1140/epjc/s10052-013-2501-z",
+      note           = "[Erratum: Eur. Phys. J.C73,2501(2013)]",
+      eprint         = "1007.1727",
+      archivePrefix  = "arXiv",
+      primaryClass   = "physics.data-an",
+      SLACcitation   = "%%CITATION = ARXIV:1007.1727;%%"
+}
+
+@article{FTest,
+    author = {Hand, David J.},
+    title = {Statistical Concepts: A Second Course, Fourth Edition by Richard G. Lomax, Debbie L. Hahs-Vaughn},
+    journal = {International Statistical Review},
+    volume = {80},
+    number = {3},
+    pages = {491-491},
+    doi = {10.1111/j.1751-5823.2012.00196\_22.x},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1751-5823.2012.00196_22.x},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1751-5823.2012.00196_22.x}
+}
+
+
+
 @article{CMS_Higgs_disc,
       author         = "Chatrchyan, Serguei and others",
       title          = "{Observation of a new boson at a mass of 125 GeV with the

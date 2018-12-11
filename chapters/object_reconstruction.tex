@@ -10,7 +10,7 @@ The invariant mass of a diphoton system is calculated with the expression
 \end{equation}
 where $E_{\gamma_1}$ and $E_{\gamma_2}$ are the energies of the leading energy photon and subleading energy photon respectively, and $\alpha$ is the opening angle between them. 
 To determine the value of $\alpha$ we require the locations of the photons in the ECAL and the correct originating vertex. 
-Good identification and measurement of photons and their verices are therefore crucial to the analysis, and the reconstruction of these will be described in detail in this chapter. 
+Good identification and measurement of photons and their vertices are therefore crucial to the analysis, and the reconstruction of these will be described in detail in this chapter. 
 Other objects such as jets and leptons provide extra information on the production mode and allow for improved signal isolation. The reconstruction of these objects will also be described.
 
 \section{Tracks, Clusters, and Physics Objects}
@@ -24,7 +24,7 @@ The clustering for ECAL deposition is described here, the HCAL clustering procee
 Energy deposition from photon and electron electromagnetic showers is often spread out over multiple ECAL crystals due to the magnetic field and interaction with tracker material. 
 The objective of the ECAL clustering is to gather these energy deposits into `superclusters' (SCs) to achieve good energy containment, pileup robustness and to take variation in the ECAL structure into account.
 
-The process \cite{CMSEcalTDR} begins with the identification of `seed' crystals. These are crystals over a threshold energy (greater than 230\,MeV in the barrel and 600\,MeV in the endcaps) that alse have more energy than all their neighbours.
+The process \cite{CMSEcalTDR} begins with the identification of `seed' crystals. These are crystals over a threshold energy (greater than 230\,MeV in the barrel and 600\,MeV in the endcaps) that also have more energy than all their neighbours.
 The seeds are then grown into `topological clusters' by iteratively including crystals that neighbour with crystals already in the cluster beginning with the seed.
 For a crystal to be included, its energy must must be over another threshold equal to twice the noise level in the associated ECAL region (greater than 80\,MeV in the barrel and 150\,MeV in the endcaps).
 There is also an extra requirement for endcap clusters: because the noise increases with $\eta$, seeds have an additional criterion of $E_T > 150$\,MeV.
@@ -239,7 +239,7 @@ Finally, additional requirements are applied depending on the $|\eta|$ and $R_9$
 
 
 
-%Schema table of thesholds
+%Schema table of thresholds
 The efficiencies of these criteria are measured using \Zee and the tag-and-probe method, 
 with the exception of the electron veto which uses $Z\rightarrow{}\mu^{+}\mu^{-}\gamma$. The preselection efficiencies are summarised in Table \ref{tab:object_reco:presel_eff}.
 %Table of efficiencies

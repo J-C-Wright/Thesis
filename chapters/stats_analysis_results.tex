@@ -35,7 +35,7 @@ The production mode shapes are normalised to their expected signal yield and the
 \subsection{Background Modelling}
 The background modelling aims to construct a smoothly falling background distribution that takes uncertainty about the choice of functional form into account. This is achieved with a data-driven approach based on the discrete profiling method \cite{env_method}. This technique allows for the estimation of this systematic and its propagation to the final fits as a discrete nuisance parameter without assumptions about underlying processes or functional forms. 
 
-The candidate functions are expressed as a set of function families, each of these are expressed as a sequence where we pick a lowest and highest order form to consider. The maximum order is found via an F-test and the minimum order is found by requiring a minimal level of goodness-of-fit. 
+The candidate functions are expressed as a set of function families, each of these are expressed as a sequence where we pick a lowest and highest order form to consider. The maximum order is found via an F-test \cite{FTest} and the minimum order is found by requiring a minimal level of goodness-of-fit. 
 The families considered are polynomials in the Bernstein basis, Laurent series, sums of exponentials, and sums of power laws. 
 
 The functions are fitted to the \mgg sideband data using twice negative likelihood (2NLL) minimisation with an additional regularisation term $n_p$ (number of parameters) to penalise function complexity. 
@@ -44,7 +44,7 @@ The functions are fitted to the \mgg sideband data using twice negative likeliho
 
 \section{Systematic Uncertainties}
 Systematic uncertainties are propagated to the final fits by including nuisance parameters primarily in the signal model. 
-The desription here is taken from the work in \cite{HIG-16-040} unless stated otherwise. 
+The description here is taken from the work in \cite{HIG-16-040} unless stated otherwise. 
 
 Systematic error in the signal model is handled in one of three main ways via nuisance parameters that have different effects on the \mgg distribution:
 \begin{itemize}[noitemsep]

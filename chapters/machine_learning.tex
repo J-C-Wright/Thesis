@@ -78,7 +78,7 @@ This is implemented mathematically as,
 \end{equation}
 where $\vec{v}$ is the velocity and $\mu$ is a non-learned parameter referred to as momentum but actually behaves more like a coefficient of friction. 
 Typical values for $\mu$ are between $0.5$ and $0.9$ so it decays the accumulated velocity and has a damping effect on oscillation during training. 
-In contrast to the hiker example, SGD with momentum is more like a skiier: the skiier begins with zero velocity but accumulates velocity over time as they descend the mountain in the direction of negative gradient. 
+In contrast to the hiker example, SGD with momentum is more like a skier: the skier begins with zero velocity but accumulates velocity over time as they descend the mountain in the direction of negative gradient. 
 
 There are also more advanced optimisation algorithms and an alternative formulation of momentum.
 Nesterov momentum \cite{Nesterov} allows the velocity to carry the evaluation point forward and then the gradient is calculated at this new point. 
@@ -565,5 +565,30 @@ This compression of the feature volume performs feature reduction where less use
     \caption{A transition layer with a reduction factor of 0.5.}
         \label{fig:machine_learning:transition_layer}
 \end{figure}
+
+
+
+
+\section{Conclusion}
+The objective of a machine learning algorithm is to produce a model for solving a task. 
+This is defined as a function of input features and parameters that is optimal with respect to some performance measure. 
+This chapter has described the theoretical and practical steps for the development of such models to set the field for building one for VBF discrimination.  
+It has described supervised deep learning for image-based input in detail and has introduced dense convolutional neural networks.
+
+Deep learning is often more performant for problems with a large number of input features (high-dimensionality). 
+Convolutional neural networks achieve this through neurons that share parameters across the vertical and horizontal extent of the image.  
+When combined into layers where prior neurons feed into later ones, the whole network learns a sophisticated hierarchy of features. 
+This begins with local assemblies of pixels at the front and culminates in large complex features at the end. 
+
+This capability will be exploited to develop a new model for VBF categorisation.
+To apply this machinery to VBF dijets, the jet substructure will be represented as an image and a DCNN-type network will be trained to construct a performant model. 
+This process will also construct a hierarchy of dijet substructure features using the images as part of the training process. 
+
+
+
+
+
+
+
 
 
