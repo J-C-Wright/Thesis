@@ -501,9 +501,9 @@ Approximate studies (in lieu of the full final fits machinery) of the three VBF 
         \thickhline
         Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        VBF 0 & $[1.00, 0.957)$     & 1.4 &  2.16 & 0.20 & 0.37 \\
-        VBF 1 & $[0.957, 0.902)$ & 1.2 &  1.00  & 0.34 & 0.17 \\
-        VBF 2 & $[0.902, 0.553)$ & 2.0 &  0.69 & 0.53 & 0.04 \\
+        VBF 0 & $(0.957, 1.000]$ & 1.4 &  2.16 & 0.20 & 0.37 \\
+        VBF 1 & $(0.902, 0.957]$ & 1.2 &  1.00 & 0.34 & 0.17 \\
+        VBF 2 & $(0.553, 0.902]$ & 2.0 &  0.69 & 0.53 & 0.04 \\
         \thickhline
     \end{tabular}
     \caption{Estimated category attributes for the BDT-based VBF tag.}
@@ -547,6 +547,7 @@ The results shown in Figure \ref{fig:event_categorisation:zee_bdt_validation} sh
 
 
 \subsubsection{QCD Modelling Variations}
+\label{chap:event_select:vbf_bdt:ueps_variants}
 The accuracy of QCD process modelling in hadronic collisions is a significant source of theoretical uncertainty. 
 This will have an impact on categorisation with hadronic objects such as jets, and is especially pertinent for any features that are based on jet substructure. 
 
@@ -564,7 +565,7 @@ Uncertainties are then evaluated in terms of these, then the uncertainties are s
 These are in turn used to define up and down variations around the nominal tune used. 
 This process is applied to VBF and ggH for parton shower modelling uncertainty and underlying event uncertainty individually. 
 
-To evaluate how the performance of the model changes depending on the QCD modelling, a ROC curve is constructed for each variant, and an envelope is drawn around the curves to estimate performance bounds. This is shown in figure \ref{fig:event_categorisation:ps_variant_validation}
+To evaluate how the performance of the model changes depending on these modelling variations, a VBF vs ggH ROC curve is constructed for each variant, and an envelope is drawn around the curves to estimate performance bounds. This is shown in figure \ref{fig:event_categorisation:ps_variant_validation}
 \begin{figure}[h!]
     \begin{center}
         \includegraphics[width=0.9\textwidth]{figures/event_selection/psvar_ROCs_PS.pdf}
@@ -966,9 +967,9 @@ Approximate studies of the three VBF categories, their boundaries and their esti
         \thickhline
         Category & Score Range & $\sigma_{\mathrm{eff}}$ & AMS & $B_{\mathrm{ggH}}/(S+B_{\mathrm{ggH}})$ & $S/(S+B)$ \\
         \hline
-        VBF 0 & $[1, 0.856)$     & 1.5 &  2.13 & 0.10 & 0.37 \\
-        VBF 1 & $[0.856, 0.704)$ & 2.0 &  1.15  & 0.27 & 0.11 \\
-        VBF 2 & $[0.704, 0.495)$ & 2.0 &  0.60 & 0.46 & 0.04 \\
+        VBF 0 & $(0.856, 1.000]$ & 1.5 &  2.13 & 0.10 & 0.37 \\
+        VBF 1 & $(0.704, 0.856]$ & 2.0 &  1.15 & 0.27 & 0.11 \\
+        VBF 2 & $(0.495, 0.704]$ & 2.0 &  0.60 & 0.46 & 0.04 \\
         \thickhline
     \end{tabular}
     \caption{Estimated category attributes for the DCNN-based VBF tag.}
